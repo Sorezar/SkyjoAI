@@ -1,13 +1,13 @@
 import random
-import pygame
 import config.config as cfg
 from core import card as c
 
 class Player:
-    def __init__(self, name, pos):
-        self.name = name
+    def __init__(self, name, pos, ai):
+        self.name        = name
         self.total_score = 0
-        self.pos = pos
+        self.pos         = pos
+        self.ai          = ai
         self.reset_grid()
 
     def reset_grid(self):
@@ -15,8 +15,6 @@ class Player:
         for _ in range(2):
             i, j = random.randrange(cfg.GRID_ROWS), random.randrange(cfg.GRID_COLS)
             self.grid[i][j].revealed = True
-
-    
 
     def all_revealed(self):
         return all(c.revealed for row in self.grid for c in row)
@@ -30,21 +28,23 @@ class Player:
         return sum(c.value for row in self.grid for c in row)
 
     def take_turn(self, deck, discard):
-        source = ''
-        top = discard[-1] if discard else None
-        if top is not None and top < 5:
+        top_discard = discard[-1] if discard else None
+        action = self.ai.choose_action(self, top_discard, deck)
+
+        # Choix de la carte
+        if action['source'] == 'D' and discard:
             card_val = discard.pop()
-            source = 'D'
         else:
             card_val = deck.pop()
-            source = 'P'
-        unrevealed = [(i,j) for i in range(cfg.GRID_ROWS) for j in range(cfg.GRID_COLS) if not self.grid[i][j].revealed]
-        if unrevealed:
-            i,j = random.choice(unrevealed)
+
+        # Emplacement où jouer
+        if action['position']:
+            i, j = action['position']
             discard.append(self.grid[i][j].value)
-            new = c.Card(card_val)
-            new.revealed = True
-            self.grid[i][j] = new
+            new_card = c.Card(card_val)
+            new_card.revealed = True
+            self.grid[i][j] = new_card
         else:
             discard.append(card_val)
-        return source
+
+        return action['source']

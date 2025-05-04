@@ -1,6 +1,7 @@
 import random
 import config.config as cfg
 import core.player as pl
+from ai.random import RandomAI
 
 class SkyjoGame:
     def __init__(self):
@@ -10,10 +11,15 @@ class SkyjoGame:
             (cfg.WIDTH * 0.05, cfg.HEIGHT * 0.70),
             (cfg.WIDTH * 0.80, cfg.HEIGHT * 0.70)
         ]
-        self.players = [pl.Player(f"IA_{i+1}", positions[i]) for i in range(4)]
-        self.round = 1
-        self.turns = 0
-        self.log = []
+        self.players     = [
+            pl.Player(f"IA_1", positions[0], RandomAI()),
+            pl.Player(f"IA_2", positions[1], RandomAI()),
+            pl.Player(f"IA_3", positions[2], RandomAI()),
+            pl.Player(f"IA_4", positions[3], RandomAI())
+        ]
+        self.round       = 1
+        self.turns       = 0
+        self.log         = []
         self.last_source = ''
         self.start_round()
 
