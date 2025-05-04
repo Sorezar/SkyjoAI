@@ -16,6 +16,7 @@ MAX_POINTS      = 100
 # Couleurs
 WHITE        = (255, 255, 255)
 GRAY         = (180, 180, 180)
+RED          = (255, 0, 0)
 DARK_GRAY    = (80, 80, 80)
 BLACK        = (0, 0, 0)
 GREEN_TABLE  = (100, 100, 100)

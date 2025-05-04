@@ -27,21 +27,36 @@ class SkyjoUI:
             surface.blit(txt, (x + cfg.CARD_WIDTH/2 - txt.get_width()/2,
                                 y + cfg.CARD_HEIGHT/2 - txt.get_height()/2))
     
-    def draw_player(self, player, surface):
+    def draw_player(self, player, surface, is_current=False):
         FONT = pygame.font.SysFont("arial", int(cfg.HEIGHT * 0.035))
         name_surf = FONT.render(player.name, True, cfg.YELLOW)
         surface.blit(name_surf, (player.pos[0], player.pos[1] - FONT.get_height()))
+        
+        if is_current:
+            highlight_rect = pygame.Rect(
+                player.pos[0] - cfg.MARGIN,
+                player.pos[1] - cfg.MARGIN - FONT.get_height(),
+                cfg.GRID_COLS * (cfg.CARD_WIDTH + cfg.MARGIN) + cfg.MARGIN,
+                cfg.GRID_ROWS * (cfg.CARD_HEIGHT + cfg.MARGIN) + FONT.get_height() + cfg.MARGIN
+            )
+            pygame.draw.rect(surface, cfg.RED, highlight_rect, 3)  # Red border for current player
+        
         for i in range(cfg.GRID_ROWS):
+            x_offset = 0
             for j in range(cfg.GRID_COLS):
-                x = player.pos[0] + j * (cfg.CARD_WIDTH + cfg.MARGIN)
+                if player.grid[i][j] is None:  # Skip removed columns
+                    continue
+                x = player.pos[0] + x_offset * (cfg.CARD_WIDTH + cfg.MARGIN)
                 y = player.pos[1] + i * (cfg.CARD_HEIGHT + cfg.MARGIN)
                 self.draw_card(player.grid[i][j], surface, x, y)
+                x_offset += 1
     
     def draw(self, screen):
         screen.fill(cfg.GRAY)
         txt = self.FONT.render(f"Manche {self.game.round} - Tour complet {self.game.turns}", True, cfg.YELLOW)
         screen.blit(txt, ((cfg.WIDTH - txt.get_width())/2, cfg.MARGIN/2))
-        for p in self.game.players: self.draw_player(p, screen)
+        for idx, p in enumerate(self.game.players):
+            self.draw_player(p, screen, is_current=(idx == self.game.current_player_index))
 
         cx, cy = cfg.WIDTH/2, cfg.HEIGHT/2
         self.draw_card(cd.Card(0), screen, cx - cfg.CARD_WIDTH - cfg.MARGIN, cy - cfg.CARD_HEIGHT/2)

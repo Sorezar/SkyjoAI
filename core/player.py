@@ -25,7 +25,7 @@ class Player:
                 c.revealed = True
 
     def round_score(self):
-        return sum(c.value for row in self.grid for c in row)
+        return sum(c.value for row in self.grid for c in row if c is not None)
 
     def take_turn(self, deck, discard):
         top_discard = discard[-1] if discard else None
