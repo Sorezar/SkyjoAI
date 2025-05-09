@@ -1,20 +1,12 @@
-import random
-import config.config as cfg
-from core import card as c
+from config.config import GRID_ROWS, GRID_COLS
 
 class Player:
-    def __init__(self, name, pos, ai):
-        self.name        = name
-        self.total_score = 0
-        self.pos         = pos
-        self.ai          = ai
-        self.reset_grid()
-
-    def reset_grid(self):
-        self.grid = [[c.Card(random.randint(-2, 12)) for _ in range(cfg.GRID_COLS)] for _ in range(cfg.GRID_ROWS)]
-        for _ in range(2):
-            i, j = random.randrange(cfg.GRID_ROWS), random.randrange(cfg.GRID_COLS)
-            self.grid[i][j].revealed = True
+    def __init__(self, id, name, ai):
+        self.id    = id
+        self.name  = name
+        self.score = 0
+        self.ai    = ai
+        self.grid  = [[None for _ in range(GRID_COLS)] for _ in range(GRID_ROWS)]
 
     def all_revealed(self):
         return all(c.revealed for row in self.grid for c in row)
@@ -25,26 +17,30 @@ class Player:
                 c.revealed = True
 
     def round_score(self):
-        return sum(c.value for row in self.grid for c in row if c is not None)
+        print(sum(c.value for row in self.grid for c in row))
+        return sum(c.value for row in self.grid for c in row)
 
     def take_turn(self, deck, discard):
-        top_discard = discard[-1] if discard else None
-        action = self.ai.choose_action(self, top_discard, deck)
+        
+        # Step 1 : Choisir la source de la carte (pioche ou discard)
+        source = self.ai.choose_source(self.grid, discard)
+        card   = discard.pop() if source == 'D' else deck.pop()
+        
+        # Step 1b (optionnel) : Si on prend la carte du deck, on doit choisir si on la garde ou non
+        keep = self.ai.choose_keep(card, self.grid)
+        
+        if keep:
+            # Step 2a : Si on garde la carte, on doit choisir quel carte on va remplacer
+            i, j = self.ai.choose_position(card, self.grid)
+            self.grid[i][j].revealed = True
+            discard.append(self.grid[i][j])
+            self.grid[i][j] = card
+            self.grid[i][j].revealed = True
+        else :
+            # Step 2b : Si on ne garde pas la carte, on doit choisir quelle carte révéler
+            i, j = self.ai.choose_reveal(self.grid)
+            card.revealed = True
+            discard.append(card)
+            self.grid[i][j].revealed = True
 
-        # Choix de la carte
-        if action['source'] == 'D' and discard:
-            card_val = discard.pop()
-        else:
-            card_val = deck.pop()
-
-        # Emplacement où jouer
-        if action['position']:
-            i, j = action['position']
-            discard.append(self.grid[i][j].value)
-            new_card = c.Card(card_val)
-            new_card.revealed = True
-            self.grid[i][j] = new_card
-        else:
-            discard.append(card_val)
-
-        return action['source']
+        return source

@@ -8,8 +8,8 @@ CARD_HEIGHT     = HEIGHT * 0.10
 MARGIN          = WIDTH * 0.01
 GRID_ROWS       = 3
 GRID_COLS       = 4
-FPS             = 30
-AUTO_PLAY_DELAY = 0.2
+FPS             = 60
+AUTO_PLAY_DELAY = 0.05
 MAX_POINTS      = 100
 
 
