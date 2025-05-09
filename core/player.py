@@ -21,6 +21,7 @@ class Player:
         return sum(c.value for row in self.grid for c in row)
 
     def take_turn(self, deck, discard):
+        # TO DO : CORRIGER BUG QUAND ON PREND UNE CARTE DE LA DISCARD, CA NE L'ENLEVE PAS DU DISCARDS
         
         # Step 1 : Choisir la source de la carte (pioche ou discard)
         source = self.ai.choose_source(self.grid, discard)
@@ -29,7 +30,7 @@ class Player:
         # Step 1b (optionnel) : Si on prend la carte du deck, on doit choisir si on la garde ou non
         keep = self.ai.choose_keep(card, self.grid)
         
-        if keep:
+        if keep or source == 'D':
             # Step 2a : Si on garde la carte, on doit choisir quel carte on va remplacer
             i, j = self.ai.choose_position(card, self.grid)
             self.grid[i][j].revealed = True

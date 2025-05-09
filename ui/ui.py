@@ -77,32 +77,33 @@ class SkyjoUI:
         src_txt = self.FONT.render(f"Dernière pioche: {'Pioche' if self.game.last_source=='P' else 'Défausse'}", True, YELLOW)
         screen.blit(src_txt, ((WIDTH - src_txt.get_width())/2, cy + CARD_HEIGHT/2 + MARGIN))
 
-        self.draw_score_table(screen)
+        if self.game.round > 1:
+            self.draw_score_table(screen)
 
     def draw_score_table(self, screen):
         table_width = max(WIDTH * 0.10, min(WIDTH * 0.25, WIDTH * 0.05 * (self.game.round + 2)))
         col_width   = table_width / (self.game.round + 2)
         row_height  = self.FONT.get_height() + 5
+        
         start_x = (WIDTH - table_width) / 2
         start_y = HEIGHT - (len(self.game.players) * row_height) - MARGIN
         header  = self.FONT.render("Total", True, WHITE)
         screen.blit(header, (start_x + (self.game.round + 1)*col_width, start_y - row_height))
+        
         for i, p in enumerate(self.game.players):
             name_txt = self.FONT.render(p.name, True, WHITE)
             screen.blit(name_txt, (start_x, start_y + i*row_height))
             total = 0
-            for r in range(1, self.game.round + 1):
-                entry = next((l for l in self.game.log if l[0]==r and l[1]==p.name), None)
-                score = entry[2] if entry else 0
+            for r in range(1, self.game.round):
+                score = self.game.scoreboard.scores[p.id][r-1]
                 total += score
-                color = VALUE_COLORS['zero'] if score == 0 else WHITE
-                txt = self.FONT.render(str(score), True, color)
+                txt = self.FONT.render(str(score), True, WHITE)
                 screen.blit(txt, (start_x + r*col_width, start_y + i*row_height))
+                
             total_txt = self.FONT.render(str(total), True, WHITE)
             screen.blit(total_txt, (start_x + (self.game.round + 1)*col_width, start_y + i*row_height))
 
     def show_results(self, screen):
-        if any(pl.score >= MAX_POINTS for pl in self.game.players):
-            winner = min(self.game.players, key=lambda p: p.score)
-            win_txt = self.FONT.render(f"Vainqueur: {winner.name}", True, YELLOW)
-            screen.blit(win_txt, ((WIDTH - win_txt.get_width())/2, HEIGHT/2))
+        winner = min(self.game.players, key=lambda p: p.score)
+        win_txt = self.FONT.render(f"Vainqueur: {winner.name}", True, YELLOW)
+        screen.blit(win_txt, ((WIDTH - win_txt.get_width())/2, HEIGHT/2))

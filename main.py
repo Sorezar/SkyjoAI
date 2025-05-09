@@ -4,6 +4,7 @@ from core.game     import SkyjoGame, Scoreboard
 from core.player   import Player
 from ai.optimized  import OptimizedAI
 from ai.random     import RandomAI
+from ai.initial    import InitialAI
 
 import pygame
 import time
@@ -43,10 +44,10 @@ def simulate_games(num_games, players):
 if __name__ == "__main__":
     
     players = [
-        Player(0, f"IA_1", RandomAI()),
-        Player(1, f"IA_2", RandomAI()),
-        Player(2, f"IA_3", RandomAI()),
-        Player(3, f"IA_4", RandomAI())
+        Player(0, f"IA_1", InitialAI()),
+        Player(1, f"IA_2", InitialAI()),
+        Player(2, f"IA_3", InitialAI()),
+        Player(3, f"IA_4", InitialAI())
     ]
     
     if len(sys.argv) > 1 and sys.argv[1] == "simulate":

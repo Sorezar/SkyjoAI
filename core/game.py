@@ -13,10 +13,13 @@ class Scoreboard:
         self.reset()
 
     def update(self, player_index, score):
-        self.scores[player_index] += score
+        self.scores[player_index].append(score)
+        self.total_scores = [sum(scores) for scores in self.scores]
 
     def reset(self):
-        self.scores = [0 for _ in range(len(self.players))]
+        self.scores = [[] for _ in range(len(self.players))]
+        self.total_scores = [0 for _ in range(len(self.players))]
+        
 
 class SkyjoGame:
     def __init__(self, players, scoreboard):
@@ -91,7 +94,7 @@ class SkyjoGame:
                 pl.reveal_all()
                 self.scoreboard.update(pl.id, pl.round_score())
 
-            if any(s >= MAX_POINTS for s in self.scoreboard.scores):
+            if any(s >= MAX_POINTS for s in self.scoreboard.total_scores):
                 self.finished = True
                 [print(f"{p.name}: {p.score}") for p in self.players]
             else:
