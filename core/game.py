@@ -19,6 +19,11 @@ class Scoreboard:
     def reset(self):
         self.scores = [[] for _ in range(len(self.players))]
         self.total_scores = [0 for _ in range(len(self.players))]
+    
+    def get_winner(self):
+        min_score = min(self.total_scores)
+        winners = [i for i, score in enumerate(self.total_scores) if score == min_score]
+        return winners
         
 
 class SkyjoGame:
@@ -38,9 +43,10 @@ class SkyjoGame:
         for player in self.players: 
             player.score = 0
             player.grid = [[None for _ in range(GRID_COLS)] for _ in range(GRID_ROWS)]
-        self.deck = [Card(-2) for _ in range(5)] + \
-                    [Card(0) for _ in range(15)] + \
-                    [Card(v) for v in range(1, 13) for _ in range(10)]
+        self.deck = [Card(-2) for _ in range(5)]  + \
+                    [Card(-1) for _ in range(10)] + \
+                    [Card(0)  for _ in range(15)] + \
+                    [Card(v)  for v in range(1, 13) for _ in range(10)]
         random.shuffle(self.deck)
         self.discard = [self.deck.pop()]
         self.give_initial_cards()
@@ -75,10 +81,10 @@ class SkyjoGame:
         return indexes
     
     def delete_column(self, grid, index):
+        [[self.discard.append(cell) for j, cell in enumerate(row) if j in index] for row in grid]
         return [[cell for j, cell in enumerate(row) if j not in index] for row in grid]
     
     def step(self):
-        
         p = self.players[self.current_player_index]
         self.last_source = p.take_turn(self.deck, self.discard)
         
@@ -87,20 +93,4 @@ class SkyjoGame:
             
         if any(pl.all_revealed() for pl in self.players):
             self.round_over = True
-    
-        if self.round_over and self.current_player_index == len(self.players) - 1:
-            print(f"Fin de la manche {self.round} !")
-            for pl in self.players:
-                pl.reveal_all()
-                self.scoreboard.update(pl.id, pl.round_score())
-
-            if any(s >= MAX_POINTS for s in self.scoreboard.total_scores):
-                self.finished = True
-                [print(f"{p.name}: {p.score}") for p in self.players]
-            else:
-                self.round += 1
-                self.reset_round()
-    
-        self.current_player_index = (self.current_player_index + 1) % len(self.players)  # Update current player index
-        if self.current_player_index == 0:
-            self.turns += 1
+            

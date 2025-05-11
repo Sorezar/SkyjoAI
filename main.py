@@ -71,6 +71,8 @@ if __name__ == "__main__":
                 if ev.type == pygame.KEYDOWN:
                     if ev.key == pygame.K_SPACE : 
                         game.step()
+                        game.current_player_index = (game.current_player_index + 1) % len(game.players)
+                        if game.current_player_index == 0: game.turns += 1
                     if ev.key == pygame.K_a : 
                         auto = not auto
                     if ev.key == pygame.K_r and game.finished:
@@ -79,10 +81,28 @@ if __name__ == "__main__":
             if auto and not game.finished and time.time() - last > AUTO_PLAY_DELAY:
                 game.step()
                 last = time.time()
+                ui.draw(screen)
+                
+                if game.round_over and game.current_player_index == len(game.players) - 1:
+                    for pl in game.players:
+                        pl.reveal_all()
+                        game.scoreboard.update(pl.id, pl.round_score())
 
+                    if any(s >= MAX_POINTS for s in game.scoreboard.total_scores):
+                        game.finished = True
+                    else:
+                        game.round += 1
+                        game.reset_round()
+                        
+                game.current_player_index = (game.current_player_index + 1) % len(game.players)
+                if game.current_player_index == 0: game.turns += 1
+                    
             ui.draw(screen)
             if game.finished:
                 ui.show_results(screen)
-            
+                
             pygame.display.flip()
             clock.tick(FPS)
+            
+            
+

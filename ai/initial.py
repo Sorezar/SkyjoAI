@@ -32,9 +32,12 @@ class InitialAI(BaseAI):
         # Sinon, on remplace la carte révélée avec la valeur la plus élevée dans la grille sauf si la différence est inférieure à 4
         revealed_positions = [(i, j) for i in range(len(grid)) for j in range(len(grid[0])) if grid[i][j].revealed]
         if revealed_positions:
-            max_diff_pos = max(revealed_positions, key=lambda pos: grid[pos[0]][pos[1]].value - card.value)
+            max_diff_pos = max(
+                revealed_positions,
+                key=lambda pos: grid[pos[0]][pos[1]].value - card.value
+            )
             max_diff = grid[max_diff_pos[0]][max_diff_pos[1]].value - card.value
-            if max_diff >= 4:
+            if max_diff >= 4 and grid[max_diff_pos[0]][max_diff_pos[1]].value > 4:
                 return max_diff_pos
 
         # Sinon, on choisit une position au hasard parmi les positions non révélées
