@@ -12,9 +12,18 @@ class Scoreboard:
         self.players = players
         self.reset()
 
-    def update(self, player_index, score):
-        self.scores[player_index].append(score)
-        self.total_scores = [sum(scores) for scores in self.scores]
+    def update(self, scores, first_finisher):
+        print(f"Scores: {scores}")
+        print(f"First finisher: {self.players[first_finisher].name}")
+        
+        if scores[first_finisher] is not min(scores):
+            print(f"Warning: {self.players[first_finisher].name} is not the lowest scorer.")
+            scores[first_finisher] *= 2     
+            print(f"Scores: {scores}")
+        for i in range(len(self.players)):
+            self.scores[i].append(scores[i])
+            self.total_scores[i] += scores[i]
+        print(f"Total scores: {self.total_scores}")
 
     def reset(self):
         self.scores = [[] for _ in range(len(self.players))]
@@ -38,6 +47,7 @@ class SkyjoGame:
         self.log   = []
         self.last_source = ''
         self.current_player_index = 0
+        self.first_finisher = None
         self.round_over  = False
         self.finished    = False
         for player in self.players: 
@@ -86,11 +96,13 @@ class SkyjoGame:
     
     def step(self):
         p = self.players[self.current_player_index]
-        self.last_source = p.take_turn(self.deck, self.discard)
+        other_p_grids = [self.players[i].grid for i in range(len(self.players)) if i != self.current_player_index]
+        self.last_source = p.take_turn(self.deck, self.discard, other_p_grids)
         
         index  = self.is_any_identical_column(p.grid)
         if index: p.grid = self.delete_column(p.grid, index)
-            
-        if any(pl.all_revealed() for pl in self.players):
+        
+        if p.all_revealed():
             self.round_over = True
+            self.first_finisher = self.current_player_index
             

@@ -84,9 +84,12 @@ if __name__ == "__main__":
                 ui.draw(screen)
                 
                 if game.round_over and game.current_player_index == len(game.players) - 1:
+                    scores = []
                     for pl in game.players:
                         pl.reveal_all()
-                        game.scoreboard.update(pl.id, pl.round_score())
+                        scores.append(pl.round_score())
+
+                    game.scoreboard.update(scores, game.first_finisher)
 
                     if any(s >= MAX_POINTS for s in game.scoreboard.total_scores):
                         game.finished = True

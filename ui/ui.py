@@ -74,11 +74,12 @@ class SkyjoUI:
         c.revealed = True
         self.draw_card(c, screen, cx + MARGIN, cy - CARD_HEIGHT/2)
 
-        # Affiche le nombre de cartes dans le deck et la défausse
-        deck_count_txt = self.FONT.render(f"x{len(self.game.deck)}", True, YELLOW)
-        discard_count_txt = self.FONT.render(f"x{len(self.game.discard)}", True, YELLOW)
-        screen.blit(deck_count_txt, (cx - CARD_WIDTH - MARGIN + CARD_WIDTH/2 - deck_count_txt.get_width()/2, cy - CARD_HEIGHT - MARGIN - deck_count_txt.get_height()))
-        screen.blit(discard_count_txt, (cx + MARGIN + CARD_WIDTH/2 - discard_count_txt.get_width()/2, cy - CARD_HEIGHT - MARGIN - discard_count_txt.get_height()))
+        # Display the number of cards in the discard and draw piles
+        discard_count_txt = self.FONT.render(f"x{len(self.game.discard)}", True, WHITE)
+        screen.blit(discard_count_txt, (cx + MARGIN + CARD_WIDTH/2 - discard_count_txt.get_width()/2, cy - CARD_HEIGHT - MARGIN))
+
+        draw_pile_count_txt = self.FONT.render(f"x{len(self.game.deck)}", True, WHITE)
+        screen.blit(draw_pile_count_txt, (cx - CARD_WIDTH - MARGIN + CARD_WIDTH/2 - draw_pile_count_txt.get_width()/2, cy - CARD_HEIGHT - MARGIN))
 
         src_txt = self.FONT.render(f"Dernière pioche: {'Pioche' if self.game.last_source=='P' else 'Défausse'}", True, YELLOW)
         screen.blit(src_txt, ((WIDTH - src_txt.get_width())/2, cy + CARD_HEIGHT/2 + MARGIN))
@@ -110,10 +111,6 @@ class SkyjoUI:
             screen.blit(total_txt, (start_x + (self.game.round + 1)*col_width, start_y + i*row_height))
 
     def show_results(self, screen):
-        winner = self.game.scoreboard.get_winner()
-        if len(winner) > 1:
-            winner = [self.game.players[i] for i in winner]
-            win_txt = self.FONT.render(f"Match nul entre : {', '.join([p.name for p in winner])}", True, YELLOW)
-        else:
-            win_txt = self.FONT.render(f"Vainqueur: {self.game.players[winner[0]].name}", True, YELLOW)
-            screen.blit(win_txt, ((WIDTH - win_txt.get_width())/2, HEIGHT/2))
+        winner = min(self.game.players, key=lambda p: p.score)
+        win_txt = self.FONT.render(f"Vainqueur: {winner.name}", True, YELLOW)
+        screen.blit(win_txt, ((WIDTH - win_txt.get_width())/2, HEIGHT/2))
