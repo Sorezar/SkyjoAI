@@ -4,7 +4,6 @@ class Player:
     def __init__(self, id, name, ai):
         self.id    = id
         self.name  = name
-        self.score = 0
         self.ai    = ai
         self.grid  = [[None for _ in range(GRID_COLS)] for _ in range(GRID_ROWS)]
 
@@ -20,13 +19,11 @@ class Player:
         return sum(c.value for row in self.grid for c in row)
 
     def take_turn(self, deck, discard, other_p_grids):
-        
         # Step 1 : Choisir la source de la carte (pioche ou discard)
         source = self.ai.choose_source(self.grid, discard, other_p_grids)
         card   = discard.pop() if source == 'D' else deck.pop()
         
         # Step 1b (optionnel) : Si on prend la carte du deck, on doit choisir si on la garde ou non
-        
         keep = self.ai.choose_keep(card, self.grid, other_p_grids)
         #print(f"Player {self.id} - Source: {source} - Card: {card.value}, Keep: {keep}")
         
@@ -38,12 +35,11 @@ class Player:
             discard.append(self.grid[i][j])
             self.grid[i][j] = card
             self.grid[i][j].revealed = True
-        else :
+        else:
             # Step 2b : Si on ne garde pas la carte, on doit choisir quelle carte révéler
             i, j = self.ai.choose_reveal(self.grid)
             card.revealed = True
             discard.append(card)
             self.grid[i][j].revealed = True
-
 
         return source

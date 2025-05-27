@@ -6,9 +6,11 @@ import pygame
 
 class SkyjoUI:
     
-    def __init__(self, game):
-        self.game = game
-        self.FONT = pygame.font.SysFont("arial", int(HEIGHT * 0.035))
+    def __init__(self, game, score, screen):
+        self.game   = game
+        self.score  = score
+        self.screen = screen
+        self.FONT   = pygame.font.SysFont("arial", int(HEIGHT * 0.035))
     
     def get_color(self, value):
         if value is None     : return GRAY
@@ -61,33 +63,33 @@ class SkyjoUI:
                 self.draw_card(player.grid[i][j], surface, x, y)
                 x_offset += 1
     
-    def draw(self, screen):
-        screen.fill(GRAY)
+    def draw(self):
+        self.screen.fill(GRAY)
         txt = self.FONT.render(f"Manche {self.game.round} - Tour complet {self.game.turns}", True, YELLOW)
-        screen.blit(txt, ((WIDTH - txt.get_width())/2, MARGIN/2))
+        self.screen.blit(txt, ((WIDTH - txt.get_width())/2, MARGIN/2))
         for idx, p in enumerate(self.game.players):
-            self.draw_player(p, screen, is_current=(idx == self.game.current_player_index))
+            self.draw_player(p, self.screen, is_current=(idx == self.game.current_player_index))
 
         cx, cy = WIDTH/2, HEIGHT/2
-        self.draw_card(Card(0), screen, cx - CARD_WIDTH - MARGIN, cy - CARD_HEIGHT/2)
+        self.draw_card(Card(0), self.screen, cx - CARD_WIDTH - MARGIN, cy - CARD_HEIGHT/2)
         c = self.game.discard[-1]
         c.revealed = True
-        self.draw_card(c, screen, cx + MARGIN, cy - CARD_HEIGHT/2)
+        self.draw_card(c, self.screen, cx + MARGIN, cy - CARD_HEIGHT/2)
 
         # Display the number of cards in the discard and draw piles
         discard_count_txt = self.FONT.render(f"x{len(self.game.discard)}", True, WHITE)
-        screen.blit(discard_count_txt, (cx + MARGIN + CARD_WIDTH/2 - discard_count_txt.get_width()/2, cy - CARD_HEIGHT - MARGIN))
+        self.screen.blit(discard_count_txt, (cx + MARGIN + CARD_WIDTH/2 - discard_count_txt.get_width()/2, cy - CARD_HEIGHT - MARGIN))
 
         draw_pile_count_txt = self.FONT.render(f"x{len(self.game.deck)}", True, WHITE)
-        screen.blit(draw_pile_count_txt, (cx - CARD_WIDTH - MARGIN + CARD_WIDTH/2 - draw_pile_count_txt.get_width()/2, cy - CARD_HEIGHT - MARGIN))
+        self.screen.blit(draw_pile_count_txt, (cx - CARD_WIDTH - MARGIN + CARD_WIDTH/2 - draw_pile_count_txt.get_width()/2, cy - CARD_HEIGHT - MARGIN))
 
         src_txt = self.FONT.render(f"Dernière pioche: {'Pioche' if self.game.last_source=='P' else 'Défausse'}", True, YELLOW)
-        screen.blit(src_txt, ((WIDTH - src_txt.get_width())/2, cy + CARD_HEIGHT/2 + MARGIN))
+        self.screen.blit(src_txt, ((WIDTH - src_txt.get_width())/2, cy + CARD_HEIGHT/2 + MARGIN))
 
         if self.game.round > 1:
-            self.draw_score_table(screen)
+            self.draw_score_table()
 
-    def draw_score_table(self, screen):
+    def draw_score_table(self):
         table_width = max(WIDTH * 0.10, min(WIDTH * 0.25, WIDTH * 0.05 * (self.game.round + 2)))
         col_width   = table_width / (self.game.round + 2)
         row_height  = self.FONT.get_height() + 5
@@ -95,22 +97,22 @@ class SkyjoUI:
         start_x = (WIDTH - table_width) / 2
         start_y = HEIGHT - (len(self.game.players) * row_height) - MARGIN
         header  = self.FONT.render("Total", True, WHITE)
-        screen.blit(header, (start_x + (self.game.round + 1)*col_width, start_y - row_height))
-        
+        self.screen.blit(header, (start_x + (self.game.round + 1)*col_width, start_y - row_height))
+
         for i, p in enumerate(self.game.players):
             name_txt = self.FONT.render(p.name, True, WHITE)
-            screen.blit(name_txt, (start_x, start_y + i*row_height))
+            self.screen.blit(name_txt, (start_x, start_y + i*row_height))
             total = 0
             for r in range(1, self.game.round):
                 score = self.game.scoreboard.scores[p.id][r-1]
                 total += score
                 txt = self.FONT.render(str(score), True, WHITE)
-                screen.blit(txt, (start_x + r*col_width, start_y + i*row_height))
-                
-            total_txt = self.FONT.render(str(total), True, WHITE)
-            screen.blit(total_txt, (start_x + (self.game.round + 1)*col_width, start_y + i*row_height))
+                self.screen.blit(txt, (start_x + r*col_width, start_y + i*row_height))
 
-    def show_results(self, screen):
+            total_txt = self.FONT.render(str(total), True, WHITE)
+            self.screen.blit(total_txt, (start_x + (self.game.round + 1)*col_width, start_y + i*row_height))
+
+    def show_results(self):
         winner = min(self.game.players, key=lambda p: p.score)
         win_txt = self.FONT.render(f"Vainqueur: {winner.name}", True, YELLOW)
-        screen.blit(win_txt, ((WIDTH - win_txt.get_width())/2, HEIGHT/2))
+        self.screen.blit(win_txt, ((WIDTH - win_txt.get_width())/2, HEIGHT/2))

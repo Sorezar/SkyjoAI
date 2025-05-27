@@ -2,6 +2,9 @@ import random
 from ai.base import BaseAI
 from config.config import GRID_ROWS, GRID_COLS
 
+DUMMY_VALUE = 6     # Valeur pessimiste de la dernière carte non révélée
+DUMMY_ADVERSARY = 2 # Valeur optimiste des cartes non révélées des adversaires
+
 class InitialAI(BaseAI):
     
     def initial_flip(self):
@@ -9,8 +12,8 @@ class InitialAI(BaseAI):
     
     def is_it_last_card(self, grid):
         unrevealed_count = sum(1 for row in grid for card in row if not card.revealed)
-        if unrevealed_count <= 1:
-            print("Il ne reste qu'une carte à révéler.")
+        #if unrevealed_count <= 1:
+            #print("Il ne reste qu'une carte à révéler.")
         return unrevealed_count <= 1
 
     def is_it_good_to_take_the_last_card(self, card_value, grid, other_p_grids):
@@ -22,7 +25,7 @@ class InitialAI(BaseAI):
                 for other_card in other_row
                 if other_card.revealed
             )
-            + 2 * sum(
+            + DUMMY_ADVERSARY * sum(
                 1
                 for other_row in other_grid
                 for other_card in other_row
@@ -32,8 +35,8 @@ class InitialAI(BaseAI):
         ]
         
         our_sum = our_grid_sum + card_value
-        print(f"Notre score : {our_grid_sum} + {card_value} - Autres joueurs : {other_players_scores}")
-        print(f"Is our sum <= aux autres : {our_sum <= min(other_players_scores)}")
+        #print(f"Notre score : {our_grid_sum} + {card_value} - Autres joueurs : {other_players_scores}")
+        #print(f"Is our sum <= aux autres : {our_sum <= min(other_players_scores)}")
         return our_sum <= min(other_players_scores)
     
     # Choix de la source de la carte (pioche ou discard)
@@ -50,7 +53,7 @@ class InitialAI(BaseAI):
             # Si on a plus qu'une carte, on vérifie que la somme de notre grille + une dummy card (moyenne des cartes restantes) 
             # est inférieure à la somme des autres joueurs et que la carte piochée est plus haute que cette moyenne
             # alors on ne la garde pas, sinon, on garde la carte
-            is_keep_good = self.is_it_good_to_take_the_last_card(6, grid, other_p_grids)
+            is_keep_good = self.is_it_good_to_take_the_last_card(DUMMY_VALUE, grid, other_p_grids)
             
             # Si on a tellement d'avantage qu'on peut se permettre de ne pas garder la carte
             # en supposant que notre carte non révélée est <= à la moyenne des cartes restantes
@@ -71,7 +74,6 @@ class InitialAI(BaseAI):
         if self.is_it_last_card(grid):
             # Si elle ne nous permet pas de gagner on choisit la carte révélée la plus haute
             if not self.is_it_good_to_take_the_last_card(card.value, grid, other_p_grids):
-                print(max(revealed_positions, key=lambda pos: grid[pos[0]][pos[1]].value - card.value))
                 return max(revealed_positions, key=lambda pos: grid[pos[0]][pos[1]].value - card.value)
             else:
                 last_unrevealed = [(i, j) for i in range(len(grid)) for j in range(len(grid[0])) if not grid[i][j].revealed]

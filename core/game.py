@@ -13,16 +13,14 @@ class Scoreboard:
         self.reset()
 
     def update(self, scores, first_finisher):
-        print(f"Scores: {scores}")
         print(f"First finisher: {self.players[first_finisher].name}")
-        
         if scores[first_finisher] is not min(scores):
             print(f"Warning: {self.players[first_finisher].name} is not the lowest scorer.")
             scores[first_finisher] *= 2     
-            print(f"Scores: {scores}")
         for i in range(len(self.players)):
             self.scores[i].append(scores[i])
             self.total_scores[i] += scores[i]
+        print(f"Scores: {scores}")
         print(f"Total scores: {self.total_scores}")
 
     def reset(self):
@@ -37,22 +35,22 @@ class Scoreboard:
 
 class SkyjoGame:
     def __init__(self, players, scoreboard):
-        self.players = players
+        self.players    = players
         self.scoreboard = scoreboard
-        self.round = 1
+        self.round      = 1
         self.reset_round()
         
     def reset_round(self):
         self.turns = 0
         self.log   = []
-        self.last_source = ''
-        self.current_player_index = 0
+        self.last_source    = ''
         self.first_finisher = None
-        self.round_over  = False
-        self.finished    = False
+        self.round_over     = False
+        self.finished       = False
+        self.current_player_index = 0
         for player in self.players: 
             player.score = 0
-            player.grid = [[None for _ in range(GRID_COLS)] for _ in range(GRID_ROWS)]
+            player.grid  = [[None for _ in range(GRID_COLS)] for _ in range(GRID_ROWS)]
         self.deck = [Card(-2) for _ in range(5)]  + \
                     [Card(-1) for _ in range(10)] + \
                     [Card(0)  for _ in range(15)] + \
@@ -99,10 +97,28 @@ class SkyjoGame:
         other_p_grids = [self.players[i].grid for i in range(len(self.players)) if i != self.current_player_index]
         self.last_source = p.take_turn(self.deck, self.discard, other_p_grids)
         
-        index  = self.is_any_identical_column(p.grid)
-        if index: p.grid = self.delete_column(p.grid, index)
+        index = self.is_any_identical_column(p.grid)
+        if index: 
+            p.grid = self.delete_column(p.grid, index)
         
         if p.all_revealed():
             self.round_over = True
             self.first_finisher = self.current_player_index
             
+        # Passer au joueur suivant
+        self.current_player_index = (self.current_player_index + 1) % len(self.players)
+        self.turns += 1
+        
+        # Vérifier si la manche est terminée (tous les joueurs ont joué)
+        if self.round_over and self.current_player_index == 0:
+            # Calculer les scores de la manche
+            scores = [player.round_score() for player in self.players]
+            self.scoreboard.update(scores, self.first_finisher)
+            
+            # Vérifier si un joueur a atteint le score maximum
+            if any(score >= MAX_POINTS for score in self.scoreboard.total_scores):
+                self.finished = True
+            else:
+                # Commencer une nouvelle manche
+                self.round += 1
+                self.reset_round()

@@ -1,4 +1,8 @@
-pygame
-numpy
+pygame==2.5.2
+numpy==1.24.3
 scikit-learn
 tensorflow
+torch==2.1.0
+matplotlib==3.7.1
+tqdm==4.65.0
+seaborn==0.12.2
