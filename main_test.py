@@ -4,7 +4,7 @@ from core.game     import SkyjoGame, Scoreboard
 from core.player   import Player
 from ai.random     import RandomAI
 from ai.initial    import InitialAI
-from ai.deepai     import DeepAI
+from ai.ml_xgboost_enhanced import XGBoostEnhancedAI
 
 import pygame
 import time
@@ -39,23 +39,16 @@ def play(game, ui, scoreboard):
 if __name__ == "__main__":
     
     # Créer l'IA DeepAI
-    deep_ai = DeepAI()
-    
-    # Charger un modèle pré-entraîné si disponible
-    if os.path.exists('deepai_model.pth'):
-        deep_ai.load_model('deepai_model.pth')
-    else:
-        print("Aucun modèle pré-entraîné trouvé. Utilisation de DeepAI non entraînée.")
-        deep_ai.set_training(False)  # Mode évaluation même sans modèle
+    testai = XGBoostEnhancedAI()
     
     players = [
-        Player(0, f"DeepAI", deep_ai),
+        Player(0, f"TestAI", testai),
         Player(1, f"IA_2", InitialAI()),
-        Player(2, f"IA_3", RandomAI()),
+        Player(2, f"IA_3", InitialAI()),
         Player(3, f"IA_4", InitialAI())
     ]
 
-    pygame.display.set_caption("Skyjo AI - DeepAI")
+    pygame.display.set_caption("Skyjo AI - Test")
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     clock  = pygame.time.Clock()
     auto   = False

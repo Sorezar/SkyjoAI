@@ -13,15 +13,15 @@ class Scoreboard:
         self.reset()
 
     def update(self, scores, first_finisher):
-        print(f"First finisher: {self.players[first_finisher].name}")
+        #print(f"First finisher: {self.players[first_finisher].name}")
         if scores[first_finisher] is not min(scores):
-            print(f"Warning: {self.players[first_finisher].name} is not the lowest scorer.")
+            #print(f"Warning: {self.players[first_finisher].name} is not the lowest scorer.")
             scores[first_finisher] *= 2     
         for i in range(len(self.players)):
             self.scores[i].append(scores[i])
             self.total_scores[i] += scores[i]
-        print(f"Scores: {scores}")
-        print(f"Total scores: {self.total_scores}")
+        #print(f"Scores: {scores}")
+        #print(f"Total scores: {self.total_scores}")
 
     def reset(self):
         self.scores = [[] for _ in range(len(self.players))]
@@ -63,6 +63,28 @@ class SkyjoGame:
             for p in pos:
                 player.grid[p[0]][p[1]].revealed = True
 
+    def refill_deck_if_needed(self):
+        """Reméle la défausse dans le deck si le deck est vide"""
+        if len(self.deck) == 0 and len(self.discard) > 1:
+            # Garder la dernière carte de la défausse
+            last_discard = self.discard.pop()
+            
+            # Remettre toutes les autres cartes dans le deck
+            self.deck = self.discard[:]
+            self.discard = [last_discard]
+            
+            # Remélanger le deck
+            random.shuffle(self.deck)
+            
+            #print(f"🔄 Deck remélangé avec {len(self.deck)} cartes de la défausse")
+        elif len(self.deck) == 0 and len(self.discard) <= 1:
+            # Cas extrême : plus assez de cartes (ne devrait pas arriver en pratique)
+            #print("⚠️ Plus de cartes disponibles - fin forcée de la manche")
+            # Forcer la fin de la manche en révélant toutes les cartes du joueur actuel
+            self.players[self.current_player_index].reveal_all()
+            self.round_over = True
+            self.first_finisher = self.current_player_index
+
     def reset(self):
         self.reset_round()
         self.scoreboard.reset()
@@ -93,6 +115,9 @@ class SkyjoGame:
         return [[cell for j, cell in enumerate(row) if j not in index] for row in grid]
     
     def step(self):
+        # Vérifier et reméler le deck si nécessaire avant que le joueur prenne son tour
+        self.refill_deck_if_needed()
+        
         p = self.players[self.current_player_index]
         other_p_grids = [self.players[i].grid for i in range(len(self.players)) if i != self.current_player_index]
         self.last_source = p.take_turn(self.deck, self.discard, other_p_grids)

@@ -1,0 +1,6657 @@
+{
+  "metadata": {
+    "timestamp": "2025-06-04T16:33:20.074787",
+    "num_games": 200,
+    "baseline_reference": "InitialAI (≈20.9 points)"
+  },
+  "results": {
+    "AdvancedAI": {
+      "games_played": 200,
+      "wins": 31,
+      "win_rate": 15.5,
+      "average_score": 21.035,
+      "median_score": 21.0,
+      "std_score": 10.147106730492196,
+      "min_score": -5.0,
+      "max_score": 53.0,
+      "scores_under_20": 88,
+      "scores_under_25": 131,
+      "game_details": [
+        {
+          "game_num": 1,
+          "ai_score": 14,
+          "opponent_scores": [
+            16,
+            15,
+            23
+          ],
+          "won": true,
+          "margin": -1
+        },
+        {
+          "game_num": 2,
+          "ai_score": 21,
+          "opponent_scores": [
+            20,
+            32,
+            12
+          ],
+          "won": false,
+          "margin": 9
+        },
+        {
+          "game_num": 3,
+          "ai_score": 20,
+          "opponent_scores": [
+            7,
+            21,
+            26
+          ],
+          "won": false,
+          "margin": 13
+        },
+        {
+          "game_num": 4,
+          "ai_score": 23,
+          "opponent_scores": [
+            25,
+            8,
+            17
+          ],
+          "won": false,
+          "margin": 15
+        },
+        {
+          "game_num": 5,
+          "ai_score": 23,
+          "opponent_scores": [
+            11,
+            14,
+            23
+          ],
+          "won": false,
+          "margin": 12
+        },
+        {
+          "game_num": 6,
+          "ai_score": 26,
+          "opponent_scores": [
+            17,
+            17,
+            16
+          ],
+          "won": false,
+          "margin": 10
+        },
+        {
+          "game_num": 7,
+          "ai_score": 41,
+          "opponent_scores": [
+            29,
+            21,
+            17
+          ],
+          "won": false,
+          "margin": 24
+        },
+        {
+          "game_num": 8,
+          "ai_score": 23,
+          "opponent_scores": [
+            12,
+            0,
+            20
+          ],
+          "won": false,
+          "margin": 23
+        },
+        {
+          "game_num": 9,
+          "ai_score": 16,
+          "opponent_scores": [
+            13,
+            12,
+            21
+          ],
+          "won": false,
+          "margin": 4
+        },
+        {
+          "game_num": 10,
+          "ai_score": 13,
+          "opponent_scores": [
+            10,
+            16,
+            19
+          ],
+          "won": false,
+          "margin": 3
+        },
+        {
+          "game_num": 11,
+          "ai_score": 36,
+          "opponent_scores": [
+            6,
+            34,
+            5
+          ],
+          "won": false,
+          "margin": 31
+        },
+        {
+          "game_num": 12,
+          "ai_score": 15,
+          "opponent_scores": [
+            1,
+            38,
+            18
+          ],
+          "won": false,
+          "margin": 14
+        },
+        {
+          "game_num": 13,
+          "ai_score": 27,
+          "opponent_scores": [
+            9,
+            36,
+            41
+          ],
+          "won": false,
+          "margin": 18
+        },
+        {
+          "game_num": 14,
+          "ai_score": 8,
+          "opponent_scores": [
+            20,
+            6,
+            30
+          ],
+          "won": false,
+          "margin": 2
+        },
+        {
+          "game_num": 15,
+          "ai_score": 21,
+          "opponent_scores": [
+            40,
+            4,
+            19
+          ],
+          "won": false,
+          "margin": 17
+        },
+        {
+          "game_num": 16,
+          "ai_score": 17,
+          "opponent_scores": [
+            19,
+            24,
+            5
+          ],
+          "won": false,
+          "margin": 12
+        },
+        {
+          "game_num": 17,
+          "ai_score": 31,
+          "opponent_scores": [
+            5,
+            48,
+            20
+          ],
+          "won": false,
+          "margin": 26
+        },
+        {
+          "game_num": 18,
+          "ai_score": 19,
+          "opponent_scores": [
+            14,
+            16,
+            29
+          ],
+          "won": false,
+          "margin": 5
+        },
+        {
+          "game_num": 19,
+          "ai_score": 9,
+          "opponent_scores": [
+            11,
+            17,
+            32
+          ],
+          "won": true,
+          "margin": -2
+        },
+        {
+          "game_num": 20,
+          "ai_score": 7,
+          "opponent_scores": [
+            30,
+            25,
+            11
+          ],
+          "won": true,
+          "margin": -4
+        },
+        {
+          "game_num": 21,
+          "ai_score": 20,
+          "opponent_scores": [
+            4,
+            3,
+            16
+          ],
+          "won": false,
+          "margin": 17
+        },
+        {
+          "game_num": 22,
+          "ai_score": 3,
+          "opponent_scores": [
+            23,
+            33,
+            1
+          ],
+          "won": false,
+          "margin": 2
+        },
+        {
+          "game_num": 23,
+          "ai_score": 18,
+          "opponent_scores": [
+            28,
+            24,
+            10
+          ],
+          "won": false,
+          "margin": 8
+        },
+        {
+          "game_num": 24,
+          "ai_score": 27,
+          "opponent_scores": [
+            13,
+            22,
+            22
+          ],
+          "won": false,
+          "margin": 14
+        },
+        {
+          "game_num": 25,
+          "ai_score": 21,
+          "opponent_scores": [
+            9,
+            21,
+            13
+          ],
+          "won": false,
+          "margin": 12
+        },
+        {
+          "game_num": 26,
+          "ai_score": 30,
+          "opponent_scores": [
+            18,
+            18,
+            19
+          ],
+          "won": false,
+          "margin": 12
+        },
+        {
+          "game_num": 27,
+          "ai_score": 32,
+          "opponent_scores": [
+            33,
+            28,
+            39
+          ],
+          "won": false,
+          "margin": 4
+        },
+        {
+          "game_num": 28,
+          "ai_score": 20,
+          "opponent_scores": [
+            48,
+            20,
+            8
+          ],
+          "won": false,
+          "margin": 12
+        },
+        {
+          "game_num": 29,
+          "ai_score": 12,
+          "opponent_scores": [
+            16,
+            16,
+            37
+          ],
+          "won": true,
+          "margin": -4
+        },
+        {
+          "game_num": 30,
+          "ai_score": 29,
+          "opponent_scores": [
+            28,
+            25,
+            13
+          ],
+          "won": false,
+          "margin": 16
+        },
+        {
+          "game_num": 31,
+          "ai_score": 29,
+          "opponent_scores": [
+            18,
+            5,
+            31
+          ],
+          "won": false,
+          "margin": 24
+        },
+        {
+          "game_num": 32,
+          "ai_score": 44,
+          "opponent_scores": [
+            21,
+            32,
+            20
+          ],
+          "won": false,
+          "margin": 24
+        },
+        {
+          "game_num": 33,
+          "ai_score": 12,
+          "opponent_scores": [
+            22,
+            11,
+            18
+          ],
+          "won": false,
+          "margin": 1
+        },
+        {
+          "game_num": 34,
+          "ai_score": 7,
+          "opponent_scores": [
+            12,
+            50,
+            20
+          ],
+          "won": true,
+          "margin": -5
+        },
+        {
+          "game_num": 35,
+          "ai_score": 33,
+          "opponent_scores": [
+            26,
+            19,
+            12
+          ],
+          "won": false,
+          "margin": 21
+        },
+        {
+          "game_num": 36,
+          "ai_score": 30,
+          "opponent_scores": [
+            17,
+            7,
+            11
+          ],
+          "won": false,
+          "margin": 23
+        },
+        {
+          "game_num": 37,
+          "ai_score": 17,
+          "opponent_scores": [
+            20,
+            44,
+            6
+          ],
+          "won": false,
+          "margin": 11
+        },
+        {
+          "game_num": 38,
+          "ai_score": 8,
+          "opponent_scores": [
+            11,
+            11,
+            13
+          ],
+          "won": true,
+          "margin": -3
+        },
+        {
+          "game_num": 39,
+          "ai_score": 29,
+          "opponent_scores": [
+            4,
+            39,
+            17
+          ],
+          "won": false,
+          "margin": 25
+        },
+        {
+          "game_num": 40,
+          "ai_score": 20,
+          "opponent_scores": [
+            13,
+            13,
+            11
+          ],
+          "won": false,
+          "margin": 9
+        },
+        {
+          "game_num": 41,
+          "ai_score": 24,
+          "opponent_scores": [
+            42,
+            4,
+            5
+          ],
+          "won": false,
+          "margin": 20
+        },
+        {
+          "game_num": 42,
+          "ai_score": 13,
+          "opponent_scores": [
+            8,
+            9,
+            20
+          ],
+          "won": false,
+          "margin": 5
+        },
+        {
+          "game_num": 43,
+          "ai_score": 26,
+          "opponent_scores": [
+            28,
+            24,
+            23
+          ],
+          "won": false,
+          "margin": 3
+        },
+        {
+          "game_num": 44,
+          "ai_score": 19,
+          "opponent_scores": [
+            3,
+            25,
+            16
+          ],
+          "won": false,
+          "margin": 16
+        },
+        {
+          "game_num": 45,
+          "ai_score": 15,
+          "opponent_scores": [
+            27,
+            29,
+            19
+          ],
+          "won": true,
+          "margin": -4
+        },
+        {
+          "game_num": 46,
+          "ai_score": 7,
+          "opponent_scores": [
+            24,
+            20,
+            11
+          ],
+          "won": true,
+          "margin": -4
+        },
+        {
+          "game_num": 47,
+          "ai_score": 31,
+          "opponent_scores": [
+            8,
+            14,
+            37
+          ],
+          "won": false,
+          "margin": 23
+        },
+        {
+          "game_num": 48,
+          "ai_score": 30,
+          "opponent_scores": [
+            19,
+            34,
+            11
+          ],
+          "won": false,
+          "margin": 19
+        },
+        {
+          "game_num": 49,
+          "ai_score": 16,
+          "opponent_scores": [
+            17,
+            10,
+            19
+          ],
+          "won": false,
+          "margin": 6
+        },
+        {
+          "game_num": 50,
+          "ai_score": 26,
+          "opponent_scores": [
+            20,
+            40,
+            13
+          ],
+          "won": false,
+          "margin": 13
+        },
+        {
+          "game_num": 51,
+          "ai_score": 45,
+          "opponent_scores": [
+            13,
+            17,
+            20
+          ],
+          "won": false,
+          "margin": 32
+        },
+        {
+          "game_num": 52,
+          "ai_score": 7,
+          "opponent_scores": [
+            24,
+            14,
+            16
+          ],
+          "won": true,
+          "margin": -7
+        },
+        {
+          "game_num": 53,
+          "ai_score": 23,
+          "opponent_scores": [
+            25,
+            15,
+            23
+          ],
+          "won": false,
+          "margin": 8
+        },
+        {
+          "game_num": 54,
+          "ai_score": -3,
+          "opponent_scores": [
+            14,
+            18,
+            32
+          ],
+          "won": true,
+          "margin": -17
+        },
+        {
+          "game_num": 55,
+          "ai_score": 47,
+          "opponent_scores": [
+            43,
+            31,
+            60
+          ],
+          "won": false,
+          "margin": 16
+        },
+        {
+          "game_num": 56,
+          "ai_score": 10,
+          "opponent_scores": [
+            13,
+            21,
+            26
+          ],
+          "won": true,
+          "margin": -3
+        },
+        {
+          "game_num": 57,
+          "ai_score": 19,
+          "opponent_scores": [
+            3,
+            42,
+            21
+          ],
+          "won": false,
+          "margin": 16
+        },
+        {
+          "game_num": 58,
+          "ai_score": 16,
+          "opponent_scores": [
+            9,
+            16,
+            31
+          ],
+          "won": false,
+          "margin": 7
+        },
+        {
+          "game_num": 59,
+          "ai_score": 18,
+          "opponent_scores": [
+            24,
+            22,
+            12
+          ],
+          "won": false,
+          "margin": 6
+        },
+        {
+          "game_num": 60,
+          "ai_score": 15,
+          "opponent_scores": [
+            21,
+            5,
+            37
+          ],
+          "won": false,
+          "margin": 10
+        },
+        {
+          "game_num": 61,
+          "ai_score": 26,
+          "opponent_scores": [
+            21,
+            10,
+            22
+          ],
+          "won": false,
+          "margin": 16
+        },
+        {
+          "game_num": 62,
+          "ai_score": 17,
+          "opponent_scores": [
+            20,
+            4,
+            18
+          ],
+          "won": false,
+          "margin": 13
+        },
+        {
+          "game_num": 63,
+          "ai_score": 25,
+          "opponent_scores": [
+            17,
+            41,
+            35
+          ],
+          "won": false,
+          "margin": 8
+        },
+        {
+          "game_num": 64,
+          "ai_score": 6,
+          "opponent_scores": [
+            19,
+            14,
+            12
+          ],
+          "won": true,
+          "margin": -6
+        },
+        {
+          "game_num": 65,
+          "ai_score": 17,
+          "opponent_scores": [
+            18,
+            27,
+            24
+          ],
+          "won": true,
+          "margin": -1
+        },
+        {
+          "game_num": 66,
+          "ai_score": 26,
+          "opponent_scores": [
+            26,
+            14,
+            9
+          ],
+          "won": false,
+          "margin": 17
+        },
+        {
+          "game_num": 67,
+          "ai_score": 33,
+          "opponent_scores": [
+            32,
+            27,
+            25
+          ],
+          "won": false,
+          "margin": 8
+        },
+        {
+          "game_num": 68,
+          "ai_score": 21,
+          "opponent_scores": [
+            9,
+            23,
+            25
+          ],
+          "won": false,
+          "margin": 12
+        },
+        {
+          "game_num": 69,
+          "ai_score": 10,
+          "opponent_scores": [
+            8,
+            35,
+            29
+          ],
+          "won": false,
+          "margin": 2
+        },
+        {
+          "game_num": 70,
+          "ai_score": 9,
+          "opponent_scores": [
+            24,
+            8,
+            7
+          ],
+          "won": false,
+          "margin": 2
+        },
+        {
+          "game_num": 71,
+          "ai_score": 7,
+          "opponent_scores": [
+            47,
+            4,
+            9
+          ],
+          "won": false,
+          "margin": 3
+        },
+        {
+          "game_num": 72,
+          "ai_score": 30,
+          "opponent_scores": [
+            16,
+            2,
+            13
+          ],
+          "won": false,
+          "margin": 28
+        },
+        {
+          "game_num": 73,
+          "ai_score": 8,
+          "opponent_scores": [
+            15,
+            10,
+            8
+          ],
+          "won": true,
+          "margin": 0
+        },
+        {
+          "game_num": 74,
+          "ai_score": 32,
+          "opponent_scores": [
+            23,
+            14,
+            44
+          ],
+          "won": false,
+          "margin": 18
+        },
+        {
+          "game_num": 75,
+          "ai_score": 16,
+          "opponent_scores": [
+            21,
+            18,
+            15
+          ],
+          "won": false,
+          "margin": 1
+        },
+        {
+          "game_num": 76,
+          "ai_score": -3,
+          "opponent_scores": [
+            19,
+            28,
+            30
+          ],
+          "won": true,
+          "margin": -22
+        },
+        {
+          "game_num": 77,
+          "ai_score": 13,
+          "opponent_scores": [
+            9,
+            18,
+            16
+          ],
+          "won": false,
+          "margin": 4
+        },
+        {
+          "game_num": 78,
+          "ai_score": 27,
+          "opponent_scores": [
+            14,
+            20,
+            9
+          ],
+          "won": false,
+          "margin": 18
+        },
+        {
+          "game_num": 79,
+          "ai_score": 43,
+          "opponent_scores": [
+            23,
+            20,
+            6
+          ],
+          "won": false,
+          "margin": 37
+        },
+        {
+          "game_num": 80,
+          "ai_score": 13,
+          "opponent_scores": [
+            7,
+            12,
+            40
+          ],
+          "won": false,
+          "margin": 6
+        },
+        {
+          "game_num": 81,
+          "ai_score": 50,
+          "opponent_scores": [
+            11,
+            14,
+            9
+          ],
+          "won": false,
+          "margin": 41
+        },
+        {
+          "game_num": 82,
+          "ai_score": 24,
+          "opponent_scores": [
+            4,
+            4,
+            17
+          ],
+          "won": false,
+          "margin": 20
+        },
+        {
+          "game_num": 83,
+          "ai_score": 9,
+          "opponent_scores": [
+            34,
+            31,
+            9
+          ],
+          "won": true,
+          "margin": 0
+        },
+        {
+          "game_num": 84,
+          "ai_score": 34,
+          "opponent_scores": [
+            11,
+            14,
+            12
+          ],
+          "won": false,
+          "margin": 23
+        },
+        {
+          "game_num": 85,
+          "ai_score": 17,
+          "opponent_scores": [
+            11,
+            31,
+            24
+          ],
+          "won": false,
+          "margin": 6
+        },
+        {
+          "game_num": 86,
+          "ai_score": 32,
+          "opponent_scores": [
+            26,
+            14,
+            15
+          ],
+          "won": false,
+          "margin": 18
+        },
+        {
+          "game_num": 87,
+          "ai_score": 36,
+          "opponent_scores": [
+            44,
+            15,
+            9
+          ],
+          "won": false,
+          "margin": 27
+        },
+        {
+          "game_num": 88,
+          "ai_score": 20,
+          "opponent_scores": [
+            7,
+            6,
+            23
+          ],
+          "won": false,
+          "margin": 14
+        },
+        {
+          "game_num": 89,
+          "ai_score": 22,
+          "opponent_scores": [
+            29,
+            35,
+            7
+          ],
+          "won": false,
+          "margin": 15
+        },
+        {
+          "game_num": 90,
+          "ai_score": 8,
+          "opponent_scores": [
+            7,
+            4,
+            24
+          ],
+          "won": false,
+          "margin": 4
+        },
+        {
+          "game_num": 91,
+          "ai_score": 29,
+          "opponent_scores": [
+            11,
+            14,
+            11
+          ],
+          "won": false,
+          "margin": 18
+        },
+        {
+          "game_num": 92,
+          "ai_score": 10,
+          "opponent_scores": [
+            24,
+            57,
+            23
+          ],
+          "won": true,
+          "margin": -13
+        },
+        {
+          "game_num": 93,
+          "ai_score": 21,
+          "opponent_scores": [
+            38,
+            15,
+            9
+          ],
+          "won": false,
+          "margin": 12
+        },
+        {
+          "game_num": 94,
+          "ai_score": 38,
+          "opponent_scores": [
+            23,
+            37,
+            46
+          ],
+          "won": false,
+          "margin": 15
+        },
+        {
+          "game_num": 95,
+          "ai_score": 14,
+          "opponent_scores": [
+            23,
+            10,
+            29
+          ],
+          "won": false,
+          "margin": 4
+        },
+        {
+          "game_num": 96,
+          "ai_score": 31,
+          "opponent_scores": [
+            13,
+            17,
+            10
+          ],
+          "won": false,
+          "margin": 21
+        },
+        {
+          "game_num": 97,
+          "ai_score": 25,
+          "opponent_scores": [
+            9,
+            32,
+            24
+          ],
+          "won": false,
+          "margin": 16
+        },
+        {
+          "game_num": 98,
+          "ai_score": 7,
+          "opponent_scores": [
+            2,
+            27,
+            34
+          ],
+          "won": false,
+          "margin": 5
+        },
+        {
+          "game_num": 99,
+          "ai_score": 30,
+          "opponent_scores": [
+            13,
+            18,
+            24
+          ],
+          "won": false,
+          "margin": 17
+        },
+        {
+          "game_num": 100,
+          "ai_score": 10,
+          "opponent_scores": [
+            12,
+            19,
+            11
+          ],
+          "won": true,
+          "margin": -1
+        },
+        {
+          "game_num": 101,
+          "ai_score": 19,
+          "opponent_scores": [
+            42,
+            26,
+            18
+          ],
+          "won": false,
+          "margin": 1
+        },
+        {
+          "game_num": 102,
+          "ai_score": 15,
+          "opponent_scores": [
+            15,
+            13,
+            6
+          ],
+          "won": false,
+          "margin": 9
+        },
+        {
+          "game_num": 103,
+          "ai_score": 10,
+          "opponent_scores": [
+            32,
+            8,
+            19
+          ],
+          "won": false,
+          "margin": 2
+        },
+        {
+          "game_num": 104,
+          "ai_score": 12,
+          "opponent_scores": [
+            26,
+            26,
+            48
+          ],
+          "won": true,
+          "margin": -14
+        },
+        {
+          "game_num": 105,
+          "ai_score": 19,
+          "opponent_scores": [
+            31,
+            15,
+            31
+          ],
+          "won": false,
+          "margin": 4
+        },
+        {
+          "game_num": 106,
+          "ai_score": 23,
+          "opponent_scores": [
+            25,
+            23,
+            1
+          ],
+          "won": false,
+          "margin": 22
+        },
+        {
+          "game_num": 107,
+          "ai_score": 26,
+          "opponent_scores": [
+            12,
+            5,
+            36
+          ],
+          "won": false,
+          "margin": 21
+        },
+        {
+          "game_num": 108,
+          "ai_score": 14,
+          "opponent_scores": [
+            4,
+            26,
+            26
+          ],
+          "won": false,
+          "margin": 10
+        },
+        {
+          "game_num": 109,
+          "ai_score": 0,
+          "opponent_scores": [
+            20,
+            9,
+            27
+          ],
+          "won": true,
+          "margin": -9
+        },
+        {
+          "game_num": 110,
+          "ai_score": 23,
+          "opponent_scores": [
+            15,
+            22,
+            10
+          ],
+          "won": false,
+          "margin": 13
+        },
+        {
+          "game_num": 111,
+          "ai_score": 13,
+          "opponent_scores": [
+            13,
+            8,
+            15
+          ],
+          "won": false,
+          "margin": 5
+        },
+        {
+          "game_num": 112,
+          "ai_score": 15,
+          "opponent_scores": [
+            4,
+            31,
+            10
+          ],
+          "won": false,
+          "margin": 11
+        },
+        {
+          "game_num": 113,
+          "ai_score": 26,
+          "opponent_scores": [
+            39,
+            9,
+            7
+          ],
+          "won": false,
+          "margin": 19
+        },
+        {
+          "game_num": 114,
+          "ai_score": 32,
+          "opponent_scores": [
+            19,
+            8,
+            23
+          ],
+          "won": false,
+          "margin": 24
+        },
+        {
+          "game_num": 115,
+          "ai_score": 22,
+          "opponent_scores": [
+            9,
+            7,
+            26
+          ],
+          "won": false,
+          "margin": 15
+        },
+        {
+          "game_num": 116,
+          "ai_score": 21,
+          "opponent_scores": [
+            32,
+            24,
+            12
+          ],
+          "won": false,
+          "margin": 9
+        },
+        {
+          "game_num": 117,
+          "ai_score": 31,
+          "opponent_scores": [
+            29,
+            20,
+            22
+          ],
+          "won": false,
+          "margin": 11
+        },
+        {
+          "game_num": 118,
+          "ai_score": 20,
+          "opponent_scores": [
+            28,
+            18,
+            4
+          ],
+          "won": false,
+          "margin": 16
+        },
+        {
+          "game_num": 119,
+          "ai_score": 21,
+          "opponent_scores": [
+            12,
+            18,
+            23
+          ],
+          "won": false,
+          "margin": 9
+        },
+        {
+          "game_num": 120,
+          "ai_score": 25,
+          "opponent_scores": [
+            12,
+            10,
+            12
+          ],
+          "won": false,
+          "margin": 15
+        },
+        {
+          "game_num": 121,
+          "ai_score": 24,
+          "opponent_scores": [
+            21,
+            5,
+            13
+          ],
+          "won": false,
+          "margin": 19
+        },
+        {
+          "game_num": 122,
+          "ai_score": 28,
+          "opponent_scores": [
+            19,
+            2,
+            16
+          ],
+          "won": false,
+          "margin": 26
+        },
+        {
+          "game_num": 123,
+          "ai_score": 17,
+          "opponent_scores": [
+            26,
+            22,
+            8
+          ],
+          "won": false,
+          "margin": 9
+        },
+        {
+          "game_num": 124,
+          "ai_score": 23,
+          "opponent_scores": [
+            16,
+            17,
+            27
+          ],
+          "won": false,
+          "margin": 7
+        },
+        {
+          "game_num": 125,
+          "ai_score": 21,
+          "opponent_scores": [
+            32,
+            10,
+            18
+          ],
+          "won": false,
+          "margin": 11
+        },
+        {
+          "game_num": 126,
+          "ai_score": 15,
+          "opponent_scores": [
+            14,
+            19,
+            41
+          ],
+          "won": false,
+          "margin": 1
+        },
+        {
+          "game_num": 127,
+          "ai_score": 16,
+          "opponent_scores": [
+            15,
+            34,
+            31
+          ],
+          "won": false,
+          "margin": 1
+        },
+        {
+          "game_num": 128,
+          "ai_score": 10,
+          "opponent_scores": [
+            17,
+            17,
+            20
+          ],
+          "won": true,
+          "margin": -7
+        },
+        {
+          "game_num": 129,
+          "ai_score": 14,
+          "opponent_scores": [
+            12,
+            14,
+            23
+          ],
+          "won": false,
+          "margin": 2
+        },
+        {
+          "game_num": 130,
+          "ai_score": 27,
+          "opponent_scores": [
+            27,
+            6,
+            14
+          ],
+          "won": false,
+          "margin": 21
+        },
+        {
+          "game_num": 131,
+          "ai_score": 41,
+          "opponent_scores": [
+            14,
+            29,
+            43
+          ],
+          "won": false,
+          "margin": 27
+        },
+        {
+          "game_num": 132,
+          "ai_score": 28,
+          "opponent_scores": [
+            15,
+            11,
+            28
+          ],
+          "won": false,
+          "margin": 17
+        },
+        {
+          "game_num": 133,
+          "ai_score": 40,
+          "opponent_scores": [
+            25,
+            43,
+            37
+          ],
+          "won": false,
+          "margin": 15
+        },
+        {
+          "game_num": 134,
+          "ai_score": 6,
+          "opponent_scores": [
+            6,
+            6,
+            26
+          ],
+          "won": true,
+          "margin": 0
+        },
+        {
+          "game_num": 135,
+          "ai_score": 18,
+          "opponent_scores": [
+            21,
+            18,
+            18
+          ],
+          "won": true,
+          "margin": 0
+        },
+        {
+          "game_num": 136,
+          "ai_score": 33,
+          "opponent_scores": [
+            18,
+            27,
+            20
+          ],
+          "won": false,
+          "margin": 15
+        },
+        {
+          "game_num": 137,
+          "ai_score": 46,
+          "opponent_scores": [
+            32,
+            45,
+            22
+          ],
+          "won": false,
+          "margin": 24
+        },
+        {
+          "game_num": 138,
+          "ai_score": 7,
+          "opponent_scores": [
+            5,
+            26,
+            26
+          ],
+          "won": false,
+          "margin": 2
+        },
+        {
+          "game_num": 139,
+          "ai_score": 11,
+          "opponent_scores": [
+            6,
+            27,
+            5
+          ],
+          "won": false,
+          "margin": 6
+        },
+        {
+          "game_num": 140,
+          "ai_score": 27,
+          "opponent_scores": [
+            29,
+            19,
+            43
+          ],
+          "won": false,
+          "margin": 8
+        },
+        {
+          "game_num": 141,
+          "ai_score": 17,
+          "opponent_scores": [
+            6,
+            22,
+            12
+          ],
+          "won": false,
+          "margin": 11
+        },
+        {
+          "game_num": 142,
+          "ai_score": 3,
+          "opponent_scores": [
+            28,
+            31,
+            30
+          ],
+          "won": true,
+          "margin": -25
+        },
+        {
+          "game_num": 143,
+          "ai_score": 22,
+          "opponent_scores": [
+            9,
+            23,
+            27
+          ],
+          "won": false,
+          "margin": 13
+        },
+        {
+          "game_num": 144,
+          "ai_score": 23,
+          "opponent_scores": [
+            18,
+            17,
+            6
+          ],
+          "won": false,
+          "margin": 17
+        },
+        {
+          "game_num": 145,
+          "ai_score": 53,
+          "opponent_scores": [
+            27,
+            26,
+            23
+          ],
+          "won": false,
+          "margin": 30
+        },
+        {
+          "game_num": 146,
+          "ai_score": 33,
+          "opponent_scores": [
+            11,
+            24,
+            24
+          ],
+          "won": false,
+          "margin": 22
+        },
+        {
+          "game_num": 147,
+          "ai_score": 13,
+          "opponent_scores": [
+            6,
+            19,
+            29
+          ],
+          "won": false,
+          "margin": 7
+        },
+        {
+          "game_num": 148,
+          "ai_score": 23,
+          "opponent_scores": [
+            33,
+            4,
+            13
+          ],
+          "won": false,
+          "margin": 19
+        },
+        {
+          "game_num": 149,
+          "ai_score": 9,
+          "opponent_scores": [
+            28,
+            15,
+            28
+          ],
+          "won": true,
+          "margin": -6
+        },
+        {
+          "game_num": 150,
+          "ai_score": 20,
+          "opponent_scores": [
+            22,
+            28,
+            19
+          ],
+          "won": false,
+          "margin": 1
+        },
+        {
+          "game_num": 151,
+          "ai_score": 23,
+          "opponent_scores": [
+            21,
+            21,
+            20
+          ],
+          "won": false,
+          "margin": 3
+        },
+        {
+          "game_num": 152,
+          "ai_score": 3,
+          "opponent_scores": [
+            12,
+            37,
+            22
+          ],
+          "won": true,
+          "margin": -9
+        },
+        {
+          "game_num": 153,
+          "ai_score": 30,
+          "opponent_scores": [
+            19,
+            9,
+            12
+          ],
+          "won": false,
+          "margin": 21
+        },
+        {
+          "game_num": 154,
+          "ai_score": 11,
+          "opponent_scores": [
+            20,
+            28,
+            -1
+          ],
+          "won": false,
+          "margin": 12
+        },
+        {
+          "game_num": 155,
+          "ai_score": 20,
+          "opponent_scores": [
+            6,
+            26,
+            47
+          ],
+          "won": false,
+          "margin": 14
+        },
+        {
+          "game_num": 156,
+          "ai_score": 16,
+          "opponent_scores": [
+            38,
+            4,
+            8
+          ],
+          "won": false,
+          "margin": 12
+        },
+        {
+          "game_num": 157,
+          "ai_score": 12,
+          "opponent_scores": [
+            16,
+            22,
+            9
+          ],
+          "won": false,
+          "margin": 3
+        },
+        {
+          "game_num": 158,
+          "ai_score": 12,
+          "opponent_scores": [
+            15,
+            14,
+            9
+          ],
+          "won": false,
+          "margin": 3
+        },
+        {
+          "game_num": 159,
+          "ai_score": 19,
+          "opponent_scores": [
+            24,
+            19,
+            18
+          ],
+          "won": false,
+          "margin": 1
+        },
+        {
+          "game_num": 160,
+          "ai_score": 9,
+          "opponent_scores": [
+            19,
+            7,
+            8
+          ],
+          "won": false,
+          "margin": 2
+        },
+        {
+          "game_num": 161,
+          "ai_score": 19,
+          "opponent_scores": [
+            14,
+            23,
+            16
+          ],
+          "won": false,
+          "margin": 5
+        },
+        {
+          "game_num": 162,
+          "ai_score": 25,
+          "opponent_scores": [
+            22,
+            10,
+            16
+          ],
+          "won": false,
+          "margin": 15
+        },
+        {
+          "game_num": 163,
+          "ai_score": 23,
+          "opponent_scores": [
+            32,
+            24,
+            16
+          ],
+          "won": false,
+          "margin": 7
+        },
+        {
+          "game_num": 164,
+          "ai_score": 21,
+          "opponent_scores": [
+            17,
+            4,
+            19
+          ],
+          "won": false,
+          "margin": 17
+        },
+        {
+          "game_num": 165,
+          "ai_score": 19,
+          "opponent_scores": [
+            9,
+            7,
+            21
+          ],
+          "won": false,
+          "margin": 12
+        },
+        {
+          "game_num": 166,
+          "ai_score": 15,
+          "opponent_scores": [
+            9,
+            26,
+            30
+          ],
+          "won": false,
+          "margin": 6
+        },
+        {
+          "game_num": 167,
+          "ai_score": 20,
+          "opponent_scores": [
+            27,
+            31,
+            27
+          ],
+          "won": true,
+          "margin": -7
+        },
+        {
+          "game_num": 168,
+          "ai_score": 22,
+          "opponent_scores": [
+            28,
+            29,
+            15
+          ],
+          "won": false,
+          "margin": 7
+        },
+        {
+          "game_num": 169,
+          "ai_score": 14,
+          "opponent_scores": [
+            12,
+            21,
+            24
+          ],
+          "won": false,
+          "margin": 2
+        },
+        {
+          "game_num": 170,
+          "ai_score": 20,
+          "opponent_scores": [
+            24,
+            12,
+            22
+          ],
+          "won": false,
+          "margin": 8
+        },
+        {
+          "game_num": 171,
+          "ai_score": 23,
+          "opponent_scores": [
+            25,
+            11,
+            9
+          ],
+          "won": false,
+          "margin": 14
+        },
+        {
+          "game_num": 172,
+          "ai_score": 19,
+          "opponent_scores": [
+            25,
+            15,
+            28
+          ],
+          "won": false,
+          "margin": 4
+        },
+        {
+          "game_num": 173,
+          "ai_score": 34,
+          "opponent_scores": [
+            34,
+            15,
+            18
+          ],
+          "won": false,
+          "margin": 19
+        },
+        {
+          "game_num": 174,
+          "ai_score": 26,
+          "opponent_scores": [
+            26,
+            29,
+            49
+          ],
+          "won": true,
+          "margin": 0
+        },
+        {
+          "game_num": 175,
+          "ai_score": 28,
+          "opponent_scores": [
+            32,
+            12,
+            23
+          ],
+          "won": false,
+          "margin": 16
+        },
+        {
+          "game_num": 176,
+          "ai_score": 31,
+          "opponent_scores": [
+            28,
+            13,
+            6
+          ],
+          "won": false,
+          "margin": 25
+        },
+        {
+          "game_num": 177,
+          "ai_score": 15,
+          "opponent_scores": [
+            6,
+            15,
+            44
+          ],
+          "won": false,
+          "margin": 9
+        },
+        {
+          "game_num": 178,
+          "ai_score": 17,
+          "opponent_scores": [
+            14,
+            13,
+            8
+          ],
+          "won": false,
+          "margin": 9
+        },
+        {
+          "game_num": 179,
+          "ai_score": 29,
+          "opponent_scores": [
+            14,
+            24,
+            23
+          ],
+          "won": false,
+          "margin": 15
+        },
+        {
+          "game_num": 180,
+          "ai_score": 19,
+          "opponent_scores": [
+            23,
+            26,
+            0
+          ],
+          "won": false,
+          "margin": 19
+        },
+        {
+          "game_num": 181,
+          "ai_score": 24,
+          "opponent_scores": [
+            36,
+            15,
+            29
+          ],
+          "won": false,
+          "margin": 9
+        },
+        {
+          "game_num": 182,
+          "ai_score": 20,
+          "opponent_scores": [
+            25,
+            11,
+            18
+          ],
+          "won": false,
+          "margin": 9
+        },
+        {
+          "game_num": 183,
+          "ai_score": -5,
+          "opponent_scores": [
+            32,
+            26,
+            24
+          ],
+          "won": true,
+          "margin": -29
+        },
+        {
+          "game_num": 184,
+          "ai_score": 44,
+          "opponent_scores": [
+            10,
+            37,
+            36
+          ],
+          "won": false,
+          "margin": 34
+        },
+        {
+          "game_num": 185,
+          "ai_score": 31,
+          "opponent_scores": [
+            11,
+            18,
+            10
+          ],
+          "won": false,
+          "margin": 21
+        },
+        {
+          "game_num": 186,
+          "ai_score": 29,
+          "opponent_scores": [
+            19,
+            18,
+            25
+          ],
+          "won": false,
+          "margin": 11
+        },
+        {
+          "game_num": 187,
+          "ai_score": 24,
+          "opponent_scores": [
+            28,
+            26,
+            22
+          ],
+          "won": false,
+          "margin": 2
+        },
+        {
+          "game_num": 188,
+          "ai_score": 28,
+          "opponent_scores": [
+            9,
+            36,
+            34
+          ],
+          "won": false,
+          "margin": 19
+        },
+        {
+          "game_num": 189,
+          "ai_score": 21,
+          "opponent_scores": [
+            7,
+            23,
+            36
+          ],
+          "won": false,
+          "margin": 14
+        },
+        {
+          "game_num": 190,
+          "ai_score": 24,
+          "opponent_scores": [
+            22,
+            25,
+            19
+          ],
+          "won": false,
+          "margin": 5
+        },
+        {
+          "game_num": 191,
+          "ai_score": 31,
+          "opponent_scores": [
+            30,
+            14,
+            25
+          ],
+          "won": false,
+          "margin": 17
+        },
+        {
+          "game_num": 192,
+          "ai_score": 14,
+          "opponent_scores": [
+            26,
+            13,
+            30
+          ],
+          "won": false,
+          "margin": 1
+        },
+        {
+          "game_num": 193,
+          "ai_score": 17,
+          "opponent_scores": [
+            38,
+            26,
+            20
+          ],
+          "won": true,
+          "margin": -3
+        },
+        {
+          "game_num": 194,
+          "ai_score": 14,
+          "opponent_scores": [
+            12,
+            23,
+            12
+          ],
+          "won": false,
+          "margin": 2
+        },
+        {
+          "game_num": 195,
+          "ai_score": 25,
+          "opponent_scores": [
+            5,
+            16,
+            5
+          ],
+          "won": false,
+          "margin": 20
+        },
+        {
+          "game_num": 196,
+          "ai_score": 25,
+          "opponent_scores": [
+            11,
+            26,
+            44
+          ],
+          "won": false,
+          "margin": 14
+        },
+        {
+          "game_num": 197,
+          "ai_score": 5,
+          "opponent_scores": [
+            13,
+            30,
+            25
+          ],
+          "won": true,
+          "margin": -8
+        },
+        {
+          "game_num": 198,
+          "ai_score": 31,
+          "opponent_scores": [
+            11,
+            14,
+            25
+          ],
+          "won": false,
+          "margin": 20
+        },
+        {
+          "game_num": 199,
+          "ai_score": 28,
+          "opponent_scores": [
+            21,
+            27,
+            41
+          ],
+          "won": false,
+          "margin": 7
+        },
+        {
+          "game_num": 200,
+          "ai_score": 30,
+          "opponent_scores": [
+            22,
+            38,
+            11
+          ],
+          "won": false,
+          "margin": 19
+        }
+      ],
+      "consistency": 51.76084273595343,
+      "performance_vs_initial": -0.13500000000000156
+    },
+    "MachineLearningAI": {
+      "games_played": 200,
+      "wins": 9,
+      "win_rate": 4.5,
+      "average_score": 32.435,
+      "median_score": 32.5,
+      "std_score": 13.279901166800904,
+      "min_score": 2.0,
+      "max_score": 70.0,
+      "scores_under_20": 37,
+      "scores_under_25": 54,
+      "game_details": [
+        {
+          "game_num": 1,
+          "ai_score": 34,
+          "opponent_scores": [
+            16,
+            11,
+            5
+          ],
+          "won": false,
+          "margin": 29
+        },
+        {
+          "game_num": 2,
+          "ai_score": 37,
+          "opponent_scores": [
+            19,
+            26,
+            15
+          ],
+          "won": false,
+          "margin": 22
+        },
+        {
+          "game_num": 3,
+          "ai_score": 16,
+          "opponent_scores": [
+            22,
+            31,
+            10
+          ],
+          "won": false,
+          "margin": 6
+        },
+        {
+          "game_num": 4,
+          "ai_score": 27,
+          "opponent_scores": [
+            22,
+            13,
+            14
+          ],
+          "won": false,
+          "margin": 14
+        },
+        {
+          "game_num": 5,
+          "ai_score": 42,
+          "opponent_scores": [
+            11,
+            24,
+            20
+          ],
+          "won": false,
+          "margin": 31
+        },
+        {
+          "game_num": 6,
+          "ai_score": 38,
+          "opponent_scores": [
+            29,
+            8,
+            18
+          ],
+          "won": false,
+          "margin": 30
+        },
+        {
+          "game_num": 7,
+          "ai_score": 10,
+          "opponent_scores": [
+            29,
+            10,
+            32
+          ],
+          "won": true,
+          "margin": 0
+        },
+        {
+          "game_num": 8,
+          "ai_score": 17,
+          "opponent_scores": [
+            6,
+            7,
+            47
+          ],
+          "won": false,
+          "margin": 11
+        },
+        {
+          "game_num": 9,
+          "ai_score": 28,
+          "opponent_scores": [
+            10,
+            7,
+            9
+          ],
+          "won": false,
+          "margin": 21
+        },
+        {
+          "game_num": 10,
+          "ai_score": 21,
+          "opponent_scores": [
+            24,
+            6,
+            21
+          ],
+          "won": false,
+          "margin": 15
+        },
+        {
+          "game_num": 11,
+          "ai_score": 26,
+          "opponent_scores": [
+            24,
+            13,
+            6
+          ],
+          "won": false,
+          "margin": 20
+        },
+        {
+          "game_num": 12,
+          "ai_score": 25,
+          "opponent_scores": [
+            20,
+            18,
+            19
+          ],
+          "won": false,
+          "margin": 7
+        },
+        {
+          "game_num": 13,
+          "ai_score": 27,
+          "opponent_scores": [
+            4,
+            15,
+            15
+          ],
+          "won": false,
+          "margin": 23
+        },
+        {
+          "game_num": 14,
+          "ai_score": 25,
+          "opponent_scores": [
+            13,
+            32,
+            19
+          ],
+          "won": false,
+          "margin": 12
+        },
+        {
+          "game_num": 15,
+          "ai_score": 45,
+          "opponent_scores": [
+            8,
+            30,
+            21
+          ],
+          "won": false,
+          "margin": 37
+        },
+        {
+          "game_num": 16,
+          "ai_score": 25,
+          "opponent_scores": [
+            5,
+            13,
+            26
+          ],
+          "won": false,
+          "margin": 20
+        },
+        {
+          "game_num": 17,
+          "ai_score": 42,
+          "opponent_scores": [
+            10,
+            33,
+            28
+          ],
+          "won": false,
+          "margin": 32
+        },
+        {
+          "game_num": 18,
+          "ai_score": 20,
+          "opponent_scores": [
+            21,
+            1,
+            26
+          ],
+          "won": false,
+          "margin": 19
+        },
+        {
+          "game_num": 19,
+          "ai_score": 28,
+          "opponent_scores": [
+            14,
+            20,
+            18
+          ],
+          "won": false,
+          "margin": 14
+        },
+        {
+          "game_num": 20,
+          "ai_score": 41,
+          "opponent_scores": [
+            20,
+            13,
+            5
+          ],
+          "won": false,
+          "margin": 36
+        },
+        {
+          "game_num": 21,
+          "ai_score": 11,
+          "opponent_scores": [
+            20,
+            20,
+            6
+          ],
+          "won": false,
+          "margin": 5
+        },
+        {
+          "game_num": 22,
+          "ai_score": 47,
+          "opponent_scores": [
+            25,
+            23,
+            10
+          ],
+          "won": false,
+          "margin": 37
+        },
+        {
+          "game_num": 23,
+          "ai_score": 32,
+          "opponent_scores": [
+            19,
+            13,
+            13
+          ],
+          "won": false,
+          "margin": 19
+        },
+        {
+          "game_num": 24,
+          "ai_score": 30,
+          "opponent_scores": [
+            36,
+            11,
+            0
+          ],
+          "won": false,
+          "margin": 30
+        },
+        {
+          "game_num": 25,
+          "ai_score": 6,
+          "opponent_scores": [
+            15,
+            5,
+            4
+          ],
+          "won": false,
+          "margin": 2
+        },
+        {
+          "game_num": 26,
+          "ai_score": 2,
+          "opponent_scores": [
+            2,
+            21,
+            2
+          ],
+          "won": true,
+          "margin": 0
+        },
+        {
+          "game_num": 27,
+          "ai_score": 36,
+          "opponent_scores": [
+            6,
+            18,
+            8
+          ],
+          "won": false,
+          "margin": 30
+        },
+        {
+          "game_num": 28,
+          "ai_score": 40,
+          "opponent_scores": [
+            28,
+            11,
+            9
+          ],
+          "won": false,
+          "margin": 31
+        },
+        {
+          "game_num": 29,
+          "ai_score": 22,
+          "opponent_scores": [
+            15,
+            29,
+            43
+          ],
+          "won": false,
+          "margin": 7
+        },
+        {
+          "game_num": 30,
+          "ai_score": 26,
+          "opponent_scores": [
+            7,
+            23,
+            10
+          ],
+          "won": false,
+          "margin": 19
+        },
+        {
+          "game_num": 31,
+          "ai_score": 26,
+          "opponent_scores": [
+            5,
+            25,
+            21
+          ],
+          "won": false,
+          "margin": 21
+        },
+        {
+          "game_num": 32,
+          "ai_score": 20,
+          "opponent_scores": [
+            30,
+            21,
+            10
+          ],
+          "won": false,
+          "margin": 10
+        },
+        {
+          "game_num": 33,
+          "ai_score": 32,
+          "opponent_scores": [
+            12,
+            8,
+            21
+          ],
+          "won": false,
+          "margin": 24
+        },
+        {
+          "game_num": 34,
+          "ai_score": 28,
+          "opponent_scores": [
+            13,
+            19,
+            10
+          ],
+          "won": false,
+          "margin": 18
+        },
+        {
+          "game_num": 35,
+          "ai_score": 23,
+          "opponent_scores": [
+            43,
+            8,
+            20
+          ],
+          "won": false,
+          "margin": 15
+        },
+        {
+          "game_num": 36,
+          "ai_score": 62,
+          "opponent_scores": [
+            30,
+            12,
+            9
+          ],
+          "won": false,
+          "margin": 53
+        },
+        {
+          "game_num": 37,
+          "ai_score": 46,
+          "opponent_scores": [
+            24,
+            13,
+            24
+          ],
+          "won": false,
+          "margin": 33
+        },
+        {
+          "game_num": 38,
+          "ai_score": 34,
+          "opponent_scores": [
+            18,
+            12,
+            6
+          ],
+          "won": false,
+          "margin": 28
+        },
+        {
+          "game_num": 39,
+          "ai_score": 51,
+          "opponent_scores": [
+            52,
+            25,
+            9
+          ],
+          "won": false,
+          "margin": 42
+        },
+        {
+          "game_num": 40,
+          "ai_score": 58,
+          "opponent_scores": [
+            35,
+            12,
+            26
+          ],
+          "won": false,
+          "margin": 46
+        },
+        {
+          "game_num": 41,
+          "ai_score": 51,
+          "opponent_scores": [
+            46,
+            38,
+            6
+          ],
+          "won": false,
+          "margin": 45
+        },
+        {
+          "game_num": 42,
+          "ai_score": 30,
+          "opponent_scores": [
+            14,
+            28,
+            9
+          ],
+          "won": false,
+          "margin": 21
+        },
+        {
+          "game_num": 43,
+          "ai_score": 37,
+          "opponent_scores": [
+            22,
+            0,
+            16
+          ],
+          "won": false,
+          "margin": 37
+        },
+        {
+          "game_num": 44,
+          "ai_score": 61,
+          "opponent_scores": [
+            16,
+            10,
+            27
+          ],
+          "won": false,
+          "margin": 51
+        },
+        {
+          "game_num": 45,
+          "ai_score": 24,
+          "opponent_scores": [
+            18,
+            23,
+            4
+          ],
+          "won": false,
+          "margin": 20
+        },
+        {
+          "game_num": 46,
+          "ai_score": 34,
+          "opponent_scores": [
+            15,
+            27,
+            16
+          ],
+          "won": false,
+          "margin": 19
+        },
+        {
+          "game_num": 47,
+          "ai_score": 30,
+          "opponent_scores": [
+            28,
+            22,
+            8
+          ],
+          "won": false,
+          "margin": 22
+        },
+        {
+          "game_num": 48,
+          "ai_score": 51,
+          "opponent_scores": [
+            14,
+            13,
+            7
+          ],
+          "won": false,
+          "margin": 44
+        },
+        {
+          "game_num": 49,
+          "ai_score": 31,
+          "opponent_scores": [
+            25,
+            21,
+            13
+          ],
+          "won": false,
+          "margin": 18
+        },
+        {
+          "game_num": 50,
+          "ai_score": 19,
+          "opponent_scores": [
+            19,
+            28,
+            12
+          ],
+          "won": false,
+          "margin": 7
+        },
+        {
+          "game_num": 51,
+          "ai_score": 46,
+          "opponent_scores": [
+            5,
+            22,
+            25
+          ],
+          "won": false,
+          "margin": 41
+        },
+        {
+          "game_num": 52,
+          "ai_score": 27,
+          "opponent_scores": [
+            6,
+            22,
+            16
+          ],
+          "won": false,
+          "margin": 21
+        },
+        {
+          "game_num": 53,
+          "ai_score": 11,
+          "opponent_scores": [
+            3,
+            34,
+            16
+          ],
+          "won": false,
+          "margin": 8
+        },
+        {
+          "game_num": 54,
+          "ai_score": 19,
+          "opponent_scores": [
+            17,
+            35,
+            23
+          ],
+          "won": false,
+          "margin": 2
+        },
+        {
+          "game_num": 55,
+          "ai_score": 23,
+          "opponent_scores": [
+            22,
+            21,
+            8
+          ],
+          "won": false,
+          "margin": 15
+        },
+        {
+          "game_num": 56,
+          "ai_score": 9,
+          "opponent_scores": [
+            13,
+            29,
+            26
+          ],
+          "won": true,
+          "margin": -4
+        },
+        {
+          "game_num": 57,
+          "ai_score": 26,
+          "opponent_scores": [
+            1,
+            30,
+            21
+          ],
+          "won": false,
+          "margin": 25
+        },
+        {
+          "game_num": 58,
+          "ai_score": 28,
+          "opponent_scores": [
+            13,
+            7,
+            9
+          ],
+          "won": false,
+          "margin": 21
+        },
+        {
+          "game_num": 59,
+          "ai_score": 38,
+          "opponent_scores": [
+            19,
+            34,
+            9
+          ],
+          "won": false,
+          "margin": 29
+        },
+        {
+          "game_num": 60,
+          "ai_score": 17,
+          "opponent_scores": [
+            18,
+            16,
+            9
+          ],
+          "won": false,
+          "margin": 8
+        },
+        {
+          "game_num": 61,
+          "ai_score": 42,
+          "opponent_scores": [
+            3,
+            20,
+            14
+          ],
+          "won": false,
+          "margin": 39
+        },
+        {
+          "game_num": 62,
+          "ai_score": 13,
+          "opponent_scores": [
+            33,
+            8,
+            7
+          ],
+          "won": false,
+          "margin": 6
+        },
+        {
+          "game_num": 63,
+          "ai_score": 32,
+          "opponent_scores": [
+            10,
+            18,
+            10
+          ],
+          "won": false,
+          "margin": 22
+        },
+        {
+          "game_num": 64,
+          "ai_score": 19,
+          "opponent_scores": [
+            17,
+            9,
+            7
+          ],
+          "won": false,
+          "margin": 12
+        },
+        {
+          "game_num": 65,
+          "ai_score": 34,
+          "opponent_scores": [
+            29,
+            12,
+            21
+          ],
+          "won": false,
+          "margin": 22
+        },
+        {
+          "game_num": 66,
+          "ai_score": 28,
+          "opponent_scores": [
+            14,
+            27,
+            21
+          ],
+          "won": false,
+          "margin": 14
+        },
+        {
+          "game_num": 67,
+          "ai_score": 50,
+          "opponent_scores": [
+            16,
+            11,
+            12
+          ],
+          "won": false,
+          "margin": 39
+        },
+        {
+          "game_num": 68,
+          "ai_score": 38,
+          "opponent_scores": [
+            29,
+            7,
+            6
+          ],
+          "won": false,
+          "margin": 32
+        },
+        {
+          "game_num": 69,
+          "ai_score": 47,
+          "opponent_scores": [
+            29,
+            12,
+            21
+          ],
+          "won": false,
+          "margin": 35
+        },
+        {
+          "game_num": 70,
+          "ai_score": 14,
+          "opponent_scores": [
+            8,
+            7,
+            18
+          ],
+          "won": false,
+          "margin": 7
+        },
+        {
+          "game_num": 71,
+          "ai_score": 36,
+          "opponent_scores": [
+            22,
+            36,
+            12
+          ],
+          "won": false,
+          "margin": 24
+        },
+        {
+          "game_num": 72,
+          "ai_score": 45,
+          "opponent_scores": [
+            31,
+            15,
+            31
+          ],
+          "won": false,
+          "margin": 30
+        },
+        {
+          "game_num": 73,
+          "ai_score": 14,
+          "opponent_scores": [
+            17,
+            8,
+            7
+          ],
+          "won": false,
+          "margin": 7
+        },
+        {
+          "game_num": 74,
+          "ai_score": 21,
+          "opponent_scores": [
+            5,
+            9,
+            10
+          ],
+          "won": false,
+          "margin": 16
+        },
+        {
+          "game_num": 75,
+          "ai_score": 56,
+          "opponent_scores": [
+            15,
+            4,
+            8
+          ],
+          "won": false,
+          "margin": 52
+        },
+        {
+          "game_num": 76,
+          "ai_score": 40,
+          "opponent_scores": [
+            8,
+            10,
+            24
+          ],
+          "won": false,
+          "margin": 32
+        },
+        {
+          "game_num": 77,
+          "ai_score": 18,
+          "opponent_scores": [
+            5,
+            19,
+            25
+          ],
+          "won": false,
+          "margin": 13
+        },
+        {
+          "game_num": 78,
+          "ai_score": 34,
+          "opponent_scores": [
+            1,
+            16,
+            5
+          ],
+          "won": false,
+          "margin": 33
+        },
+        {
+          "game_num": 79,
+          "ai_score": 37,
+          "opponent_scores": [
+            30,
+            23,
+            14
+          ],
+          "won": false,
+          "margin": 23
+        },
+        {
+          "game_num": 80,
+          "ai_score": 13,
+          "opponent_scores": [
+            11,
+            14,
+            39
+          ],
+          "won": false,
+          "margin": 2
+        },
+        {
+          "game_num": 81,
+          "ai_score": 10,
+          "opponent_scores": [
+            21,
+            18,
+            19
+          ],
+          "won": true,
+          "margin": -8
+        },
+        {
+          "game_num": 82,
+          "ai_score": 34,
+          "opponent_scores": [
+            45,
+            31,
+            13
+          ],
+          "won": false,
+          "margin": 21
+        },
+        {
+          "game_num": 83,
+          "ai_score": 30,
+          "opponent_scores": [
+            19,
+            12,
+            10
+          ],
+          "won": false,
+          "margin": 20
+        },
+        {
+          "game_num": 84,
+          "ai_score": 33,
+          "opponent_scores": [
+            11,
+            32,
+            18
+          ],
+          "won": false,
+          "margin": 22
+        },
+        {
+          "game_num": 85,
+          "ai_score": 29,
+          "opponent_scores": [
+            17,
+            7,
+            6
+          ],
+          "won": false,
+          "margin": 23
+        },
+        {
+          "game_num": 86,
+          "ai_score": 24,
+          "opponent_scores": [
+            10,
+            34,
+            15
+          ],
+          "won": false,
+          "margin": 14
+        },
+        {
+          "game_num": 87,
+          "ai_score": 33,
+          "opponent_scores": [
+            21,
+            15,
+            5
+          ],
+          "won": false,
+          "margin": 28
+        },
+        {
+          "game_num": 88,
+          "ai_score": 40,
+          "opponent_scores": [
+            5,
+            15,
+            6
+          ],
+          "won": false,
+          "margin": 35
+        },
+        {
+          "game_num": 89,
+          "ai_score": 23,
+          "opponent_scores": [
+            24,
+            25,
+            6
+          ],
+          "won": false,
+          "margin": 17
+        },
+        {
+          "game_num": 90,
+          "ai_score": 23,
+          "opponent_scores": [
+            19,
+            7,
+            8
+          ],
+          "won": false,
+          "margin": 16
+        },
+        {
+          "game_num": 91,
+          "ai_score": 37,
+          "opponent_scores": [
+            12,
+            19,
+            11
+          ],
+          "won": false,
+          "margin": 26
+        },
+        {
+          "game_num": 92,
+          "ai_score": 44,
+          "opponent_scores": [
+            24,
+            13,
+            22
+          ],
+          "won": false,
+          "margin": 31
+        },
+        {
+          "game_num": 93,
+          "ai_score": 56,
+          "opponent_scores": [
+            31,
+            15,
+            4
+          ],
+          "won": false,
+          "margin": 52
+        },
+        {
+          "game_num": 94,
+          "ai_score": 55,
+          "opponent_scores": [
+            17,
+            29,
+            25
+          ],
+          "won": false,
+          "margin": 38
+        },
+        {
+          "game_num": 95,
+          "ai_score": 16,
+          "opponent_scores": [
+            17,
+            4,
+            2
+          ],
+          "won": false,
+          "margin": 14
+        },
+        {
+          "game_num": 96,
+          "ai_score": 38,
+          "opponent_scores": [
+            21,
+            39,
+            24
+          ],
+          "won": false,
+          "margin": 17
+        },
+        {
+          "game_num": 97,
+          "ai_score": 30,
+          "opponent_scores": [
+            5,
+            13,
+            14
+          ],
+          "won": false,
+          "margin": 25
+        },
+        {
+          "game_num": 98,
+          "ai_score": 50,
+          "opponent_scores": [
+            15,
+            3,
+            12
+          ],
+          "won": false,
+          "margin": 47
+        },
+        {
+          "game_num": 99,
+          "ai_score": 56,
+          "opponent_scores": [
+            18,
+            10,
+            23
+          ],
+          "won": false,
+          "margin": 46
+        },
+        {
+          "game_num": 100,
+          "ai_score": 60,
+          "opponent_scores": [
+            24,
+            3,
+            19
+          ],
+          "won": false,
+          "margin": 57
+        },
+        {
+          "game_num": 101,
+          "ai_score": 34,
+          "opponent_scores": [
+            18,
+            15,
+            6
+          ],
+          "won": false,
+          "margin": 28
+        },
+        {
+          "game_num": 102,
+          "ai_score": 18,
+          "opponent_scores": [
+            39,
+            10,
+            7
+          ],
+          "won": false,
+          "margin": 11
+        },
+        {
+          "game_num": 103,
+          "ai_score": 42,
+          "opponent_scores": [
+            26,
+            30,
+            16
+          ],
+          "won": false,
+          "margin": 26
+        },
+        {
+          "game_num": 104,
+          "ai_score": 42,
+          "opponent_scores": [
+            30,
+            47,
+            3
+          ],
+          "won": false,
+          "margin": 39
+        },
+        {
+          "game_num": 105,
+          "ai_score": 39,
+          "opponent_scores": [
+            22,
+            9,
+            18
+          ],
+          "won": false,
+          "margin": 30
+        },
+        {
+          "game_num": 106,
+          "ai_score": 37,
+          "opponent_scores": [
+            17,
+            15,
+            30
+          ],
+          "won": false,
+          "margin": 22
+        },
+        {
+          "game_num": 107,
+          "ai_score": 9,
+          "opponent_scores": [
+            10,
+            -1,
+            18
+          ],
+          "won": false,
+          "margin": 10
+        },
+        {
+          "game_num": 108,
+          "ai_score": 30,
+          "opponent_scores": [
+            7,
+            33,
+            36
+          ],
+          "won": false,
+          "margin": 23
+        },
+        {
+          "game_num": 109,
+          "ai_score": 28,
+          "opponent_scores": [
+            12,
+            10,
+            26
+          ],
+          "won": false,
+          "margin": 18
+        },
+        {
+          "game_num": 110,
+          "ai_score": 42,
+          "opponent_scores": [
+            10,
+            26,
+            9
+          ],
+          "won": false,
+          "margin": 33
+        },
+        {
+          "game_num": 111,
+          "ai_score": 15,
+          "opponent_scores": [
+            21,
+            9,
+            23
+          ],
+          "won": false,
+          "margin": 6
+        },
+        {
+          "game_num": 112,
+          "ai_score": 7,
+          "opponent_scores": [
+            16,
+            36,
+            8
+          ],
+          "won": true,
+          "margin": -1
+        },
+        {
+          "game_num": 113,
+          "ai_score": 41,
+          "opponent_scores": [
+            14,
+            11,
+            22
+          ],
+          "won": false,
+          "margin": 30
+        },
+        {
+          "game_num": 114,
+          "ai_score": 62,
+          "opponent_scores": [
+            16,
+            27,
+            4
+          ],
+          "won": false,
+          "margin": 58
+        },
+        {
+          "game_num": 115,
+          "ai_score": 26,
+          "opponent_scores": [
+            11,
+            23,
+            1
+          ],
+          "won": false,
+          "margin": 25
+        },
+        {
+          "game_num": 116,
+          "ai_score": 34,
+          "opponent_scores": [
+            13,
+            12,
+            21
+          ],
+          "won": false,
+          "margin": 22
+        },
+        {
+          "game_num": 117,
+          "ai_score": 17,
+          "opponent_scores": [
+            4,
+            6,
+            25
+          ],
+          "won": false,
+          "margin": 13
+        },
+        {
+          "game_num": 118,
+          "ai_score": 36,
+          "opponent_scores": [
+            9,
+            22,
+            23
+          ],
+          "won": false,
+          "margin": 27
+        },
+        {
+          "game_num": 119,
+          "ai_score": 26,
+          "opponent_scores": [
+            16,
+            13,
+            10
+          ],
+          "won": false,
+          "margin": 16
+        },
+        {
+          "game_num": 120,
+          "ai_score": 35,
+          "opponent_scores": [
+            15,
+            31,
+            6
+          ],
+          "won": false,
+          "margin": 29
+        },
+        {
+          "game_num": 121,
+          "ai_score": 19,
+          "opponent_scores": [
+            40,
+            4,
+            2
+          ],
+          "won": false,
+          "margin": 17
+        },
+        {
+          "game_num": 122,
+          "ai_score": 36,
+          "opponent_scores": [
+            23,
+            4,
+            16
+          ],
+          "won": false,
+          "margin": 32
+        },
+        {
+          "game_num": 123,
+          "ai_score": 17,
+          "opponent_scores": [
+            32,
+            8,
+            14
+          ],
+          "won": false,
+          "margin": 9
+        },
+        {
+          "game_num": 124,
+          "ai_score": 23,
+          "opponent_scores": [
+            24,
+            8,
+            8
+          ],
+          "won": false,
+          "margin": 15
+        },
+        {
+          "game_num": 125,
+          "ai_score": 32,
+          "opponent_scores": [
+            21,
+            10,
+            32
+          ],
+          "won": false,
+          "margin": 22
+        },
+        {
+          "game_num": 126,
+          "ai_score": 30,
+          "opponent_scores": [
+            17,
+            12,
+            33
+          ],
+          "won": false,
+          "margin": 18
+        },
+        {
+          "game_num": 127,
+          "ai_score": 24,
+          "opponent_scores": [
+            31,
+            18,
+            15
+          ],
+          "won": false,
+          "margin": 9
+        },
+        {
+          "game_num": 128,
+          "ai_score": 28,
+          "opponent_scores": [
+            1,
+            55,
+            24
+          ],
+          "won": false,
+          "margin": 27
+        },
+        {
+          "game_num": 129,
+          "ai_score": 56,
+          "opponent_scores": [
+            31,
+            6,
+            11
+          ],
+          "won": false,
+          "margin": 50
+        },
+        {
+          "game_num": 130,
+          "ai_score": 34,
+          "opponent_scores": [
+            12,
+            4,
+            20
+          ],
+          "won": false,
+          "margin": 30
+        },
+        {
+          "game_num": 131,
+          "ai_score": 39,
+          "opponent_scores": [
+            31,
+            27,
+            15
+          ],
+          "won": false,
+          "margin": 24
+        },
+        {
+          "game_num": 132,
+          "ai_score": 37,
+          "opponent_scores": [
+            10,
+            15,
+            24
+          ],
+          "won": false,
+          "margin": 27
+        },
+        {
+          "game_num": 133,
+          "ai_score": 50,
+          "opponent_scores": [
+            35,
+            6,
+            11
+          ],
+          "won": false,
+          "margin": 44
+        },
+        {
+          "game_num": 134,
+          "ai_score": 33,
+          "opponent_scores": [
+            5,
+            12,
+            23
+          ],
+          "won": false,
+          "margin": 28
+        },
+        {
+          "game_num": 135,
+          "ai_score": 26,
+          "opponent_scores": [
+            9,
+            23,
+            17
+          ],
+          "won": false,
+          "margin": 17
+        },
+        {
+          "game_num": 136,
+          "ai_score": 29,
+          "opponent_scores": [
+            18,
+            5,
+            16
+          ],
+          "won": false,
+          "margin": 24
+        },
+        {
+          "game_num": 137,
+          "ai_score": 16,
+          "opponent_scores": [
+            23,
+            22,
+            19
+          ],
+          "won": true,
+          "margin": -3
+        },
+        {
+          "game_num": 138,
+          "ai_score": 20,
+          "opponent_scores": [
+            7,
+            17,
+            47
+          ],
+          "won": false,
+          "margin": 13
+        },
+        {
+          "game_num": 139,
+          "ai_score": 44,
+          "opponent_scores": [
+            34,
+            23,
+            -1
+          ],
+          "won": false,
+          "margin": 45
+        },
+        {
+          "game_num": 140,
+          "ai_score": 53,
+          "opponent_scores": [
+            9,
+            18,
+            2
+          ],
+          "won": false,
+          "margin": 51
+        },
+        {
+          "game_num": 141,
+          "ai_score": 45,
+          "opponent_scores": [
+            14,
+            18,
+            27
+          ],
+          "won": false,
+          "margin": 31
+        },
+        {
+          "game_num": 142,
+          "ai_score": 33,
+          "opponent_scores": [
+            13,
+            5,
+            12
+          ],
+          "won": false,
+          "margin": 28
+        },
+        {
+          "game_num": 143,
+          "ai_score": 17,
+          "opponent_scores": [
+            2,
+            30,
+            12
+          ],
+          "won": false,
+          "margin": 15
+        },
+        {
+          "game_num": 144,
+          "ai_score": 14,
+          "opponent_scores": [
+            5,
+            5,
+            -2
+          ],
+          "won": false,
+          "margin": 16
+        },
+        {
+          "game_num": 145,
+          "ai_score": 48,
+          "opponent_scores": [
+            10,
+            33,
+            41
+          ],
+          "won": false,
+          "margin": 38
+        },
+        {
+          "game_num": 146,
+          "ai_score": 38,
+          "opponent_scores": [
+            11,
+            20,
+            20
+          ],
+          "won": false,
+          "margin": 27
+        },
+        {
+          "game_num": 147,
+          "ai_score": 41,
+          "opponent_scores": [
+            12,
+            17,
+            4
+          ],
+          "won": false,
+          "margin": 37
+        },
+        {
+          "game_num": 148,
+          "ai_score": 30,
+          "opponent_scores": [
+            12,
+            12,
+            25
+          ],
+          "won": false,
+          "margin": 18
+        },
+        {
+          "game_num": 149,
+          "ai_score": 46,
+          "opponent_scores": [
+            44,
+            24,
+            13
+          ],
+          "won": false,
+          "margin": 33
+        },
+        {
+          "game_num": 150,
+          "ai_score": 27,
+          "opponent_scores": [
+            21,
+            11,
+            9
+          ],
+          "won": false,
+          "margin": 18
+        },
+        {
+          "game_num": 151,
+          "ai_score": 21,
+          "opponent_scores": [
+            14,
+            5,
+            36
+          ],
+          "won": false,
+          "margin": 16
+        },
+        {
+          "game_num": 152,
+          "ai_score": 9,
+          "opponent_scores": [
+            27,
+            20,
+            26
+          ],
+          "won": true,
+          "margin": -11
+        },
+        {
+          "game_num": 153,
+          "ai_score": 32,
+          "opponent_scores": [
+            17,
+            6,
+            6
+          ],
+          "won": false,
+          "margin": 26
+        },
+        {
+          "game_num": 154,
+          "ai_score": 30,
+          "opponent_scores": [
+            20,
+            14,
+            29
+          ],
+          "won": false,
+          "margin": 16
+        },
+        {
+          "game_num": 155,
+          "ai_score": 49,
+          "opponent_scores": [
+            16,
+            17,
+            9
+          ],
+          "won": false,
+          "margin": 40
+        },
+        {
+          "game_num": 156,
+          "ai_score": 8,
+          "opponent_scores": [
+            5,
+            13,
+            15
+          ],
+          "won": false,
+          "margin": 3
+        },
+        {
+          "game_num": 157,
+          "ai_score": 37,
+          "opponent_scores": [
+            34,
+            27,
+            5
+          ],
+          "won": false,
+          "margin": 32
+        },
+        {
+          "game_num": 158,
+          "ai_score": 26,
+          "opponent_scores": [
+            15,
+            13,
+            7
+          ],
+          "won": false,
+          "margin": 19
+        },
+        {
+          "game_num": 159,
+          "ai_score": 33,
+          "opponent_scores": [
+            12,
+            20,
+            9
+          ],
+          "won": false,
+          "margin": 24
+        },
+        {
+          "game_num": 160,
+          "ai_score": 47,
+          "opponent_scores": [
+            15,
+            5,
+            12
+          ],
+          "won": false,
+          "margin": 42
+        },
+        {
+          "game_num": 161,
+          "ai_score": 54,
+          "opponent_scores": [
+            24,
+            19,
+            32
+          ],
+          "won": false,
+          "margin": 35
+        },
+        {
+          "game_num": 162,
+          "ai_score": 6,
+          "opponent_scores": [
+            23,
+            32,
+            19
+          ],
+          "won": true,
+          "margin": -13
+        },
+        {
+          "game_num": 163,
+          "ai_score": 57,
+          "opponent_scores": [
+            20,
+            33,
+            15
+          ],
+          "won": false,
+          "margin": 42
+        },
+        {
+          "game_num": 164,
+          "ai_score": 29,
+          "opponent_scores": [
+            29,
+            8,
+            44
+          ],
+          "won": false,
+          "margin": 21
+        },
+        {
+          "game_num": 165,
+          "ai_score": 52,
+          "opponent_scores": [
+            9,
+            33,
+            10
+          ],
+          "won": false,
+          "margin": 43
+        },
+        {
+          "game_num": 166,
+          "ai_score": 40,
+          "opponent_scores": [
+            10,
+            20,
+            17
+          ],
+          "won": false,
+          "margin": 30
+        },
+        {
+          "game_num": 167,
+          "ai_score": 51,
+          "opponent_scores": [
+            2,
+            13,
+            26
+          ],
+          "won": false,
+          "margin": 49
+        },
+        {
+          "game_num": 168,
+          "ai_score": 39,
+          "opponent_scores": [
+            8,
+            31,
+            26
+          ],
+          "won": false,
+          "margin": 31
+        },
+        {
+          "game_num": 169,
+          "ai_score": 12,
+          "opponent_scores": [
+            9,
+            6,
+            37
+          ],
+          "won": false,
+          "margin": 6
+        },
+        {
+          "game_num": 170,
+          "ai_score": 35,
+          "opponent_scores": [
+            2,
+            24,
+            13
+          ],
+          "won": false,
+          "margin": 33
+        },
+        {
+          "game_num": 171,
+          "ai_score": 42,
+          "opponent_scores": [
+            14,
+            10,
+            19
+          ],
+          "won": false,
+          "margin": 32
+        },
+        {
+          "game_num": 172,
+          "ai_score": 52,
+          "opponent_scores": [
+            16,
+            14,
+            16
+          ],
+          "won": false,
+          "margin": 38
+        },
+        {
+          "game_num": 173,
+          "ai_score": 25,
+          "opponent_scores": [
+            37,
+            39,
+            10
+          ],
+          "won": false,
+          "margin": 15
+        },
+        {
+          "game_num": 174,
+          "ai_score": 16,
+          "opponent_scores": [
+            17,
+            21,
+            1
+          ],
+          "won": false,
+          "margin": 15
+        },
+        {
+          "game_num": 175,
+          "ai_score": 49,
+          "opponent_scores": [
+            28,
+            16,
+            10
+          ],
+          "won": false,
+          "margin": 39
+        },
+        {
+          "game_num": 176,
+          "ai_score": 22,
+          "opponent_scores": [
+            14,
+            21,
+            13
+          ],
+          "won": false,
+          "margin": 9
+        },
+        {
+          "game_num": 177,
+          "ai_score": 52,
+          "opponent_scores": [
+            21,
+            43,
+            36
+          ],
+          "won": false,
+          "margin": 31
+        },
+        {
+          "game_num": 178,
+          "ai_score": 16,
+          "opponent_scores": [
+            15,
+            24,
+            3
+          ],
+          "won": false,
+          "margin": 13
+        },
+        {
+          "game_num": 179,
+          "ai_score": 43,
+          "opponent_scores": [
+            0,
+            27,
+            19
+          ],
+          "won": false,
+          "margin": 43
+        },
+        {
+          "game_num": 180,
+          "ai_score": 33,
+          "opponent_scores": [
+            24,
+            2,
+            20
+          ],
+          "won": false,
+          "margin": 31
+        },
+        {
+          "game_num": 181,
+          "ai_score": 41,
+          "opponent_scores": [
+            14,
+            26,
+            21
+          ],
+          "won": false,
+          "margin": 27
+        },
+        {
+          "game_num": 182,
+          "ai_score": 38,
+          "opponent_scores": [
+            24,
+            20,
+            7
+          ],
+          "won": false,
+          "margin": 31
+        },
+        {
+          "game_num": 183,
+          "ai_score": 42,
+          "opponent_scores": [
+            34,
+            18,
+            13
+          ],
+          "won": false,
+          "margin": 29
+        },
+        {
+          "game_num": 184,
+          "ai_score": 32,
+          "opponent_scores": [
+            25,
+            12,
+            25
+          ],
+          "won": false,
+          "margin": 20
+        },
+        {
+          "game_num": 185,
+          "ai_score": 28,
+          "opponent_scores": [
+            6,
+            7,
+            25
+          ],
+          "won": false,
+          "margin": 22
+        },
+        {
+          "game_num": 186,
+          "ai_score": 16,
+          "opponent_scores": [
+            11,
+            25,
+            9
+          ],
+          "won": false,
+          "margin": 7
+        },
+        {
+          "game_num": 187,
+          "ai_score": 33,
+          "opponent_scores": [
+            9,
+            10,
+            21
+          ],
+          "won": false,
+          "margin": 24
+        },
+        {
+          "game_num": 188,
+          "ai_score": 28,
+          "opponent_scores": [
+            39,
+            21,
+            15
+          ],
+          "won": false,
+          "margin": 13
+        },
+        {
+          "game_num": 189,
+          "ai_score": 32,
+          "opponent_scores": [
+            5,
+            37,
+            10
+          ],
+          "won": false,
+          "margin": 27
+        },
+        {
+          "game_num": 190,
+          "ai_score": 49,
+          "opponent_scores": [
+            12,
+            8,
+            0
+          ],
+          "won": false,
+          "margin": 49
+        },
+        {
+          "game_num": 191,
+          "ai_score": 47,
+          "opponent_scores": [
+            5,
+            21,
+            24
+          ],
+          "won": false,
+          "margin": 42
+        },
+        {
+          "game_num": 192,
+          "ai_score": 39,
+          "opponent_scores": [
+            23,
+            24,
+            15
+          ],
+          "won": false,
+          "margin": 24
+        },
+        {
+          "game_num": 193,
+          "ai_score": 37,
+          "opponent_scores": [
+            16,
+            13,
+            10
+          ],
+          "won": false,
+          "margin": 27
+        },
+        {
+          "game_num": 194,
+          "ai_score": 35,
+          "opponent_scores": [
+            32,
+            11,
+            12
+          ],
+          "won": false,
+          "margin": 24
+        },
+        {
+          "game_num": 195,
+          "ai_score": 22,
+          "opponent_scores": [
+            33,
+            13,
+            19
+          ],
+          "won": false,
+          "margin": 9
+        },
+        {
+          "game_num": 196,
+          "ai_score": 35,
+          "opponent_scores": [
+            7,
+            17,
+            23
+          ],
+          "won": false,
+          "margin": 28
+        },
+        {
+          "game_num": 197,
+          "ai_score": 70,
+          "opponent_scores": [
+            17,
+            16,
+            27
+          ],
+          "won": false,
+          "margin": 54
+        },
+        {
+          "game_num": 198,
+          "ai_score": 8,
+          "opponent_scores": [
+            10,
+            11,
+            24
+          ],
+          "won": true,
+          "margin": -2
+        },
+        {
+          "game_num": 199,
+          "ai_score": 27,
+          "opponent_scores": [
+            32,
+            7,
+            9
+          ],
+          "won": false,
+          "margin": 20
+        },
+        {
+          "game_num": 200,
+          "ai_score": 36,
+          "opponent_scores": [
+            7,
+            30,
+            46
+          ],
+          "won": false,
+          "margin": 29
+        }
+      ],
+      "consistency": 59.05687939941143,
+      "performance_vs_initial": -11.535000000000004
+    },
+    "UnsupervisedDeepAI": {
+      "games_played": 200,
+      "wins": 25,
+      "win_rate": 12.5,
+      "average_score": 34.685,
+      "median_score": 32.0,
+      "std_score": 16.987518211910768,
+      "min_score": 1.0,
+      "max_score": 73.0,
+      "scores_under_20": 41,
+      "scores_under_25": 66,
+      "game_details": [
+        {
+          "game_num": 1,
+          "ai_score": 28,
+          "opponent_scores": [
+            26,
+            39,
+            11
+          ],
+          "won": false,
+          "margin": 17
+        },
+        {
+          "game_num": 2,
+          "ai_score": 52,
+          "opponent_scores": [
+            27,
+            46,
+            35
+          ],
+          "won": false,
+          "margin": 25
+        },
+        {
+          "game_num": 3,
+          "ai_score": 28,
+          "opponent_scores": [
+            35,
+            28,
+            24
+          ],
+          "won": false,
+          "margin": 4
+        },
+        {
+          "game_num": 4,
+          "ai_score": 53,
+          "opponent_scores": [
+            25,
+            16,
+            15
+          ],
+          "won": false,
+          "margin": 38
+        },
+        {
+          "game_num": 5,
+          "ai_score": 7,
+          "opponent_scores": [
+            6,
+            24,
+            5
+          ],
+          "won": false,
+          "margin": 2
+        },
+        {
+          "game_num": 6,
+          "ai_score": 19,
+          "opponent_scores": [
+            33,
+            32,
+            29
+          ],
+          "won": true,
+          "margin": -10
+        },
+        {
+          "game_num": 7,
+          "ai_score": 6,
+          "opponent_scores": [
+            22,
+            18,
+            29
+          ],
+          "won": true,
+          "margin": -12
+        },
+        {
+          "game_num": 8,
+          "ai_score": 33,
+          "opponent_scores": [
+            11,
+            34,
+            12
+          ],
+          "won": false,
+          "margin": 22
+        },
+        {
+          "game_num": 9,
+          "ai_score": 38,
+          "opponent_scores": [
+            27,
+            10,
+            21
+          ],
+          "won": false,
+          "margin": 28
+        },
+        {
+          "game_num": 10,
+          "ai_score": 24,
+          "opponent_scores": [
+            32,
+            6,
+            4
+          ],
+          "won": false,
+          "margin": 20
+        },
+        {
+          "game_num": 11,
+          "ai_score": 56,
+          "opponent_scores": [
+            37,
+            29,
+            22
+          ],
+          "won": false,
+          "margin": 34
+        },
+        {
+          "game_num": 12,
+          "ai_score": 54,
+          "opponent_scores": [
+            17,
+            26,
+            19
+          ],
+          "won": false,
+          "margin": 37
+        },
+        {
+          "game_num": 13,
+          "ai_score": 30,
+          "opponent_scores": [
+            13,
+            26,
+            15
+          ],
+          "won": false,
+          "margin": 17
+        },
+        {
+          "game_num": 14,
+          "ai_score": 33,
+          "opponent_scores": [
+            28,
+            33,
+            27
+          ],
+          "won": false,
+          "margin": 6
+        },
+        {
+          "game_num": 15,
+          "ai_score": 31,
+          "opponent_scores": [
+            21,
+            31,
+            25
+          ],
+          "won": false,
+          "margin": 10
+        },
+        {
+          "game_num": 16,
+          "ai_score": 47,
+          "opponent_scores": [
+            21,
+            20,
+            37
+          ],
+          "won": false,
+          "margin": 27
+        },
+        {
+          "game_num": 17,
+          "ai_score": 17,
+          "opponent_scores": [
+            27,
+            24,
+            34
+          ],
+          "won": true,
+          "margin": -7
+        },
+        {
+          "game_num": 18,
+          "ai_score": 40,
+          "opponent_scores": [
+            19,
+            18,
+            26
+          ],
+          "won": false,
+          "margin": 22
+        },
+        {
+          "game_num": 19,
+          "ai_score": 23,
+          "opponent_scores": [
+            49,
+            2,
+            33
+          ],
+          "won": false,
+          "margin": 21
+        },
+        {
+          "game_num": 20,
+          "ai_score": 29,
+          "opponent_scores": [
+            29,
+            36,
+            12
+          ],
+          "won": false,
+          "margin": 17
+        },
+        {
+          "game_num": 21,
+          "ai_score": 47,
+          "opponent_scores": [
+            28,
+            38,
+            39
+          ],
+          "won": false,
+          "margin": 19
+        },
+        {
+          "game_num": 22,
+          "ai_score": 30,
+          "opponent_scores": [
+            24,
+            24,
+            26
+          ],
+          "won": false,
+          "margin": 6
+        },
+        {
+          "game_num": 23,
+          "ai_score": 34,
+          "opponent_scores": [
+            22,
+            20,
+            5
+          ],
+          "won": false,
+          "margin": 29
+        },
+        {
+          "game_num": 24,
+          "ai_score": 29,
+          "opponent_scores": [
+            41,
+            1,
+            20
+          ],
+          "won": false,
+          "margin": 28
+        },
+        {
+          "game_num": 25,
+          "ai_score": 13,
+          "opponent_scores": [
+            40,
+            11,
+            15
+          ],
+          "won": false,
+          "margin": 2
+        },
+        {
+          "game_num": 26,
+          "ai_score": 22,
+          "opponent_scores": [
+            30,
+            -1,
+            13
+          ],
+          "won": false,
+          "margin": 23
+        },
+        {
+          "game_num": 27,
+          "ai_score": 61,
+          "opponent_scores": [
+            28,
+            37,
+            23
+          ],
+          "won": false,
+          "margin": 38
+        },
+        {
+          "game_num": 28,
+          "ai_score": 42,
+          "opponent_scores": [
+            33,
+            13,
+            10
+          ],
+          "won": false,
+          "margin": 32
+        },
+        {
+          "game_num": 29,
+          "ai_score": 21,
+          "opponent_scores": [
+            38,
+            36,
+            23
+          ],
+          "won": true,
+          "margin": -2
+        },
+        {
+          "game_num": 30,
+          "ai_score": 51,
+          "opponent_scores": [
+            26,
+            57,
+            25
+          ],
+          "won": false,
+          "margin": 26
+        },
+        {
+          "game_num": 31,
+          "ai_score": 20,
+          "opponent_scores": [
+            32,
+            26,
+            12
+          ],
+          "won": false,
+          "margin": 8
+        },
+        {
+          "game_num": 32,
+          "ai_score": 6,
+          "opponent_scores": [
+            21,
+            31,
+            14
+          ],
+          "won": true,
+          "margin": -8
+        },
+        {
+          "game_num": 33,
+          "ai_score": 49,
+          "opponent_scores": [
+            34,
+            6,
+            40
+          ],
+          "won": false,
+          "margin": 43
+        },
+        {
+          "game_num": 34,
+          "ai_score": 24,
+          "opponent_scores": [
+            14,
+            16,
+            30
+          ],
+          "won": false,
+          "margin": 10
+        },
+        {
+          "game_num": 35,
+          "ai_score": 30,
+          "opponent_scores": [
+            21,
+            31,
+            35
+          ],
+          "won": false,
+          "margin": 9
+        },
+        {
+          "game_num": 36,
+          "ai_score": 28,
+          "opponent_scores": [
+            31,
+            15,
+            42
+          ],
+          "won": false,
+          "margin": 13
+        },
+        {
+          "game_num": 37,
+          "ai_score": 55,
+          "opponent_scores": [
+            20,
+            23,
+            39
+          ],
+          "won": false,
+          "margin": 35
+        },
+        {
+          "game_num": 38,
+          "ai_score": 63,
+          "opponent_scores": [
+            38,
+            21,
+            17
+          ],
+          "won": false,
+          "margin": 46
+        },
+        {
+          "game_num": 39,
+          "ai_score": 36,
+          "opponent_scores": [
+            25,
+            16,
+            19
+          ],
+          "won": false,
+          "margin": 20
+        },
+        {
+          "game_num": 40,
+          "ai_score": 21,
+          "opponent_scores": [
+            20,
+            24,
+            29
+          ],
+          "won": false,
+          "margin": 1
+        },
+        {
+          "game_num": 41,
+          "ai_score": 38,
+          "opponent_scores": [
+            63,
+            14,
+            28
+          ],
+          "won": false,
+          "margin": 24
+        },
+        {
+          "game_num": 42,
+          "ai_score": 31,
+          "opponent_scores": [
+            44,
+            27,
+            42
+          ],
+          "won": false,
+          "margin": 4
+        },
+        {
+          "game_num": 43,
+          "ai_score": 16,
+          "opponent_scores": [
+            37,
+            17,
+            23
+          ],
+          "won": true,
+          "margin": -1
+        },
+        {
+          "game_num": 44,
+          "ai_score": 15,
+          "opponent_scores": [
+            42,
+            14,
+            11
+          ],
+          "won": false,
+          "margin": 4
+        },
+        {
+          "game_num": 45,
+          "ai_score": 54,
+          "opponent_scores": [
+            27,
+            18,
+            35
+          ],
+          "won": false,
+          "margin": 36
+        },
+        {
+          "game_num": 46,
+          "ai_score": 28,
+          "opponent_scores": [
+            32,
+            28,
+            6
+          ],
+          "won": false,
+          "margin": 22
+        },
+        {
+          "game_num": 47,
+          "ai_score": 66,
+          "opponent_scores": [
+            34,
+            4,
+            39
+          ],
+          "won": false,
+          "margin": 62
+        },
+        {
+          "game_num": 48,
+          "ai_score": 17,
+          "opponent_scores": [
+            38,
+            17,
+            31
+          ],
+          "won": true,
+          "margin": 0
+        },
+        {
+          "game_num": 49,
+          "ai_score": 1,
+          "opponent_scores": [
+            26,
+            44,
+            9
+          ],
+          "won": true,
+          "margin": -8
+        },
+        {
+          "game_num": 50,
+          "ai_score": 23,
+          "opponent_scores": [
+            16,
+            27,
+            28
+          ],
+          "won": false,
+          "margin": 7
+        },
+        {
+          "game_num": 51,
+          "ai_score": 26,
+          "opponent_scores": [
+            33,
+            17,
+            28
+          ],
+          "won": false,
+          "margin": 9
+        },
+        {
+          "game_num": 52,
+          "ai_score": 34,
+          "opponent_scores": [
+            19,
+            15,
+            41
+          ],
+          "won": false,
+          "margin": 19
+        },
+        {
+          "game_num": 53,
+          "ai_score": 20,
+          "opponent_scores": [
+            8,
+            8,
+            30
+          ],
+          "won": false,
+          "margin": 12
+        },
+        {
+          "game_num": 54,
+          "ai_score": 52,
+          "opponent_scores": [
+            21,
+            43,
+            38
+          ],
+          "won": false,
+          "margin": 31
+        },
+        {
+          "game_num": 55,
+          "ai_score": 56,
+          "opponent_scores": [
+            8,
+            25,
+            24
+          ],
+          "won": false,
+          "margin": 48
+        },
+        {
+          "game_num": 56,
+          "ai_score": 7,
+          "opponent_scores": [
+            20,
+            27,
+            36
+          ],
+          "won": true,
+          "margin": -13
+        },
+        {
+          "game_num": 57,
+          "ai_score": 12,
+          "opponent_scores": [
+            20,
+            13,
+            31
+          ],
+          "won": true,
+          "margin": -1
+        },
+        {
+          "game_num": 58,
+          "ai_score": 20,
+          "opponent_scores": [
+            47,
+            18,
+            24
+          ],
+          "won": false,
+          "margin": 2
+        },
+        {
+          "game_num": 59,
+          "ai_score": 26,
+          "opponent_scores": [
+            34,
+            35,
+            13
+          ],
+          "won": false,
+          "margin": 13
+        },
+        {
+          "game_num": 60,
+          "ai_score": 33,
+          "opponent_scores": [
+            17,
+            25,
+            15
+          ],
+          "won": false,
+          "margin": 18
+        },
+        {
+          "game_num": 61,
+          "ai_score": 37,
+          "opponent_scores": [
+            22,
+            15,
+            33
+          ],
+          "won": false,
+          "margin": 22
+        },
+        {
+          "game_num": 62,
+          "ai_score": 25,
+          "opponent_scores": [
+            17,
+            22,
+            34
+          ],
+          "won": false,
+          "margin": 8
+        },
+        {
+          "game_num": 63,
+          "ai_score": 53,
+          "opponent_scores": [
+            20,
+            10,
+            24
+          ],
+          "won": false,
+          "margin": 43
+        },
+        {
+          "game_num": 64,
+          "ai_score": 13,
+          "opponent_scores": [
+            34,
+            12,
+            19
+          ],
+          "won": false,
+          "margin": 1
+        },
+        {
+          "game_num": 65,
+          "ai_score": 4,
+          "opponent_scores": [
+            13,
+            27,
+            11
+          ],
+          "won": true,
+          "margin": -7
+        },
+        {
+          "game_num": 66,
+          "ai_score": 23,
+          "opponent_scores": [
+            34,
+            14,
+            19
+          ],
+          "won": false,
+          "margin": 9
+        },
+        {
+          "game_num": 67,
+          "ai_score": 58,
+          "opponent_scores": [
+            35,
+            27,
+            39
+          ],
+          "won": false,
+          "margin": 31
+        },
+        {
+          "game_num": 68,
+          "ai_score": 8,
+          "opponent_scores": [
+            19,
+            41,
+            20
+          ],
+          "won": true,
+          "margin": -11
+        },
+        {
+          "game_num": 69,
+          "ai_score": 16,
+          "opponent_scores": [
+            34,
+            11,
+            28
+          ],
+          "won": false,
+          "margin": 5
+        },
+        {
+          "game_num": 70,
+          "ai_score": 15,
+          "opponent_scores": [
+            32,
+            9,
+            33
+          ],
+          "won": false,
+          "margin": 6
+        },
+        {
+          "game_num": 71,
+          "ai_score": 32,
+          "opponent_scores": [
+            28,
+            22,
+            15
+          ],
+          "won": false,
+          "margin": 17
+        },
+        {
+          "game_num": 72,
+          "ai_score": 30,
+          "opponent_scores": [
+            16,
+            25,
+            27
+          ],
+          "won": false,
+          "margin": 14
+        },
+        {
+          "game_num": 73,
+          "ai_score": 23,
+          "opponent_scores": [
+            21,
+            23,
+            28
+          ],
+          "won": false,
+          "margin": 2
+        },
+        {
+          "game_num": 74,
+          "ai_score": 41,
+          "opponent_scores": [
+            24,
+            38,
+            16
+          ],
+          "won": false,
+          "margin": 25
+        },
+        {
+          "game_num": 75,
+          "ai_score": 4,
+          "opponent_scores": [
+            47,
+            25,
+            6
+          ],
+          "won": true,
+          "margin": -2
+        },
+        {
+          "game_num": 76,
+          "ai_score": 68,
+          "opponent_scores": [
+            42,
+            17,
+            13
+          ],
+          "won": false,
+          "margin": 55
+        },
+        {
+          "game_num": 77,
+          "ai_score": 20,
+          "opponent_scores": [
+            29,
+            27,
+            19
+          ],
+          "won": false,
+          "margin": 1
+        },
+        {
+          "game_num": 78,
+          "ai_score": 5,
+          "opponent_scores": [
+            40,
+            24,
+            21
+          ],
+          "won": true,
+          "margin": -16
+        },
+        {
+          "game_num": 79,
+          "ai_score": 22,
+          "opponent_scores": [
+            27,
+            27,
+            17
+          ],
+          "won": false,
+          "margin": 5
+        },
+        {
+          "game_num": 80,
+          "ai_score": 49,
+          "opponent_scores": [
+            16,
+            31,
+            35
+          ],
+          "won": false,
+          "margin": 33
+        },
+        {
+          "game_num": 81,
+          "ai_score": 44,
+          "opponent_scores": [
+            34,
+            2,
+            40
+          ],
+          "won": false,
+          "margin": 42
+        },
+        {
+          "game_num": 82,
+          "ai_score": 27,
+          "opponent_scores": [
+            39,
+            27,
+            25
+          ],
+          "won": false,
+          "margin": 2
+        },
+        {
+          "game_num": 83,
+          "ai_score": 24,
+          "opponent_scores": [
+            28,
+            18,
+            25
+          ],
+          "won": false,
+          "margin": 6
+        },
+        {
+          "game_num": 84,
+          "ai_score": 35,
+          "opponent_scores": [
+            18,
+            22,
+            49
+          ],
+          "won": false,
+          "margin": 17
+        },
+        {
+          "game_num": 85,
+          "ai_score": 44,
+          "opponent_scores": [
+            29,
+            25,
+            15
+          ],
+          "won": false,
+          "margin": 29
+        },
+        {
+          "game_num": 86,
+          "ai_score": 22,
+          "opponent_scores": [
+            12,
+            7,
+            18
+          ],
+          "won": false,
+          "margin": 15
+        },
+        {
+          "game_num": 87,
+          "ai_score": 52,
+          "opponent_scores": [
+            53,
+            25,
+            7
+          ],
+          "won": false,
+          "margin": 45
+        },
+        {
+          "game_num": 88,
+          "ai_score": 42,
+          "opponent_scores": [
+            39,
+            41,
+            13
+          ],
+          "won": false,
+          "margin": 29
+        },
+        {
+          "game_num": 89,
+          "ai_score": 27,
+          "opponent_scores": [
+            7,
+            48,
+            26
+          ],
+          "won": false,
+          "margin": 20
+        },
+        {
+          "game_num": 90,
+          "ai_score": 8,
+          "opponent_scores": [
+            21,
+            25,
+            20
+          ],
+          "won": true,
+          "margin": -12
+        },
+        {
+          "game_num": 91,
+          "ai_score": 14,
+          "opponent_scores": [
+            13,
+            22,
+            19
+          ],
+          "won": false,
+          "margin": 1
+        },
+        {
+          "game_num": 92,
+          "ai_score": 47,
+          "opponent_scores": [
+            44,
+            5,
+            10
+          ],
+          "won": false,
+          "margin": 42
+        },
+        {
+          "game_num": 93,
+          "ai_score": 52,
+          "opponent_scores": [
+            21,
+            16,
+            29
+          ],
+          "won": false,
+          "margin": 36
+        },
+        {
+          "game_num": 94,
+          "ai_score": 12,
+          "opponent_scores": [
+            37,
+            19,
+            29
+          ],
+          "won": true,
+          "margin": -7
+        },
+        {
+          "game_num": 95,
+          "ai_score": 57,
+          "opponent_scores": [
+            13,
+            23,
+            30
+          ],
+          "won": false,
+          "margin": 44
+        },
+        {
+          "game_num": 96,
+          "ai_score": 59,
+          "opponent_scores": [
+            32,
+            43,
+            35
+          ],
+          "won": false,
+          "margin": 27
+        },
+        {
+          "game_num": 97,
+          "ai_score": 26,
+          "opponent_scores": [
+            28,
+            14,
+            47
+          ],
+          "won": false,
+          "margin": 12
+        },
+        {
+          "game_num": 98,
+          "ai_score": 44,
+          "opponent_scores": [
+            20,
+            20,
+            29
+          ],
+          "won": false,
+          "margin": 24
+        },
+        {
+          "game_num": 99,
+          "ai_score": 52,
+          "opponent_scores": [
+            24,
+            28,
+            27
+          ],
+          "won": false,
+          "margin": 28
+        },
+        {
+          "game_num": 100,
+          "ai_score": 41,
+          "opponent_scores": [
+            34,
+            28,
+            30
+          ],
+          "won": false,
+          "margin": 13
+        },
+        {
+          "game_num": 101,
+          "ai_score": 37,
+          "opponent_scores": [
+            13,
+            26,
+            10
+          ],
+          "won": false,
+          "margin": 27
+        },
+        {
+          "game_num": 102,
+          "ai_score": 20,
+          "opponent_scores": [
+            42,
+            48,
+            42
+          ],
+          "won": true,
+          "margin": -22
+        },
+        {
+          "game_num": 103,
+          "ai_score": 67,
+          "opponent_scores": [
+            53,
+            35,
+            20
+          ],
+          "won": false,
+          "margin": 47
+        },
+        {
+          "game_num": 104,
+          "ai_score": 37,
+          "opponent_scores": [
+            19,
+            12,
+            24
+          ],
+          "won": false,
+          "margin": 25
+        },
+        {
+          "game_num": 105,
+          "ai_score": 37,
+          "opponent_scores": [
+            17,
+            33,
+            21
+          ],
+          "won": false,
+          "margin": 20
+        },
+        {
+          "game_num": 106,
+          "ai_score": 14,
+          "opponent_scores": [
+            42,
+            30,
+            12
+          ],
+          "won": false,
+          "margin": 2
+        },
+        {
+          "game_num": 107,
+          "ai_score": 24,
+          "opponent_scores": [
+            7,
+            15,
+            28
+          ],
+          "won": false,
+          "margin": 17
+        },
+        {
+          "game_num": 108,
+          "ai_score": 30,
+          "opponent_scores": [
+            22,
+            29,
+            13
+          ],
+          "won": false,
+          "margin": 17
+        },
+        {
+          "game_num": 109,
+          "ai_score": 7,
+          "opponent_scores": [
+            12,
+            10,
+            16
+          ],
+          "won": true,
+          "margin": -3
+        },
+        {
+          "game_num": 110,
+          "ai_score": 19,
+          "opponent_scores": [
+            13,
+            34,
+            16
+          ],
+          "won": false,
+          "margin": 6
+        },
+        {
+          "game_num": 111,
+          "ai_score": 58,
+          "opponent_scores": [
+            38,
+            4,
+            24
+          ],
+          "won": false,
+          "margin": 54
+        },
+        {
+          "game_num": 112,
+          "ai_score": 36,
+          "opponent_scores": [
+            32,
+            37,
+            40
+          ],
+          "won": false,
+          "margin": 4
+        },
+        {
+          "game_num": 113,
+          "ai_score": 12,
+          "opponent_scores": [
+            40,
+            7,
+            36
+          ],
+          "won": false,
+          "margin": 5
+        },
+        {
+          "game_num": 114,
+          "ai_score": 65,
+          "opponent_scores": [
+            40,
+            19,
+            21
+          ],
+          "won": false,
+          "margin": 46
+        },
+        {
+          "game_num": 115,
+          "ai_score": 41,
+          "opponent_scores": [
+            40,
+            21,
+            17
+          ],
+          "won": false,
+          "margin": 24
+        },
+        {
+          "game_num": 116,
+          "ai_score": 56,
+          "opponent_scores": [
+            16,
+            35,
+            23
+          ],
+          "won": false,
+          "margin": 40
+        },
+        {
+          "game_num": 117,
+          "ai_score": 26,
+          "opponent_scores": [
+            22,
+            29,
+            15
+          ],
+          "won": false,
+          "margin": 11
+        },
+        {
+          "game_num": 118,
+          "ai_score": 47,
+          "opponent_scores": [
+            16,
+            26,
+            1
+          ],
+          "won": false,
+          "margin": 46
+        },
+        {
+          "game_num": 119,
+          "ai_score": 40,
+          "opponent_scores": [
+            39,
+            16,
+            34
+          ],
+          "won": false,
+          "margin": 24
+        },
+        {
+          "game_num": 120,
+          "ai_score": 29,
+          "opponent_scores": [
+            49,
+            42,
+            14
+          ],
+          "won": false,
+          "margin": 15
+        },
+        {
+          "game_num": 121,
+          "ai_score": 18,
+          "opponent_scores": [
+            14,
+            41,
+            16
+          ],
+          "won": false,
+          "margin": 4
+        },
+        {
+          "game_num": 122,
+          "ai_score": 31,
+          "opponent_scores": [
+            25,
+            26,
+            5
+          ],
+          "won": false,
+          "margin": 26
+        },
+        {
+          "game_num": 123,
+          "ai_score": 26,
+          "opponent_scores": [
+            17,
+            15,
+            8
+          ],
+          "won": false,
+          "margin": 18
+        },
+        {
+          "game_num": 124,
+          "ai_score": 52,
+          "opponent_scores": [
+            9,
+            22,
+            19
+          ],
+          "won": false,
+          "margin": 43
+        },
+        {
+          "game_num": 125,
+          "ai_score": 13,
+          "opponent_scores": [
+            9,
+            22,
+            27
+          ],
+          "won": false,
+          "margin": 4
+        },
+        {
+          "game_num": 126,
+          "ai_score": 55,
+          "opponent_scores": [
+            28,
+            43,
+            7
+          ],
+          "won": false,
+          "margin": 48
+        },
+        {
+          "game_num": 127,
+          "ai_score": 61,
+          "opponent_scores": [
+            19,
+            20,
+            5
+          ],
+          "won": false,
+          "margin": 56
+        },
+        {
+          "game_num": 128,
+          "ai_score": 27,
+          "opponent_scores": [
+            0,
+            26,
+            52
+          ],
+          "won": false,
+          "margin": 27
+        },
+        {
+          "game_num": 129,
+          "ai_score": 48,
+          "opponent_scores": [
+            9,
+            6,
+            16
+          ],
+          "won": false,
+          "margin": 42
+        },
+        {
+          "game_num": 130,
+          "ai_score": 43,
+          "opponent_scores": [
+            33,
+            12,
+            19
+          ],
+          "won": false,
+          "margin": 31
+        },
+        {
+          "game_num": 131,
+          "ai_score": 46,
+          "opponent_scores": [
+            43,
+            23,
+            30
+          ],
+          "won": false,
+          "margin": 23
+        },
+        {
+          "game_num": 132,
+          "ai_score": 49,
+          "opponent_scores": [
+            19,
+            14,
+            21
+          ],
+          "won": false,
+          "margin": 35
+        },
+        {
+          "game_num": 133,
+          "ai_score": 63,
+          "opponent_scores": [
+            23,
+            36,
+            18
+          ],
+          "won": false,
+          "margin": 45
+        },
+        {
+          "game_num": 134,
+          "ai_score": 59,
+          "opponent_scores": [
+            41,
+            35,
+            36
+          ],
+          "won": false,
+          "margin": 24
+        },
+        {
+          "game_num": 135,
+          "ai_score": 49,
+          "opponent_scores": [
+            16,
+            21,
+            24
+          ],
+          "won": false,
+          "margin": 33
+        },
+        {
+          "game_num": 136,
+          "ai_score": 67,
+          "opponent_scores": [
+            31,
+            30,
+            41
+          ],
+          "won": false,
+          "margin": 37
+        },
+        {
+          "game_num": 137,
+          "ai_score": 30,
+          "opponent_scores": [
+            12,
+            34,
+            19
+          ],
+          "won": false,
+          "margin": 18
+        },
+        {
+          "game_num": 138,
+          "ai_score": 53,
+          "opponent_scores": [
+            44,
+            24,
+            39
+          ],
+          "won": false,
+          "margin": 29
+        },
+        {
+          "game_num": 139,
+          "ai_score": 41,
+          "opponent_scores": [
+            19,
+            31,
+            23
+          ],
+          "won": false,
+          "margin": 22
+        },
+        {
+          "game_num": 140,
+          "ai_score": 29,
+          "opponent_scores": [
+            13,
+            7,
+            18
+          ],
+          "won": false,
+          "margin": 22
+        },
+        {
+          "game_num": 141,
+          "ai_score": 63,
+          "opponent_scores": [
+            43,
+            27,
+            52
+          ],
+          "won": false,
+          "margin": 36
+        },
+        {
+          "game_num": 142,
+          "ai_score": 15,
+          "opponent_scores": [
+            32,
+            17,
+            37
+          ],
+          "won": true,
+          "margin": -2
+        },
+        {
+          "game_num": 143,
+          "ai_score": 46,
+          "opponent_scores": [
+            11,
+            20,
+            23
+          ],
+          "won": false,
+          "margin": 35
+        },
+        {
+          "game_num": 144,
+          "ai_score": 51,
+          "opponent_scores": [
+            38,
+            17,
+            24
+          ],
+          "won": false,
+          "margin": 34
+        },
+        {
+          "game_num": 145,
+          "ai_score": 11,
+          "opponent_scores": [
+            5,
+            33,
+            34
+          ],
+          "won": false,
+          "margin": 6
+        },
+        {
+          "game_num": 146,
+          "ai_score": 68,
+          "opponent_scores": [
+            19,
+            16,
+            28
+          ],
+          "won": false,
+          "margin": 52
+        },
+        {
+          "game_num": 147,
+          "ai_score": 23,
+          "opponent_scores": [
+            16,
+            14,
+            26
+          ],
+          "won": false,
+          "margin": 9
+        },
+        {
+          "game_num": 148,
+          "ai_score": 24,
+          "opponent_scores": [
+            23,
+            22,
+            38
+          ],
+          "won": false,
+          "margin": 2
+        },
+        {
+          "game_num": 149,
+          "ai_score": 20,
+          "opponent_scores": [
+            20,
+            17,
+            34
+          ],
+          "won": false,
+          "margin": 3
+        },
+        {
+          "game_num": 150,
+          "ai_score": 30,
+          "opponent_scores": [
+            25,
+            21,
+            44
+          ],
+          "won": false,
+          "margin": 9
+        },
+        {
+          "game_num": 151,
+          "ai_score": 35,
+          "opponent_scores": [
+            15,
+            37,
+            29
+          ],
+          "won": false,
+          "margin": 20
+        },
+        {
+          "game_num": 152,
+          "ai_score": 47,
+          "opponent_scores": [
+            15,
+            22,
+            6
+          ],
+          "won": false,
+          "margin": 41
+        },
+        {
+          "game_num": 153,
+          "ai_score": 21,
+          "opponent_scores": [
+            20,
+            10,
+            35
+          ],
+          "won": false,
+          "margin": 11
+        },
+        {
+          "game_num": 154,
+          "ai_score": 64,
+          "opponent_scores": [
+            15,
+            38,
+            32
+          ],
+          "won": false,
+          "margin": 49
+        },
+        {
+          "game_num": 155,
+          "ai_score": 18,
+          "opponent_scores": [
+            16,
+            11,
+            14
+          ],
+          "won": false,
+          "margin": 7
+        },
+        {
+          "game_num": 156,
+          "ai_score": 25,
+          "opponent_scores": [
+            30,
+            15,
+            25
+          ],
+          "won": false,
+          "margin": 10
+        },
+        {
+          "game_num": 157,
+          "ai_score": 43,
+          "opponent_scores": [
+            43,
+            27,
+            18
+          ],
+          "won": false,
+          "margin": 25
+        },
+        {
+          "game_num": 158,
+          "ai_score": 10,
+          "opponent_scores": [
+            19,
+            33,
+            31
+          ],
+          "won": true,
+          "margin": -9
+        },
+        {
+          "game_num": 159,
+          "ai_score": 30,
+          "opponent_scores": [
+            45,
+            25,
+            28
+          ],
+          "won": false,
+          "margin": 5
+        },
+        {
+          "game_num": 160,
+          "ai_score": 18,
+          "opponent_scores": [
+            15,
+            32,
+            28
+          ],
+          "won": false,
+          "margin": 3
+        },
+        {
+          "game_num": 161,
+          "ai_score": 58,
+          "opponent_scores": [
+            34,
+            38,
+            21
+          ],
+          "won": false,
+          "margin": 37
+        },
+        {
+          "game_num": 162,
+          "ai_score": 20,
+          "opponent_scores": [
+            21,
+            16,
+            16
+          ],
+          "won": false,
+          "margin": 4
+        },
+        {
+          "game_num": 163,
+          "ai_score": 17,
+          "opponent_scores": [
+            23,
+            32,
+            22
+          ],
+          "won": true,
+          "margin": -5
+        },
+        {
+          "game_num": 164,
+          "ai_score": 18,
+          "opponent_scores": [
+            35,
+            23,
+            15
+          ],
+          "won": false,
+          "margin": 3
+        },
+        {
+          "game_num": 165,
+          "ai_score": 73,
+          "opponent_scores": [
+            40,
+            27,
+            25
+          ],
+          "won": false,
+          "margin": 48
+        },
+        {
+          "game_num": 166,
+          "ai_score": 37,
+          "opponent_scores": [
+            37,
+            28,
+            36
+          ],
+          "won": false,
+          "margin": 9
+        },
+        {
+          "game_num": 167,
+          "ai_score": 40,
+          "opponent_scores": [
+            32,
+            22,
+            25
+          ],
+          "won": false,
+          "margin": 18
+        },
+        {
+          "game_num": 168,
+          "ai_score": 15,
+          "opponent_scores": [
+            25,
+            21,
+            20
+          ],
+          "won": true,
+          "margin": -5
+        },
+        {
+          "game_num": 169,
+          "ai_score": 40,
+          "opponent_scores": [
+            28,
+            27,
+            34
+          ],
+          "won": false,
+          "margin": 13
+        },
+        {
+          "game_num": 170,
+          "ai_score": 49,
+          "opponent_scores": [
+            29,
+            21,
+            51
+          ],
+          "won": false,
+          "margin": 28
+        },
+        {
+          "game_num": 171,
+          "ai_score": 37,
+          "opponent_scores": [
+            23,
+            30,
+            43
+          ],
+          "won": false,
+          "margin": 14
+        },
+        {
+          "game_num": 172,
+          "ai_score": 17,
+          "opponent_scores": [
+            35,
+            32,
+            13
+          ],
+          "won": false,
+          "margin": 4
+        },
+        {
+          "game_num": 173,
+          "ai_score": 63,
+          "opponent_scores": [
+            26,
+            29,
+            18
+          ],
+          "won": false,
+          "margin": 45
+        },
+        {
+          "game_num": 174,
+          "ai_score": 56,
+          "opponent_scores": [
+            52,
+            30,
+            29
+          ],
+          "won": false,
+          "margin": 27
+        },
+        {
+          "game_num": 175,
+          "ai_score": 23,
+          "opponent_scores": [
+            36,
+            58,
+            13
+          ],
+          "won": false,
+          "margin": 10
+        },
+        {
+          "game_num": 176,
+          "ai_score": 52,
+          "opponent_scores": [
+            14,
+            27,
+            44
+          ],
+          "won": false,
+          "margin": 38
+        },
+        {
+          "game_num": 177,
+          "ai_score": 14,
+          "opponent_scores": [
+            23,
+            19,
+            9
+          ],
+          "won": false,
+          "margin": 5
+        },
+        {
+          "game_num": 178,
+          "ai_score": 30,
+          "opponent_scores": [
+            30,
+            32,
+            16
+          ],
+          "won": false,
+          "margin": 14
+        },
+        {
+          "game_num": 179,
+          "ai_score": 40,
+          "opponent_scores": [
+            10,
+            39,
+            33
+          ],
+          "won": false,
+          "margin": 30
+        },
+        {
+          "game_num": 180,
+          "ai_score": 45,
+          "opponent_scores": [
+            21,
+            36,
+            27
+          ],
+          "won": false,
+          "margin": 24
+        },
+        {
+          "game_num": 181,
+          "ai_score": 62,
+          "opponent_scores": [
+            26,
+            36,
+            39
+          ],
+          "won": false,
+          "margin": 36
+        },
+        {
+          "game_num": 182,
+          "ai_score": 51,
+          "opponent_scores": [
+            38,
+            5,
+            44
+          ],
+          "won": false,
+          "margin": 46
+        },
+        {
+          "game_num": 183,
+          "ai_score": 24,
+          "opponent_scores": [
+            18,
+            29,
+            48
+          ],
+          "won": false,
+          "margin": 6
+        },
+        {
+          "game_num": 184,
+          "ai_score": 30,
+          "opponent_scores": [
+            5,
+            10,
+            27
+          ],
+          "won": false,
+          "margin": 25
+        },
+        {
+          "game_num": 185,
+          "ai_score": 60,
+          "opponent_scores": [
+            33,
+            21,
+            17
+          ],
+          "won": false,
+          "margin": 43
+        },
+        {
+          "game_num": 186,
+          "ai_score": 38,
+          "opponent_scores": [
+            51,
+            24,
+            38
+          ],
+          "won": false,
+          "margin": 14
+        },
+        {
+          "game_num": 187,
+          "ai_score": 17,
+          "opponent_scores": [
+            21,
+            33,
+            22
+          ],
+          "won": true,
+          "margin": -4
+        },
+        {
+          "game_num": 188,
+          "ai_score": 32,
+          "opponent_scores": [
+            32,
+            20,
+            36
+          ],
+          "won": false,
+          "margin": 12
+        },
+        {
+          "game_num": 189,
+          "ai_score": 56,
+          "opponent_scores": [
+            24,
+            30,
+            10
+          ],
+          "won": false,
+          "margin": 46
+        },
+        {
+          "game_num": 190,
+          "ai_score": 48,
+          "opponent_scores": [
+            15,
+            29,
+            45
+          ],
+          "won": false,
+          "margin": 33
+        },
+        {
+          "game_num": 191,
+          "ai_score": 49,
+          "opponent_scores": [
+            31,
+            27,
+            34
+          ],
+          "won": false,
+          "margin": 22
+        },
+        {
+          "game_num": 192,
+          "ai_score": 3,
+          "opponent_scores": [
+            29,
+            27,
+            35
+          ],
+          "won": true,
+          "margin": -24
+        },
+        {
+          "game_num": 193,
+          "ai_score": 58,
+          "opponent_scores": [
+            26,
+            22,
+            38
+          ],
+          "won": false,
+          "margin": 36
+        },
+        {
+          "game_num": 194,
+          "ai_score": 11,
+          "opponent_scores": [
+            31,
+            11,
+            27
+          ],
+          "won": true,
+          "margin": 0
+        },
+        {
+          "game_num": 195,
+          "ai_score": 31,
+          "opponent_scores": [
+            39,
+            41,
+            22
+          ],
+          "won": false,
+          "margin": 9
+        },
+        {
+          "game_num": 196,
+          "ai_score": 55,
+          "opponent_scores": [
+            45,
+            6,
+            5
+          ],
+          "won": false,
+          "margin": 50
+        },
+        {
+          "game_num": 197,
+          "ai_score": 37,
+          "opponent_scores": [
+            26,
+            14,
+            12
+          ],
+          "won": false,
+          "margin": 25
+        },
+        {
+          "game_num": 198,
+          "ai_score": 52,
+          "opponent_scores": [
+            41,
+            28,
+            28
+          ],
+          "won": false,
+          "margin": 24
+        },
+        {
+          "game_num": 199,
+          "ai_score": 27,
+          "opponent_scores": [
+            25,
+            42,
+            27
+          ],
+          "won": false,
+          "margin": 2
+        },
+        {
+          "game_num": 200,
+          "ai_score": 48,
+          "opponent_scores": [
+            7,
+            49,
+            44
+          ],
+          "won": false,
+          "margin": 41
+        }
+      ],
+      "consistency": 51.02344468239652,
+      "performance_vs_initial": -13.785000000000004
+    }
+  }
+}
