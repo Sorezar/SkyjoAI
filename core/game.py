@@ -64,23 +64,23 @@ class SkyjoGame:
                 player.grid[p[0]][p[1]].revealed = True
 
     def refill_deck_if_needed(self):
-        """Reméle la défausse dans le deck si le deck est vide"""
+        """Remele la defausse dans le deck si le deck est vide"""
         if len(self.deck) == 0 and len(self.discard) > 1:
-            # Garder la dernière carte de la défausse
+            # Garder la derniere carte de la defausse
             last_discard = self.discard.pop()
             
             # Remettre toutes les autres cartes dans le deck
             self.deck = self.discard[:]
             self.discard = [last_discard]
             
-            # Remélanger le deck
+            # Remelanger le deck
             random.shuffle(self.deck)
             
-            #print(f"🔄 Deck remélangé avec {len(self.deck)} cartes de la défausse")
+            #print(f"🔄 Deck remelange avec {len(self.deck)} cartes de la defausse")
         elif len(self.deck) == 0 and len(self.discard) <= 1:
-            # Cas extrême : plus assez de cartes (ne devrait pas arriver en pratique)
-            #print("⚠️ Plus de cartes disponibles - fin forcée de la manche")
-            # Forcer la fin de la manche en révélant toutes les cartes du joueur actuel
+            # Cas extreme : plus assez de cartes (ne devrait pas arriver en pratique)
+            #print("⚠️ Plus de cartes disponibles - fin forcee de la manche")
+            # Forcer la fin de la manche en revelant toutes les cartes du joueur actuel
             self.players[self.current_player_index].reveal_all()
             self.round_over = True
             self.first_finisher = self.current_player_index
@@ -110,12 +110,24 @@ class SkyjoGame:
                     indexes.append(i)
         return indexes
     
-    def delete_column(self, grid, index):
-        [[self.discard.append(cell) for j, cell in enumerate(row) if j in index] for row in grid]
-        return [[cell for j, cell in enumerate(row) if j not in index] for row in grid]
+    def delete_column(self, grid, indexes):
+        """Supprime les colonnes complètes spécifiées par leurs indices"""
+        # Ajouter les cartes des colonnes supprimées à la défausse
+        for row in grid:
+            for j in indexes:
+                if j < len(row):
+                    self.discard.append(row[j])
+        
+        # Créer une nouvelle grille sans les colonnes supprimées
+        new_grid = []
+        for row in grid:
+            new_row = [cell for j, cell in enumerate(row) if j not in indexes]
+            new_grid.append(new_row)
+        
+        return new_grid
     
     def step(self):
-        # Vérifier et reméler le deck si nécessaire avant que le joueur prenne son tour
+        # Verifier et remeler le deck si necessaire avant que le joueur prenne son tour
         self.refill_deck_if_needed()
         
         p = self.players[self.current_player_index]
@@ -134,13 +146,13 @@ class SkyjoGame:
         self.current_player_index = (self.current_player_index + 1) % len(self.players)
         self.turns += 1
         
-        # Vérifier si la manche est terminée (tous les joueurs ont joué)
+        # Verifier si la manche est terminee (tous les joueurs ont joue)
         if self.round_over and self.current_player_index == 0:
             # Calculer les scores de la manche
             scores = [player.round_score() for player in self.players]
             self.scoreboard.update(scores, self.first_finisher)
             
-            # Vérifier si un joueur a atteint le score maximum
+            # Verifier si un joueur a atteint le score maximum
             if any(score >= MAX_POINTS for score in self.scoreboard.total_scores):
                 self.finished = True
             else:

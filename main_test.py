@@ -2,15 +2,11 @@ from config.config import WIDTH, HEIGHT, AUTO_PLAY_DELAY, MAX_POINTS, FPS
 from ui.ui         import SkyjoUI
 from core.game     import SkyjoGame, Scoreboard
 from core.player   import Player
-from ai.random     import RandomAI
 from ai.initial    import InitialAI
 from ai.ml_xgboost_enhanced import XGBoostEnhancedAI
 
 import pygame
 import time
-import json
-import sys
-import os
 
 pygame.init()  # Initialize pygame before using any of its features
 

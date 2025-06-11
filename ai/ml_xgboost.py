@@ -666,12 +666,12 @@ class XGBoostSkyjoAI(BaseAI):
             return random.choice(unrevealed_positions)
     
     def collect_training_data(self, num_games=1000):
-        """Collecte des données d'entraînement en observant InitialAI"""
-        print(f"📊 Collecte de données d'entraînement sur {num_games} parties...")
+        """Collecte des données d'entraînement en observant InitialAI (SÉCURISÉ)"""
+        print(f"📊 Collecte de données d'entraînement sur {num_games} parties (MODE SÉCURISÉ)...")
         
         from ai.initial import InitialAI
         from core.game import SkyjoGame, Scoreboard
-        from core.player import Player
+        from core.player import Player, create_safe_grid  # Import anti-triche
         
         # Réinitialiser les données
         for key in self.training_data:
@@ -680,12 +680,142 @@ class XGBoostSkyjoAI(BaseAI):
         
         collected_samples = {'source': 0, 'keep': 0, 'position': 0, 'reveal': 0}
         
+        # Créer un collecteur personnalisé qui intercepte toutes les décisions
+        class DataCollectorAI(InitialAI):
+            def __init__(self, collector):
+                super().__init__()
+                self.collector = collector
+            
+            def choose_source(self, grid, discard, other_grids):
+                # 🔒 SÉCURITÉ : Les grilles reçues sont déjà sécurisées par le Player
+                decision = super().choose_source(grid, discard, other_grids)
+                self.collector.record_source_decision(grid, discard, other_grids, decision)
+                return decision
+            
+            def choose_keep(self, card, grid, other_grids):
+                # 🔒 SÉCURITÉ : Les grilles reçues sont déjà sécurisées par le Player
+                decision = super().choose_keep(card, grid, other_grids)
+                self.collector.record_keep_decision(card, grid, other_grids, decision)
+                return decision
+            
+            def choose_position(self, card, grid, other_grids):
+                # 🔒 SÉCURITÉ : Les grilles reçues sont déjà sécurisées par le Player
+                position = super().choose_position(card, grid, other_grids)
+                self.collector.record_position_decision(card, grid, other_grids, position)
+                return position
+            
+            def choose_reveal(self, grid):
+                position = super().choose_reveal(grid)
+                self.collector.record_reveal_decision(grid, position)
+                return position
+        
+        # Méthodes pour enregistrer les décisions
+        def record_source_decision(self, grid, discard, other_grids, decision):
+            try:
+                if discard and len(discard) > 0:
+                    features = self.extract_advanced_features(grid, discard, other_grids)
+                    label = 1 if decision == 'D' else 0
+                    
+                    # Ajuster les dimensions pour source
+                    expected_dim = self.expected_feature_dims['source']
+                    if len(features) != expected_dim:
+                        if len(features) > expected_dim:
+                            features = features[:expected_dim]
+                        else:
+                            features = np.pad(features, (0, expected_dim - len(features)), 'constant')
+                    
+                    self.training_data['source']['X'].append(features)
+                    self.training_data['source']['y'].append(label)
+                    collected_samples['source'] += 1
+            except Exception as e:
+                pass
+        
+        def record_keep_decision(self, card, grid, other_grids, decision):
+            try:
+                features = self.extract_advanced_features(grid, [], other_grids, card)
+                label = 1 if decision else 0
+                
+                # Ajuster les dimensions pour keep
+                expected_dim = self.expected_feature_dims['keep']
+                if len(features) != expected_dim:
+                    if len(features) > expected_dim:
+                        features = features[:expected_dim]
+                    else:
+                        features = np.pad(features, (0, expected_dim - len(features)), 'constant')
+                
+                self.training_data['keep']['X'].append(features)
+                self.training_data['keep']['y'].append(label)
+                collected_samples['keep'] += 1
+            except Exception as e:
+                pass
+        
+        def record_position_decision(self, card, grid, other_grids, position):
+            try:
+                if position and grid:
+                    # Créer un label basé sur la qualité de la position
+                    i, j = position
+                    if i < len(grid) and j < len(grid[i]) and grid[i][j] is not None:
+                        current_value = self.safe_get_card_value(grid[i][j])
+                        card_value = self.safe_get_card_value(card)
+                        improvement = current_value - card_value
+                        
+                        # Label: 1 si amélioration positive, 0 sinon
+                        label = 1 if improvement > 0 else 0
+                        
+                        features = self.extract_advanced_features(grid, [], other_grids, card, position)
+                        
+                        # Ajuster les dimensions pour position
+                        expected_dim = self.expected_feature_dims['position']
+                        if len(features) != expected_dim:
+                            if len(features) > expected_dim:
+                                features = features[:expected_dim]
+                            else:
+                                features = np.pad(features, (0, expected_dim - len(features)), 'constant')
+                        
+                        self.training_data['position']['X'].append(features)
+                        self.training_data['position']['y'].append(label)
+                        collected_samples['position'] += 1
+            except Exception as e:
+                pass
+        
+        def record_reveal_decision(self, grid, position):
+            try:
+                if position and grid:
+                    # Créer un label basé sur la stratégie de révélation
+                    i, j = position
+                    
+                    # Label: 1 si position stratégique (bordures/coins), 0 sinon
+                    is_strategic = (i == 0 or i == GRID_ROWS-1 or j == 0 or j == GRID_COLS-1)
+                    label = 1 if is_strategic else 0
+                    
+                    features = self.extract_advanced_features(grid, [], [], None, position)
+                    
+                    # Ajuster les dimensions pour reveal
+                    expected_dim = self.expected_feature_dims['reveal']
+                    if len(features) != expected_dim:
+                        if len(features) > expected_dim:
+                            features = features[:expected_dim]
+                        else:
+                            features = np.pad(features, (0, expected_dim - len(features)), 'constant')
+                    
+                    self.training_data['reveal']['X'].append(features)
+                    self.training_data['reveal']['y'].append(label)
+                    collected_samples['reveal'] += 1
+            except Exception as e:
+                pass
+        
+        # Ajouter les méthodes au collecteur
+        self.record_source_decision = record_source_decision.__get__(self, type(self))
+        self.record_keep_decision = record_keep_decision.__get__(self, type(self))
+        self.record_position_decision = record_position_decision.__get__(self, type(self))
+        self.record_reveal_decision = record_reveal_decision.__get__(self, type(self))
+        
         for game_num in range(num_games):
             try:
-                # Créer une partie avec InitialAI comme référence
-                reference_ai = InitialAI()
+                # Créer une partie avec notre collecteur personnalisé
+                collector_ai = DataCollectorAI(self)
                 players = [
-                    Player(0, "Reference", reference_ai),
+                    Player(0, "Collector", collector_ai),
                     Player(1, "Opp1", InitialAI()),
                     Player(2, "Opp2", InitialAI()),
                     Player(3, "Opp3", InitialAI())
@@ -694,36 +824,9 @@ class XGBoostSkyjoAI(BaseAI):
                 scoreboard = Scoreboard(players)
                 game = SkyjoGame(players, scoreboard)
                 
-                # Observer les décisions pendant la partie
+                # Jouer la partie complète pour capturer toutes les décisions
                 step_count = 0
                 while not game.finished and step_count < 1000:
-                    if not game.round_over and game_num < num_games * 0.7:  # Seulement les premiers 70% pour l'entraînement
-                        current_player = game.players[game.current_player_index]
-                        
-                        if current_player.name == "Reference":
-                            other_grids = [p.grid for i, p in enumerate(game.players) if i != game.current_player_index]
-                            
-                            # Observer la décision de source
-                            if game.discard and len(game.discard) > 0:
-                                try:
-                                    features = self.extract_advanced_features(current_player.grid, game.discard, other_grids)
-                                    decision = reference_ai.choose_source(current_player.grid, game.discard, other_grids)
-                                    label = 1 if decision == 'D' else 0
-                                    
-                                    # Ajuster les dimensions pour source
-                                    expected_dim = self.expected_feature_dims['source']
-                                    if len(features) != expected_dim:
-                                        if len(features) > expected_dim:
-                                            features = features[:expected_dim]
-                                        else:
-                                            features = np.pad(features, (0, expected_dim - len(features)), 'constant')
-                                    
-                                    self.training_data['source']['X'].append(features)
-                                    self.training_data['source']['y'].append(label)
-                                    collected_samples['source'] += 1
-                                except Exception as e:
-                                    continue
-                    
                     game.step()
                     step_count += 1
                 
@@ -748,7 +851,8 @@ class XGBoostSkyjoAI(BaseAI):
         
         models_trained = 0
         
-        for decision_type in ['source']:  # Commencer par source seulement
+        # Entraîner TOUS les modèles
+        for decision_type in ['source', 'keep', 'position', 'reveal']:
             X = self.training_data[decision_type]['X']
             y = self.training_data[decision_type]['y']
             
@@ -766,6 +870,11 @@ class XGBoostSkyjoAI(BaseAI):
                 # Vérifier l'équilibre des classes
                 unique, counts = np.unique(y, return_counts=True)
                 print(f"   Classes: {dict(zip(unique, counts))}")
+                
+                # Skip si une seule classe
+                if len(unique) < 2:
+                    print(f"⚠️ Une seule classe pour {decision_type}, skip")
+                    continue
                 
                 # Split train/test
                 X_train, X_test, y_train, y_test = train_test_split(

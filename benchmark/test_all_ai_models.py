@@ -6,23 +6,25 @@ Teste toutes les approches contre 3 InitialAI sur plusieurs parties
 import json
 import numpy as np
 from datetime import datetime
-from collections import defaultdict
 import argparse
 import traceback
+import sys
+import os
+
+# Ajouter le répertoire parent au path pour pouvoir importer les modules
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Imports de base (toujours disponibles)
-from ai.initial import InitialAI
-from ai.advanced import AdvancedAI
-from ai.ml_ai import MachineLearningAI
-from ai.deep_ai import UnsupervisedDeepAI
-from ai.advanced_dominant import AdvancedDominantAI
-
-# Nouveaux modèles enhanced
+from ai.initial                 import InitialAI
+from ai.advanced                import AdvancedAI
+from ai.advanced_dominant       import AdvancedDominantAI
 from ai.unsupervised_pattern_ai import UnsupervisedPatternAI
-from ai.hybrid_elite_ai import HybridEliteAI
-from ai.adaptive_ml_ai import AdaptiveMLAI
-from ai.champion_elite_ai import ChampionEliteAI
+from ai.hybrid_elite_ai         import HybridEliteAI
+from ai.adaptive_ml_ai          import AdaptiveMLAI
+from ai.champion_elite_ai       import ChampionEliteAI
 
+from core.game   import SkyjoGame, Scoreboard
+from core.player import Player
 # Imports conditionnels pour les modèles avec dépendances spéciales
 optional_models = {}
 
@@ -38,30 +40,22 @@ try:
 except ImportError as e:
     print(f"⚠️ XGBoostEnhancedAI non disponible: {e}")
 
-
-from core.game import SkyjoGame, Scoreboard
-from core.player import Player
-
 class AIBenchmark:
-    """Classe pour benchmarker les différentes IA"""
     
     def __init__(self, num_games=100, verbose=True):
         self.num_games = num_games
         self.verbose = verbose
         self.results = {}
         
-        # Initialiser les IA de base
-        print("🔧 Initialisation des modèles d'IA...")
+        print("Initialisation des modeles d'IA...")
         self.ai_models = {
-            "InitialAI": InitialAI(),
-            "AdvancedAI": AdvancedAI(),
-            "MachineLearningAI": MachineLearningAI(),
-            "UnsupervisedDeepAI": UnsupervisedDeepAI(),
-            "AdvancedDominantAI": AdvancedDominantAI(),
+            "InitialAI"            : InitialAI(),
+            "AdvancedAI"           : AdvancedAI(),
+            "AdvancedDominantAI"   : AdvancedDominantAI(),
             "UnsupervisedPatternAI": UnsupervisedPatternAI(),
-            "HybridEliteAI": HybridEliteAI(),
-            "AdaptiveMLAI": AdaptiveMLAI(),
-            "ChampionEliteAI": ChampionEliteAI()
+            "HybridEliteAI"        : HybridEliteAI(),
+            "AdaptiveMLAI"         : AdaptiveMLAI(),
+            "ChampionEliteAI"      : ChampionEliteAI()
         }
         
         # Ajouter les modèles optionnels disponibles
@@ -73,10 +67,9 @@ class AIBenchmark:
         
         # Vérifier quels modèles sont prêts
         self.validate_models()
-        print(f"✅ {len(self.ai_models)} modèles initialisés!")
+        print(f"OK {len(self.ai_models)} modeles initialises!")
     
     def validate_models(self):
-        """Valide que tous les modèles peuvent être instanciés correctement"""
         models_to_remove = []
         
         for ai_name, ai_instance in self.ai_models.items():
@@ -108,7 +101,7 @@ class AIBenchmark:
     
     def run_single_test(self, ai_name, ai_instance):
         """Teste une IA spécifique contre 3 InitialAI"""
-        print(f"\n🎯 Test de {ai_name} contre 3 InitialAI...")
+        print(f"\nTest de {ai_name} contre 3 InitialAI...")
         print("-" * 50)
         
         scores = []
@@ -118,7 +111,6 @@ class AIBenchmark:
         
         for game_num in range(self.num_games):
             try:
-                # Créer les joueurs avec gestion d'erreur améliorée
                 try:
                     players = [
                         Player(0, ai_name, ai_instance),
@@ -204,7 +196,7 @@ class AIBenchmark:
         
         # Afficher les erreurs si il y en a
         if errors:
-            print(f"\n⚠️ {len(errors)} erreurs détectées pour {ai_name}:")
+            print(f"\nATTENTION {len(errors)} erreurs detectees pour {ai_name}:")
             for error in errors[:5]:  # Afficher seulement les 5 premières
                 print(f"   - {error}")
             if len(errors) > 5:
@@ -218,7 +210,7 @@ class AIBenchmark:
             self.results[ai_name] = stats
             self.print_ai_results(ai_name, stats)
         else:
-            print(f"❌ Aucune partie valide pour {ai_name} ({len(errors)} erreurs)")
+            print(f"ERREUR Aucune partie valide pour {ai_name} ({len(errors)} erreurs)")
             self.results[ai_name] = None
     
     def calculate_statistics(self, scores, wins, game_details):
@@ -246,55 +238,55 @@ class AIBenchmark:
     def print_ai_results(self, ai_name, stats):
         """Affiche les résultats détaillés d'une IA"""
         if stats is None:
-            print(f"❌ {ai_name}: Aucun résultat disponible")
+            print(f"ERREUR {ai_name}: Aucun resultat disponible")
             return
         
-        print(f"\n📊 RÉSULTATS POUR {ai_name}")
+        print(f"\nRESULTATS POUR {ai_name}")
         print("=" * 60)
-        print(f"🎮 Parties jouées: {stats['games_played']} / {self.num_games}")
-        print(f"✅ Taux de réussite: {stats['success_rate']:.1f}%")
+        print(f"Parties jouees: {stats['games_played']} / {self.num_games}")
+        print(f"Taux de reussite: {stats['success_rate']:.1f}%")
         if stats.get('errors', 0) > 0:
-            print(f"⚠️ Erreurs: {stats['errors']}")
-        print(f"🏆 Victoires: {stats['wins']} ({stats['win_rate']:.1f}%)")
-        print(f"📈 Score moyen: {stats['average_score']:.2f}")
-        print(f"📊 Score médian: {stats['median_score']:.2f}")
-        print(f"📏 Écart-type: {stats['std_score']:.2f}")
-        print(f"⬇️ Score minimum: {stats['min_score']}")
-        print(f"⬆️ Score maximum: {stats['max_score']}")
-        print(f"🎯 Scores < 20: {stats['scores_under_20']} ({stats['scores_under_20']/stats['games_played']*100:.1f}%)")
-        print(f"🎯 Scores < 25: {stats['scores_under_25']} ({stats['scores_under_25']/stats['games_played']*100:.1f}%)")
-        print(f"⚖️ Consistance: {stats['consistency']:.1f}%")
-        print(f"🔥 Performance vs InitialAI: {stats['performance_vs_initial']:.2f} points")
+            print(f"Erreurs: {stats['errors']}")
+        print(f"Victoires: {stats['wins']} ({stats['win_rate']:.1f}%)")
+        print(f"Score moyen: {stats['average_score']:.2f}")
+        print(f"Score median: {stats['median_score']:.2f}")
+        print(f"Ecart-type: {stats['std_score']:.2f}")
+        print(f"Score minimum: {stats['min_score']}")
+        print(f"Score maximum: {stats['max_score']}")
+        print(f"Scores < 20: {stats['scores_under_20']} ({stats['scores_under_20']/stats['games_played']*100:.1f}%)")
+        print(f"Scores < 25: {stats['scores_under_25']} ({stats['scores_under_25']/stats['games_played']*100:.1f}%)")
+        print(f"Consistance: {stats['consistency']:.1f}%")
+        print(f"Performance vs InitialAI: {stats['performance_vs_initial']:.2f} points")
         
         # Évaluation qualitative avec plus de nuances
         if stats['average_score'] < 18:
-            print("🌟 EXCELLENT - Largement supérieur à InitialAI!")
+            print("EXCELLENT - Largement superieur a InitialAI!")
         elif stats['average_score'] < 20:
-            print("🔥 TRÈS BON - Nettement supérieur à InitialAI!")
+            print("TRES BON - Nettement superieur a InitialAI!")
         elif stats['average_score'] < 20.9:
-            print("✅ BON - Meilleur que InitialAI!")
+            print("BON - Meilleur que InitialAI!")
         elif stats['average_score'] < 22:
-            print("🟡 CORRECT - Proche d'InitialAI")
+            print("CORRECT - Proche d'InitialAI")
         elif stats['average_score'] < 25:
-            print("🟠 FAIBLE - En retard sur InitialAI")
+            print("FAIBLE - En retard sur InitialAI")
         else:
-            print("🔴 TRÈS FAIBLE - Très en retard sur InitialAI")
+            print("TRES FAIBLE - Tres en retard sur InitialAI")
         
         # Ajouter une évaluation de la stabilité
         if stats['consistency'] > 85:
-            print("💎 Très stable dans ses performances")
+            print("Tres stable dans ses performances")
         elif stats['consistency'] > 70:
-            print("⚖️ Assez stable")
+            print("Assez stable")
         else:
-            print("📉 Performance irrégulière")
+            print("Performance irreguliere")
     
     def run_all_tests(self):
         """Lance tous les tests"""
-        print("🚀 BENCHMARK COMPLET DES IA SKYJO")
+        print("BENCHMARK COMPLET DES IA SKYJO")
         print("=" * 60)
-        print(f"📊 {self.num_games} parties par IA")
-        print(f"🎯 Objectif: Battre InitialAI (≈20.9 points)")
-        print(f"🕐 Début: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        print(f"{self.num_games} parties par IA")
+        print(f"Objectif: Battre InitialAI (≈20.9 points)")
+        print(f"Debut: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         
         # Tester chaque IA (sauf InitialAI qui sert de référence)
         ai_to_test = [name for name in self.ai_models.keys() if name != "InitialAI"]
@@ -303,7 +295,7 @@ class AIBenchmark:
             try:
                 self.run_single_test(ai_name, self.ai_models[ai_name])
             except Exception as e:
-                print(f"❌ Erreur lors du test de {ai_name}: {e}")
+                print(f"ERREUR lors du test de {ai_name}: {e}")
                 self.results[ai_name] = None
         
         # Afficher le classement final
@@ -315,7 +307,7 @@ class AIBenchmark:
     def print_final_ranking(self):
         """Affiche le classement final"""
         print("\n" + "=" * 80)
-        print("🏆 CLASSEMENT FINAL")
+        print("CLASSEMENT FINAL")
         print("=" * 80)
         
         # Filtrer les résultats valides et trier par score moyen
@@ -326,45 +318,45 @@ class AIBenchmark:
         print("-" * 80)
         
         for i, (ai_name, stats) in enumerate(valid_results, 1):
-            performance_icon = "🥇" if i == 1 else "🥈" if i == 2 else "🥉" if i == 3 else "  "
+            performance_icon = "#1" if i == 1 else "#2" if i == 2 else "#3" if i == 3 else "  "
             vs_initial = f"{stats['performance_vs_initial']:+.2f}"
             
-            print(f"{performance_icon}{i:<4} {ai_name:<20} {stats['average_score']:<12.2f} "
+            print(f"{performance_icon:<4} {ai_name:<20} {stats['average_score']:<12.2f} "
                   f"{stats['win_rate']:<10.1f}% {vs_initial:<12}")
         
         # Ligne de référence InitialAI
         print("-" * 80)
-        print(f"{'REF':<5} {'InitialAI (baseline)':<20} {'20.90':<12} {'≈20.0%':<10} {'±0.00':<12}")
+        print(f"{'REF':<5} {'InitialAI (baseline)':<20} {'20.90':<12} {'25.0%':<10} {'±0.00':<12}")
         
         # Analyser les performances
-        print("\n📈 ANALYSE DES PERFORMANCES")
+        print("\nANALYSE DES PERFORMANCES")
         print("-" * 40)
         
         best_performers = [name for name, stats in valid_results if stats['average_score'] < 20.9]
         if best_performers:
-            print(f"✅ IA battant InitialAI: {', '.join(best_performers)}")
+            print(f"IA battant InitialAI: {', '.join(best_performers)}")
             best_ai = valid_results[0]
             improvement = 20.9 - best_ai[1]['average_score']
-            print(f"🏆 Meilleure amélioration: {best_ai[0]} (-{improvement:.2f} points)")
+            print(f"Meilleure amelioration: {best_ai[0]} (-{improvement:.2f} points)")
         else:
-            print("❌ Aucune IA ne bat InitialAI de manière consistante")
+            print("Aucune IA ne bat InitialAI de maniere consistante")
         
         # Recommandations
-        print("\n💡 RECOMMANDATIONS")
+        print("\nRECOMMANDATIONS")
         print("-" * 40)
         
         if best_performers:
-            print(f"🎯 Utiliser {best_performers[0]} pour les meilleures performances")
+            print(f"Utiliser {best_performers[0]} pour les meilleures performances")
         
         # Identifier les points d'amélioration
         worst_ai = valid_results[-1] if valid_results else None
         if worst_ai and worst_ai[1]['average_score'] > 25:
-            print(f"🔧 {worst_ai[0]} nécessite un réentraînement (score: {worst_ai[1]['average_score']:.2f})")
+            print(f"{worst_ai[0]} necessite un reentrainement (score: {worst_ai[1]['average_score']:.2f})")
     
     def save_results(self):
         """Sauvegarde les résultats dans un fichier JSON"""
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = f"benchmark_results_{timestamp}.json"
+        filename = f"benchmark/benchmark_results_{timestamp}.json"
         
         # Préparer les données pour la sérialisation
         serializable_results = {}
@@ -393,9 +385,9 @@ class AIBenchmark:
         try:
             with open(filename, 'w', encoding='utf-8') as f:
                 json.dump(full_results, f, indent=2, ensure_ascii=False)
-            print(f"\n💾 Résultats sauvegardés dans: {filename}")
+            print(f"\nResultats sauvegardes dans: {filename}")
         except Exception as e:
-            print(f"⚠️ Erreur lors de la sauvegarde: {e}")
+            print(f"Erreur lors de la sauvegarde: {e}")
 
 
 def main():
@@ -423,15 +415,13 @@ def main():
     benchmark = AIBenchmark(num_games=num_games, verbose=verbose)
     
     if args.validate_only:
-        print("✅ Validation des modèles terminée!")
+        print("Validation des modeles terminee!")
         return
     
     if args.ai:
         # Tester une seule IA
         ai_mapping = {
             "advanced": "AdvancedAI",
-            "ml": "MachineLearningAI", 
-            "deep": "UnsupervisedDeepAI",
             "dominant": "AdvancedDominantAI",
             "pattern": "UnsupervisedPatternAI",
             "hybrid": "HybridEliteAI",
@@ -443,22 +433,22 @@ def main():
         }
         ai_name = ai_mapping[args.ai]
         if ai_name in benchmark.ai_models:
-            print(f"🎯 Test spécifique de {ai_name}")
+            print(f"Test specifique de {ai_name}")
             benchmark.run_single_test(ai_name, benchmark.ai_models[ai_name])
         else:
-            print(f"❌ {ai_name} n'est pas disponible (échec de validation)")
+            print(f"ERREUR {ai_name} n'est pas disponible (echec de validation)")
     else:
         # Tester toutes les IA
         benchmark.run_all_tests()
     
-    print(f"\n🕐 Fin: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    print("🎉 Benchmark terminé!")
+    print(f"\nFin: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print("Benchmark termine!")
 
 if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print("\n🛑 Test interrompu par l'utilisateur.")
+        print("\nTest interrompu par l'utilisateur.")
     except Exception as e:
-        print(f"\n💥 Erreur fatale: {e}")
+        print(f"\nErreur fatale: {e}")
         traceback.print_exc() 

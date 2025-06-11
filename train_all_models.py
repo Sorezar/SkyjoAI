@@ -1,120 +1,153 @@
-"""
-Script d'entraînement pour tous les modèles d'IA Skyjo
-- Machine Learning (Random Forest)
-- Deep Learning (Auto-encodeur non supervisé)
-- Reinforcement Learning (DQN)
-"""
-
+#!/usr/bin/env python3
 import os
 import sys
-import argparse
 from datetime import datetime
+import argparse
+import traceback
 
-def train_machine_learning_model():
-    """Entraîne le modèle Machine Learning"""
-    print("🔧 Début de l'entraînement du modèle Machine Learning...")
+
+def create_model_directories():
+    """Crée les répertoires nécessaires pour les modèles"""
+    dirs = ["ml_models", "deep_models", "rl_models"]
+    for dir_name in dirs:
+        os.makedirs(dir_name, exist_ok=True)
+
+def train_xgboost_models():
+    """Entraîne les modèles XGBoost de manière sécurisée"""
+    print("\n🔒 ENTRAÎNEMENT SÉCURISÉ - XGBOOST")
+    print("=" * 60)
     
     try:
-        from ai.ml_ai import collect_training_data_from_initial_ai
-        ml_ai = collect_training_data_from_initial_ai()
-        print("✅ Modèle Machine Learning entraîné avec succès!")
-        return ml_ai
+        from ai.ml_xgboost import XGBoostSkyjoAI
+        
+        print("🚀 Initialisation XGBoostSkyjoAI...")
+        ai = XGBoostSkyjoAI()
+        
+        print("📊 Collecte de données d'entraînement SÉCURISÉES...")
+        ai.collect_training_data(num_games=1000)
+        
+        print("🧠 Entraînement des modèles XGBoost...")
+        ai.train_xgboost_models()
+        
+        print("✅ XGBoostSkyjoAI entraîné avec succès (mode sécurisé)")
+        return True
+        
     except Exception as e:
-        print(f"❌ Erreur lors de l'entraînement ML: {e}")
-        import traceback
-        traceback.print_exc()  # Afficher la stack trace complète
-        return None
-
-def train_deep_learning_model():
-    """Entraîne le modèle Deep Learning non supervisé"""
-    print("🧠 Début de l'entraînement du modèle Deep Learning...")
-    
-    try:
-        from ai.deep_ai import train_unsupervised_model
-        deep_ai = train_unsupervised_model()
-        print("✅ Modèle Deep Learning entraîné avec succès!")
-        return deep_ai
-    except Exception as e:
-        print(f"❌ Erreur lors de l'entraînement Deep Learning: {e}")
-        import traceback
+        print(f"❌ Erreur lors de l'entraînement XGBoost: {e}")
         traceback.print_exc()
-        return None
+        return False
+
+
+def train_enhanced_models():
+    """Entraîne les modèles Enhanced de manière sécurisée"""
+    print("\n🔒 ENTRAÎNEMENT SÉCURISÉ - MODÈLES ENHANCED")
+    print("=" * 60)
+    
+    models_results = {}
+    
+    # Liste des modèles enhanced à entraîner
+    enhanced_models = [
+        ("UnsupervisedPatternAI", "ai.unsupervised_pattern_ai", "UnsupervisedPatternAI"),
+        ("HybridEliteAI", "ai.hybrid_elite_ai", "HybridEliteAI"),
+        ("AdaptiveMLAI", "ai.adaptive_ml_ai", "AdaptiveMLAI"),
+        ("ChampionEliteAI", "ai.champion_elite_ai", "ChampionEliteAI")
+    ]
+    
+    for model_name, module_path, class_name in enhanced_models:
+        try:
+            print(f"\n🎯 Entraînement {model_name}...")
+            
+            # Import dynamique
+            module = __import__(module_path, fromlist=[class_name])
+            model_class = getattr(module, class_name)
+            
+            # Instanciation et entraînement si la méthode existe
+            ai = model_class()
+            if hasattr(ai, 'train_models'):
+                ai.train_models()
+                print(f"✅ {model_name} entraîné avec succès")
+                models_results[model_name] = True
+            else:
+                print(f"⚠️ {model_name} ne nécessite pas d'entraînement")
+                models_results[model_name] = True
+                
+        except ImportError:
+            print(f"⚠️ {model_name} non disponible (dépendances manquantes)")
+            models_results[model_name] = False
+        except Exception as e:
+            print(f"❌ Erreur lors de l'entraînement {model_name}: {e}")
+            models_results[model_name] = False
+    
+    successful = len([r for r in models_results.values() if r])
+    total = len(models_results)
+    print(f"\n📊 Modèles Enhanced: {successful}/{total} réussis")
+    
+    return successful > 0
+
 
 def main():
-    parser = argparse.ArgumentParser(description="Entraînement des modèles d'IA Skyjo")
-    parser.add_argument("--models", nargs="+", 
-                       choices=["ml", "deep", "rl", "all"],
-                       default=["all"],
-                       help="Modèles à entraîner: ml, deep, rl, ou all")
-    parser.add_argument("--quick", action="store_true",
-                       help="Entraînement rapide avec moins d'épisodes")
+    parser = argparse.ArgumentParser(description="Entraînement sécurisé unifié des modèles d'IA")
+    parser.add_argument("--skip-validation", action="store_true",
+                       help="Ignorer les tests de validation")
     
     args = parser.parse_args()
     
-    print("🚀 Script d'entraînement des modèles d'IA Skyjo")
-    print("=" * 60)
+    print("🔒 ENTRAÎNEMENT SÉCURISÉ UNIFIÉ - SKYJO AI")
+    print("=" * 70)
     print(f"🕐 Début: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    print(f"📊 Modèles sélectionnés: {args.models}")
-    print("=" * 60)
+    print("🛡️ OBJECTIF: Entraîner tous les modèles")
+    print("=" * 70)
     
-    # Créer les répertoires de modèles
-    os.makedirs("ml_models", exist_ok=True)
-    os.makedirs("deep_models", exist_ok=True)
-    os.makedirs("rl_models", exist_ok=True)
+    # Étape 1: Préparation
+    create_model_directories()
     
-    results = {}
+    # Étape 2: Entraînement sécurisé
+    models_to_train = args.models if "all" not in args.models else ["xgboost", "enhanced"]
+    successful_models = []
+    failed_models = []
     
-    # Déterminer quels modèles entraîner
-    models_to_train = []
-    if "all" in args.models:
-        models_to_train = ["ml", "deep"]  # Exclu RL par défaut car performances insuffisantes
-    else:
-        models_to_train = args.models
     
-    # Entraîner les modèles sélectionnés
-    if "ml" in models_to_train:
-        print("\n" + "="*50)
-        results["ml"] = train_machine_learning_model()
+    if "xgboost" in models_to_train:
+        if train_xgboost_models():
+            successful_models.append("XGBoostSkyjoAI")
+        else:
+            failed_models.append("XGBoostSkyjoAI")
     
-    if "deep" in models_to_train:
-        print("\n" + "="*50)
-        results["deep"] = train_deep_learning_model()
+    if "enhanced" in models_to_train:
+        if train_enhanced_models():
+            successful_models.append("Enhanced Models")
+        else:
+            failed_models.append("Enhanced Models")
     
     # Résumé final
-    print("\n" + "="*60)
-    print("📋 RÉSUMÉ DE L'ENTRAÎNEMENT")
-    print("="*60)
-    
-    for model_name, model_instance in results.items():
-        status = "✅ Succès" if model_instance is not None else "❌ Échec"
-        print(f"{model_name.upper()}: {status}")
-    
-    successful_models = [name for name, instance in results.items() if instance is not None]
-    failed_models = [name for name, instance in results.items() if instance is None]
-    
-    print(f"\n✅ Modèles entraînés avec succès: {len(successful_models)}")
-    print(f"❌ Modèles ayant échoué: {len(failed_models)}")
+    print("\n" + "=" * 70)
+    print("📋 RÉSUMÉ DE L'ENTRAÎNEMENT SÉCURISÉ")
+    print("=" * 70)
+    print(f"🕐 Fin: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"✅ Groupes de modèles réussis: {len(successful_models)}")
+    for model in successful_models:
+        print(f"   • {model}")
     
     if failed_models:
-        print(f"⚠️ Modèles à réentraîner: {', '.join(failed_models)}")
+        print(f"❌ Groupes de modèles échoués: {len(failed_models)}")
+        for model in failed_models:
+            print(f"   • {model}")
+    print("=" * 70)
     
-    print(f"\n🕐 Fin: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    print("="*60)
-    
-    return successful_models
+    return len(successful_models), len(failed_models)
 
 if __name__ == "__main__":
     try:
-        successful_models = main()
-        if len(successful_models) > 0:
-            print("\n🎉 Entraînement terminé! Vous pouvez maintenant tester les modèles.")
-            print("📝 Utilisez 'python test_all_ai_models.py' pour évaluer les performances.")
-        else:
-            print("\n💥 Aucun modèle n'a été entraîné avec succès.")
+        successful, failed = main()
+        if failed > 0:
+            print(f"\n⚠️ {failed} groupe(s) de modèles ont échoué lors de l'entraînement")
             sys.exit(1)
+        else:
+            print("\n🎉 Entraînement sécurisé terminé avec succès!")
     except KeyboardInterrupt:
-        print("\n🛑 Entraînement interrompu par l'utilisateur.")
+        print("\n🛑 Entraînement interrompu par l'utilisateur")
         sys.exit(1)
     except Exception as e:
         print(f"\n💥 Erreur fatale: {e}")
+        traceback.print_exc()
         sys.exit(1) 

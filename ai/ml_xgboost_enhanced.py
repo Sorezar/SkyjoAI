@@ -57,6 +57,13 @@ class XGBoostEnhancedAI(BaseAI):
             'min_child_weight': 3
         }
         
+        # Variantes XGBoost pour l'ensemble
+        self.xgb_variants = [
+            {**self.xgb_base_params, 'max_depth': 4, 'learning_rate': 0.1},
+            {**self.xgb_base_params, 'max_depth': 6, 'learning_rate': 0.06},
+            {**self.xgb_base_params, 'n_estimators': 200, 'subsample': 0.9}
+        ]
+        
         # Variantes pour ensemble
         self.xgb_variants = [
             {**self.xgb_base_params, 'max_depth': 4, 'learning_rate': 0.12},
@@ -660,8 +667,8 @@ class XGBoostEnhancedAI(BaseAI):
     def load_models(self):
         """Charge les modèles sauvegardés"""
         try:
-            if os.path.exists("ml_models/xgboost_enhanced.pkl"):
-                with open("ml_models/xgboost_enhanced.pkl", "rb") as f:
+            if os.path.exists("ml_models/xgboost_skyjo.pkl"):
+                with open("ml_models/xgboost_skyjo.pkl", "rb") as f:
                     model_data = pickle.load(f)
                 
                 self.source_ensemble = model_data.get('source_ensemble')
@@ -688,17 +695,222 @@ class XGBoostEnhancedAI(BaseAI):
         except Exception as e:
             print(f"⚠️ Erreur chargement: {e}")
 
+    def collect_training_data(self, num_games=1000):
+        """Collecte des données d'entraînement en mode sécurisé avec collecteur complet"""
+        from core.game import SkyjoGame, Scoreboard  
+        from core.player import Player, create_safe_grid
+        from ai.initial import InitialAI
+        
+        print(f"📊 Collecte de données d'entraînement sur {num_games} parties (MODE SÉCURISÉ)...")
+        
+        # Réinitialiser les données
+        for key in self.training_data:
+            self.training_data[key]['X'].clear()
+            self.training_data[key]['y'].clear()
+        
+        collected_samples = {'source': 0, 'keep': 0, 'position': 0, 'reveal': 0}
+        
+        # Créer un collecteur personnalisé qui intercepte toutes les décisions
+        class DataCollectorAI(InitialAI):
+            def __init__(self, collector):
+                super().__init__()
+                self.collector = collector
+            
+            def choose_source(self, grid, discard, other_grids):
+                decision = super().choose_source(grid, discard, other_grids)
+                self.collector.record_source_decision(grid, discard, other_grids, decision)
+                return decision
+            
+            def choose_keep(self, card, grid, other_grids):
+                decision = super().choose_keep(card, grid, other_grids)
+                self.collector.record_keep_decision(card, grid, other_grids, decision)
+                return decision
+            
+            def choose_position(self, card, grid, other_grids):
+                position = super().choose_position(card, grid, other_grids)
+                self.collector.record_position_decision(card, grid, other_grids, position)
+                return position
+            
+            def choose_reveal(self, grid):
+                position = super().choose_reveal(grid)
+                self.collector.record_reveal_decision(grid, position)
+                return position
+        
+        # Méthodes pour enregistrer les décisions
+        def record_source_decision(self, grid, discard, other_grids, decision):
+            try:
+                if discard and len(discard) > 0:
+                    features = self.extract_comprehensive_features(grid, discard, other_grids)
+                    label = 1 if decision == 'D' else 0
+                    
+                    if len(features) > 0 and not np.all(features == 0):
+                        self.training_data['source']['X'].append(features)
+                        self.training_data['source']['y'].append(label)
+                        collected_samples['source'] += 1
+            except Exception as e:
+                pass
+        
+        def record_keep_decision(self, card, grid, other_grids, decision):
+            try:
+                features = self.extract_comprehensive_features(grid, [], other_grids, current_card=card)
+                label = 1 if decision else 0
+                
+                if len(features) > 0 and not np.all(features == 0):
+                    self.training_data['keep']['X'].append(features)
+                    self.training_data['keep']['y'].append(label)
+                    collected_samples['keep'] += 1
+            except Exception as e:
+                pass
+        
+        def record_position_decision(self, card, grid, other_grids, position):
+            try:
+                if position and grid:
+                    i, j = position
+                    if i < len(grid) and j < len(grid[i]) and grid[i][j] is not None:
+                        current_value = self.safe_get_card_value(grid[i][j])
+                        card_value = self.safe_get_card_value(card)
+                        improvement = current_value - card_value
+                        
+                        label = 1 if improvement > 0 else 0
+                        features = self.extract_comprehensive_features(grid, [], other_grids, current_card=card, position=position)
+                        
+                        if len(features) > 0 and not np.all(features == 0):
+                            self.training_data['position']['X'].append(features)
+                            self.training_data['position']['y'].append(label)
+                            collected_samples['position'] += 1
+            except Exception as e:
+                pass
+        
+        def record_reveal_decision(self, grid, position):
+            try:
+                if position and grid:
+                    i, j = position
+                    # Label: 1 si position stratégique (bordures/coins), 0 sinon
+                    is_strategic = (i == 0 or i == GRID_ROWS-1 or j == 0 or j == GRID_COLS-1)
+                    label = 1 if is_strategic else 0
+                    
+                    features = self.extract_comprehensive_features(grid, [], [], position=position)
+                    
+                    if len(features) > 0 and not np.all(features == 0):
+                        self.training_data['reveal']['X'].append(features)
+                        self.training_data['reveal']['y'].append(label)
+                        collected_samples['reveal'] += 1
+            except Exception as e:
+                pass
+        
+        # Ajouter les méthodes au collecteur
+        self.record_source_decision = record_source_decision.__get__(self, type(self))
+        self.record_keep_decision = record_keep_decision.__get__(self, type(self))
+        self.record_position_decision = record_position_decision.__get__(self, type(self))
+        self.record_reveal_decision = record_reveal_decision.__get__(self, type(self))
+        
+        for game_num in range(num_games):
+            try:
+                # Créer une partie avec notre collecteur personnalisé
+                collector_ai = DataCollectorAI(self)
+                players = [
+                    Player(0, "Collector", collector_ai),
+                    Player(1, "Opp1", InitialAI()),
+                    Player(2, "Opp2", InitialAI()),
+                    Player(3, "Opp3", InitialAI())
+                ]
+                
+                scoreboard = Scoreboard(players)
+                game = SkyjoGame(players, scoreboard)
+                
+                # Jouer la partie complète pour capturer toutes les décisions
+                step_count = 0
+                while not game.finished and step_count < 1000:
+                    game.step()
+                    step_count += 1
+                
+                # Affichage de progression
+                if (game_num + 1) % 200 == 0:
+                    print(f"   Collecté {game_num + 1}/{num_games} parties...")
+                    print(f"   Échantillons: Source={collected_samples['source']}, Keep={collected_samples['keep']}, "
+                          f"Position={collected_samples['position']}, Reveal={collected_samples['reveal']}")
+                    
+            except Exception as e:
+                continue
+        
+        print("✅ Collecte terminée!")
+        print(f"   Source: {len(self.training_data['source']['X'])} échantillons")
+        print(f"   Keep: {len(self.training_data['keep']['X'])} échantillons")
+        print(f"   Position: {len(self.training_data['position']['X'])} échantillons")
+        print(f"   Reveal: {len(self.training_data['reveal']['X'])} échantillons")
+        
+        return True
 
-# Fonction d'entraînement rapide
-def train_xgboost_enhanced():
-    """Entraîne rapidement le modèle XGBoost Enhanced"""
-    ai = XGBoostEnhancedAI()
-    
-    # Ici on pourrait ajouter un générateur de données d'entraînement
-    # Pour l'instant, le modèle fonctionne avec des heuristiques en fallback
-    
-    print("XGBoost Enhanced prêt à utiliser")
-    return ai
+    def train_models(self):
+        """Entraîne les modèles ensemble avec les données collectées"""
+        print("🧠 Entraînement des modèles XGBoost Enhanced...")
+        
+        models_trained = 0
+        
+        # Entraîner TOUS les modèles
+        for decision_type in ['source', 'keep', 'position', 'reveal']:
+            X = self.training_data[decision_type]['X']
+            y = self.training_data[decision_type]['y']
+            
+            if len(X) < 50:  # Minimum de données requis
+                print(f"⚠️ Pas assez de données pour {decision_type} ({len(X)} échantillons)")
+                continue
+            
+            try:
+                print(f"🚀 Entraînement du modèle {decision_type}...")
+                X = np.array(X)
+                y = np.array(y)
+                
+                print(f"📊 {decision_type}: {X.shape[0]} échantillons, {X.shape[1]} features")
+                
+                # Vérifier l'équilibre des classes
+                unique, counts = np.unique(y, return_counts=True)
+                class_dist = dict(zip(unique, counts))
+                print(f"   Classes: {class_dist}")
+                
+                # Skip si une seule classe
+                if len(unique) < 2:
+                    print(f"⚠️ Une seule classe pour {decision_type}, skip")
+                    continue
+                
+                # Split train/test
+                X_train, X_test, y_train, y_test = train_test_split(
+                    X, y, test_size=0.2, random_state=42, stratify=y
+                )
+                
+                # Normalisation
+                scaler = getattr(self, f"{decision_type}_scaler")
+                X_train_scaled = scaler.fit_transform(X_train)
+                X_test_scaled = scaler.transform(X_test)
+                
+                # Créer ensemble de modèles
+                estimators = []
+                for i, params in enumerate(self.xgb_variants):
+                    model = xgb.XGBClassifier(**params)
+                    model.fit(X_train_scaled, y_train)
+                    estimators.append((f'xgb_{i}', model))
+                
+                # Voting ensemble
+                ensemble = VotingClassifier(estimators=estimators, voting='soft')
+                ensemble.fit(X_train_scaled, y_train)
+                
+                # Évaluation
+                train_score = ensemble.score(X_train_scaled, y_train)
+                test_score = ensemble.score(X_test_scaled, y_test)
+                print(f"✅ {decision_type}: Train={train_score:.3f}, Test={test_score:.3f}")
+                
+                # Sauvegarder le modèle
+                setattr(self, f"{decision_type}_ensemble", ensemble)
+                models_trained += 1
+                
+            except Exception as e:
+                print(f"❌ Erreur entraînement {decision_type}: {e}")
+                continue
+        
+        # Sauvegarder les modèles
+        self.save_models()
+        print("💾 Modèles XGBoost Enhanced sauvegardés!")
+        print(f"🎯 {models_trained}/4 modèles entraînés avec succès")
+        
+        return models_trained > 0
 
-if __name__ == "__main__":
-    train_xgboost_enhanced() 

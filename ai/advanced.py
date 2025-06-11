@@ -202,50 +202,61 @@ class AdvancedAI(BaseAI):
             # Défausse
             if discard:
                 for card in discard:
-                    if card is not None and hasattr(card, 'value'):
+                    if hasattr(card, 'value'):
                         all_revealed.append(card.value)
+                    else:
+                        all_revealed.append(card)
                         
         except (IndexError, AttributeError, TypeError):
-            # En cas d'erreur, continuer avec les cartes collectées
-            pass
+            pass  # Continue avec les cartes collectées
         
+        # Estimation probabiliste
         probabilities = self.estimate_card_probabilities(all_revealed)
+        expected_deck_value = sum(value * prob for value, prob in probabilities.items()) if probabilities else 3.0
+        
+        # Phase de jeu
         game_phase = self.analyze_game_phase(grid, other_p_grids)
         
-        # Logique adaptée à la phase de jeu
+        # Facteurs de décision
+        discard_threshold = 5.0
         if game_phase == "early":
-            # En début de jeu, être plus sélectif
-            return 'D' if discard_value <= 2 else 'P'
-        elif game_phase == "mid":
-            # En milieu de jeu, équilibrer opportunités et sécurité
-            expected_draw = sum(value * prob for value, prob in probabilities.items())
-            threshold = 4 if discard_value < expected_draw else 6
-            return 'D' if discard_value <= threshold else 'P'
+            discard_threshold = 6.0  # Plus sélectif en début
+        elif game_phase == "late":
+            discard_threshold = 3.0  # Plus agressif en fin
+        
+        # Analyse de nos cartes révélées
+        our_revealed_values = []
+        try:
+            if grid:
+                for row in grid:
+                    if not row:
+                        continue
+                    for card in row:
+                        if (card is not None and hasattr(card, 'revealed') and 
+                            hasattr(card, 'value') and card.revealed):
+                            our_revealed_values.append(card.value)
+        except (IndexError, AttributeError, TypeError):
+            pass
+        
+        our_avg = sum(our_revealed_values) / len(our_revealed_values) if our_revealed_values else 4.0
+        
+        # Ajustement du seuil basé sur notre performance
+        if our_avg > 5:
+            discard_threshold -= 1.0  # Plus agressif si on a de mauvaises cartes
+        elif our_avg < 2:
+            discard_threshold += 1.0  # Plus conservateur si on va bien
+        
+        # Décision finale
+        if discard_value <= discard_threshold:
+            return 'D'
         else:
-            # En fin de jeu, être plus agressif
-            our_score_estimate = self.estimate_my_final_score(grid, probabilities)
-            opponent_estimates = []
-            
-            if other_p_grids:
-                for opp_grid in other_p_grids:
-                    if opp_grid and len(opp_grid) > 0:
-                        opponent_estimates.append(self.estimate_opponent_score(opp_grid, probabilities))
-            
-            if not opponent_estimates:
-                opponent_estimates = [50]  # Score par défaut
-            
-            if our_score_estimate > min(opponent_estimates):
-                # On est en retard, prendre plus de risques
-                return 'D' if discard_value <= 7 else 'P'
-            else:
-                # On mène, être conservateur
-                return 'D' if discard_value <= 3 else 'P'
+            return 'P'
     
     def estimate_my_final_score(self, grid, probabilities):
         """Estime notre score final probable"""
         try:
-            if not grid or len(grid) == 0:
-                return 50  # Score par défaut
+            if not grid:
+                return 50
             
             revealed_score = 0
             unrevealed_count = 0
@@ -261,29 +272,29 @@ class AdvancedAI(BaseAI):
                             revealed_score += card.value
                         else:
                             unrevealed_count += 1
-            
+                            
         except (IndexError, AttributeError, TypeError):
-            return 50  # Score par défaut
+            return 50
         
         expected_unrevealed = self.calculate_expected_unrevealed_value(grid, probabilities)
-        
         return revealed_score + (unrevealed_count * expected_unrevealed)
     
     def choose_keep(self, card, grid, other_p_grids):
-        """Décision de garde avec analyse contextuelle"""
+        """Décision de garder une carte avec analyse avancée"""
+        if not hasattr(card, 'value'):
+            return False
+        
         card_value = card.value
         
-        # Collecte des informations pour l'analyse
+        # Collecte des cartes révélées
         all_revealed = []
         try:
             # Notre grille
             if grid:
-                for row_idx, row in enumerate(grid):
-                    if row_idx >= GRID_ROWS or not row:
+                for row in grid:
+                    if not row:
                         continue
-                    for col_idx, c in enumerate(row):
-                        if col_idx >= GRID_COLS:
-                            break
+                    for c in row:
                         if (c is not None and hasattr(c, 'revealed') and 
                             hasattr(c, 'value') and c.revealed):
                             all_revealed.append(c.value)
@@ -291,220 +302,217 @@ class AdvancedAI(BaseAI):
             # Grilles adversaires
             if other_p_grids:
                 for opp_grid in other_p_grids:
-                    if not opp_grid or len(opp_grid) == 0:
+                    if not opp_grid:
                         continue
-                    for row_idx, row in enumerate(opp_grid):
-                        if row_idx >= GRID_ROWS or not row:
+                    for row in opp_grid:
+                        if not row:
                             continue
-                        for col_idx, c in enumerate(row):
-                            if col_idx >= GRID_COLS:
-                                break
+                        for c in row:
                             if (c is not None and hasattr(c, 'revealed') and 
                                 hasattr(c, 'value') and c.revealed):
                                 all_revealed.append(c.value)
+                                
+        except (IndexError, AttributeError, TypeError):
+            pass
+        
+        # Estimation probabiliste
+        probabilities = self.estimate_card_probabilities(all_revealed)
+        
+        # Phase de jeu
+        game_phase = self.analyze_game_phase(grid, other_p_grids)
+        
+        # Seuils adaptatifs
+        if game_phase == "early":
+            keep_threshold = 3.0
+        elif game_phase == "mid":
+            keep_threshold = 4.0
+        else:  # late
+            keep_threshold = 5.0
+        
+        # Analyse de notre performance actuelle
+        our_revealed_values = []
+        try:
+            if grid:
+                for row in grid:
+                    if not row:
+                        continue
+                    for c in row:
+                        if (c is not None and hasattr(c, 'revealed') and 
+                            hasattr(c, 'value') and c.revealed):
+                            our_revealed_values.append(c.value)
+        except (IndexError, AttributeError, TypeError):
+            pass
+        
+        our_avg = sum(our_revealed_values) / len(our_revealed_values) if our_revealed_values else 4.0
+        
+        # Ajustement du seuil
+        if our_avg > 5:
+            keep_threshold += 1.0  # Plus sélectif si on a de mauvaises cartes
+        elif our_avg < 2:
+            keep_threshold -= 0.5  # Moins sélectif si on va bien
+        
+        # Estimation des scores adversaires
+        opponent_estimates = []
+        if other_p_grids:
+            for opp_grid in other_p_grids:
+                opp_score = self.estimate_opponent_score(opp_grid, probabilities)
+                opponent_estimates.append(opp_score)
+        
+        best_opponent = min(opponent_estimates) if opponent_estimates else 25
+        my_estimate = self.estimate_my_final_score(grid, probabilities)
+        
+        # Si on est en retard, être plus agressif
+        if my_estimate > best_opponent + 5:
+            keep_threshold += 1.0
+        elif my_estimate < best_opponent - 5:
+            keep_threshold -= 1.0
+        
+        return card_value <= keep_threshold
+    
+    def choose_position(self, card, grid, other_p_grids):
+        """Choix de position avec optimisation avancée"""
+        if not hasattr(card, 'value') or not grid:
+            return (0, 0)
+        
+        card_value = card.value
+        best_position = (0, 0)
+        best_score = float('-inf')
+        
+        # Collecte des cartes révélées pour estimation probabiliste
+        all_revealed = []
+        try:
+            for row in grid:
+                if not row:
+                    continue
+                for c in row:
+                    if (c is not None and hasattr(c, 'revealed') and 
+                        hasattr(c, 'value') and c.revealed):
+                        all_revealed.append(c.value)
+            
+            if other_p_grids:
+                for opp_grid in other_p_grids:
+                    if not opp_grid:
+                        continue
+                    for row in opp_grid:
+                        if not row:
+                            continue
+                        for c in row:
+                            if (c is not None and hasattr(c, 'revealed') and 
+                                hasattr(c, 'value') and c.revealed):
+                                all_revealed.append(c.value)
+                                
         except (IndexError, AttributeError, TypeError):
             pass
         
         probabilities = self.estimate_card_probabilities(all_revealed)
-        game_phase = self.analyze_game_phase(grid, other_p_grids)
         
-        # Cas spécial : dernière carte
-        try:
-            unrevealed_count = 0
-            if grid:
-                for row_idx, row in enumerate(grid):
-                    if row_idx >= GRID_ROWS or not row:
-                        continue
-                    for col_idx, c in enumerate(row):
-                        if col_idx >= GRID_COLS:
-                            break
-                        if (c is not None and hasattr(c, 'revealed') and 
-                            not c.revealed):
-                            unrevealed_count += 1
-            
-            if unrevealed_count <= 1:
-                our_final_score = 0
-                if grid:
-                    for row_idx, row in enumerate(grid):
-                        if row_idx >= GRID_ROWS or not row:
-                            continue
-                        for col_idx, c in enumerate(row):
-                            if col_idx >= GRID_COLS:
-                                break
-                            if (c is not None and hasattr(c, 'revealed') and 
-                                hasattr(c, 'value') and c.revealed):
-                                our_final_score += c.value
-                
-                our_final_score += card_value
-                
-                opponent_estimates = []
-                if other_p_grids:
-                    for opp_grid in other_p_grids:
-                        if opp_grid and len(opp_grid) > 0:
-                            opponent_estimates.append(self.estimate_opponent_score(opp_grid, probabilities))
-                
-                if opponent_estimates:
-                    return our_final_score <= min(opponent_estimates) * 1.05  # Marge de 5%
-                    
-        except (IndexError, AttributeError, TypeError):
-            pass
-        
-        # Logique adaptée à la phase
-        if game_phase == "early":
-            return card_value <= 3
-        elif game_phase == "mid":
-            expected_replacement = sum(value * prob for value, prob in probabilities.items())
-            return card_value < expected_replacement
-        else:
-            # En fin de jeu, plus agressif
-            return card_value <= 5
-    
-    def choose_position(self, card, grid, other_p_grids):
-        """Choix de position avec optimisation multi-critères"""
-        card_value = card.value
-        best_position = None
-        best_score = float('-inf')
-        
-        # Collecte des positions disponibles avec vérifications défensives
-        revealed_positions = []
-        unrevealed_positions = []
-        
-        try:
-            if grid:
-                for i in range(min(len(grid), GRID_ROWS)):
-                    if not grid[i] or len(grid[i]) == 0:
-                        continue
-                    for j in range(min(len(grid[i]), GRID_COLS)):
-                        if grid[i][j] is not None and hasattr(grid[i][j], 'revealed'):
-                            if grid[i][j].revealed:
-                                revealed_positions.append((i, j))
-                            else:
-                                unrevealed_positions.append((i, j))
-        except (IndexError, AttributeError, TypeError):
-            # En cas d'erreur, retour sécurisé
-            return (0, 0) if grid and len(grid) > 0 and len(grid[0]) > 0 else None
-        
-        # Évaluer les positions révélées
-        for row, col in revealed_positions:
-            try:
-                if (row < len(grid) and col < len(grid[row]) and 
-                    grid[row][col] is not None and hasattr(grid[row][col], 'value')):
-                    
-                    current_value = grid[row][col].value
-                    improvement = current_value - card_value
-                    
-                    if improvement <= 0:
+        # Évaluer chaque position possible
+        for i in range(GRID_ROWS):
+            for j in range(GRID_COLS):
+                try:
+                    if (i >= len(grid) or j >= len(grid[i]) or 
+                        grid[i][j] is None or not hasattr(grid[i][j], 'value')):
                         continue
                     
-                    score = improvement
+                    current_card = grid[i][j]
+                    improvement = current_card.value - card_value
                     
-                    # Bonus synergie colonne
-                    column_potential = self.calculate_column_potential(grid, col)
-                    score += column_potential * self.column_synergy_bonus
+                    # Score de base = amélioration directe
+                    position_score = improvement
                     
-                    # Bonus position stratégique (coins et bords)
-                    if (row == 0 or row == GRID_ROWS-1) and (col == 0 or col == GRID_COLS-1):
-                        score += 1.5  # Bonus coin
-                    elif row == 0 or row == GRID_ROWS-1 or col == 0 or col == GRID_COLS-1:
-                        score += 0.5  # Bonus bord
+                    # Bonus pour les colonnes
+                    column_potential = self.calculate_column_potential(grid, j)
+                    position_score += column_potential * self.column_synergy_bonus
                     
-                    if score > best_score:
-                        best_score = score
-                        best_position = (row, col)
-            except (IndexError, AttributeError, TypeError):
-                continue
+                    # Bonus pour retirer des cartes très mauvaises
+                    if current_card.value >= 8:
+                        position_score += self.aggressive_bonus
+                    
+                    # Bonus pour placer des cartes très bonnes
+                    if card_value <= 0:
+                        position_score += 2.0
+                    
+                    # Pénalité pour remplacer des cartes cachées utiles
+                    if not current_card.revealed:
+                        expected_hidden = self.calculate_expected_unrevealed_value(grid, probabilities)
+                        hidden_penalty = max(0, expected_hidden - card_value)
+                        position_score -= hidden_penalty * 0.5
+                    
+                    if position_score > best_score:
+                        best_score = position_score
+                        best_position = (i, j)
+                        
+                except (IndexError, AttributeError, TypeError):
+                    continue
         
-        # Si aucune position révélée n'est bonne, évaluer les positions cachées
-        if best_position is None and unrevealed_positions:
-            try:
-                # Privilégier les colonnes avec le meilleur potentiel
-                column_scores = {}
-                for col in range(GRID_COLS):
-                    column_scores[col] = self.calculate_column_potential(grid, col)
-                
-                # Choisir dans la meilleure colonne disponible
-                available_columns = list(set(col for row, col in unrevealed_positions))
-                if available_columns:
-                    best_col = max(available_columns, key=lambda c: column_scores[c])
-                    col_positions = [(r, c) for r, c in unrevealed_positions if c == best_col]
-                    if col_positions:
-                        best_position = random.choice(col_positions)
-            except (IndexError, AttributeError, TypeError, ValueError):
-                if unrevealed_positions:
-                    best_position = random.choice(unrevealed_positions)
-        
-        return best_position or (random.choice(unrevealed_positions) if unrevealed_positions else None)
+        return best_position
     
     def choose_reveal(self, grid):
-        """Choix de révélation avec stratégie de colonnes"""
-        best_position = None
+        """Choix de révélation avec stratégie optimisée"""
+        if not grid:
+            return (0, 0)
+        
+        best_position = (0, 0)
         best_score = float('-inf')
         
-        try:
-            if not grid or len(grid) == 0:
-                return None
-                
-            # Analyser chaque colonne
-            for col in range(GRID_COLS):
-                column = []
-                revealed_count = 0
-                unrevealed_positions = []
-                
-                # Vérifier que la colonne existe dans toutes les lignes
-                valid_column = True
-                for row in range(GRID_ROWS):
-                    if (row >= len(grid) or not grid[row] or 
-                        col >= len(grid[row]) or grid[row][col] is None):
-                        valid_column = False
-                        break
-                    column.append(grid[row][col])
-                
-                if not valid_column:
-                    continue
-                
-                # Compter les cartes révélées et positions non révélées
-                for row in range(GRID_ROWS):
-                    card = column[row]
-                    if hasattr(card, 'revealed'):
-                        if card.revealed:
-                            revealed_count += 1
-                        else:
-                            unrevealed_positions.append((row, col))
-                
-                if not unrevealed_positions:
-                    continue
-                
-                # Score basé sur le potentiel de la colonne
-                column_potential = self.calculate_column_potential(grid, col)
-                
-                # Privilégier les colonnes avec plus de cartes révélées
-                completeness_bonus = revealed_count * 2
-                
-                score = column_potential * 10 + completeness_bonus
-                
-                if score > best_score:
-                    best_score = score
-                    best_position = random.choice(unrevealed_positions)
-            
-            # Si aucune stratégie claire, révéler au hasard
-            if best_position is None:
-                all_unrevealed = []
-                for i in range(min(len(grid), GRID_ROWS)):
-                    if not grid[i] or len(grid[i]) == 0:
+        # Analyser chaque position non révélée
+        for i in range(GRID_ROWS):
+            for j in range(GRID_COLS):
+                try:
+                    if (i >= len(grid) or j >= len(grid[i]) or 
+                        grid[i][j] is None or not hasattr(grid[i][j], 'revealed')):
                         continue
-                    for j in range(min(len(grid[i]), GRID_COLS)):
-                        if (grid[i][j] is not None and hasattr(grid[i][j], 'revealed') and 
-                            not grid[i][j].revealed):
-                            all_unrevealed.append((i, j))
-                
-                best_position = random.choice(all_unrevealed) if all_unrevealed else None
-                
-        except (IndexError, AttributeError, TypeError):
-            # En dernier recours, essayer de retourner une position sécurisée
-            try:
-                if grid and len(grid) > 0 and len(grid[0]) > 0:
-                    return (0, 0)
-            except:
-                return None
+                    
+                    card = grid[i][j]
+                    if card.revealed:
+                        continue  # Déjà révélée
+                    
+                    # Score de base : position stratégique
+                    position_score = 0
+                    
+                    # Bonus pour les coins (positions stratégiques)
+                    if (i == 0 or i == GRID_ROWS-1) and (j == 0 or j == GRID_COLS-1):
+                        position_score += 2.0
+                    
+                    # Bonus pour le centre
+                    if i == GRID_ROWS//2 and j == GRID_COLS//2:
+                        position_score += 1.5
+                    
+                    # Bonus pour compléter l'analyse d'une colonne
+                    column_revealed = 0
+                    for row_idx in range(GRID_ROWS):
+                        if (row_idx < len(grid) and j < len(grid[row_idx]) and 
+                            grid[row_idx][j] is not None and 
+                            hasattr(grid[row_idx][j], 'revealed') and 
+                            grid[row_idx][j].revealed):
+                            column_revealed += 1
+                    
+                    if column_revealed >= GRID_ROWS - 1:  # Dernière carte de la colonne
+                        position_score += 3.0
+                    elif column_revealed >= GRID_ROWS // 2:  # Majorité révélée
+                        position_score += 1.0
+                    
+                    # Préférer révéler près des cartes déjà révélées
+                    adjacent_revealed = 0
+                    for di in [-1, 0, 1]:
+                        for dj in [-1, 0, 1]:
+                            if di == 0 and dj == 0:
+                                continue
+                            ni, nj = i + di, j + dj
+                            if (0 <= ni < GRID_ROWS and 0 <= nj < GRID_COLS and 
+                                ni < len(grid) and nj < len(grid[ni]) and 
+                                grid[ni][nj] is not None and 
+                                hasattr(grid[ni][nj], 'revealed') and 
+                                grid[ni][nj].revealed):
+                                adjacent_revealed += 1
+                    
+                    position_score += adjacent_revealed * 0.5
+                    
+                    if position_score > best_score:
+                        best_score = position_score
+                        best_position = (i, j)
+                        
+                except (IndexError, AttributeError, TypeError):
+                    continue
         
         return best_position 
